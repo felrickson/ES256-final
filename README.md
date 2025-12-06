@@ -25,7 +25,7 @@ Este repositório contém a estrutura para a apresentação final do projeto.
 
 1.  Instale as dependências:
     ```bash
-    pip install numpy matplotlib control
+    pip3 install numpy matplotlib control
     ```
 2.  Edite `simulations/model.py` para inserir as matrizes A, B, C, D corretas do PDF.
 3.  Use `simulations/controllers.py` para projetar os controladores.
