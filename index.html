@@ -114,8 +114,13 @@
                     <h3 class="text-2xl font-semibold mb-4 group-hover:text-brand-primary transition-colors">Matrizes de
                         Estado</h3>
                     <div
-                        class="aspect-video bg-black/40 rounded-lg flex items-center justify-center border border-dashed border-gray-700 text-gray-500 mb-4">
-                        [Inserir Matrizes A, B, C aqui]
+                        class="aspect-video bg-black/40 rounded-lg flex items-center justify-center border border-dashed border-gray-700 text-gray-500 mb-4 overflow-hidden">
+                        <!-- Placeholder for Matrix MathJax or Image if needed, keeping text for now as no image generated for matrices specifically -->
+                        <div class="text-xs font-mono text-left p-4 text-gray-300">
+                            A = [[0, 1, 0, 0], ...]<br>
+                            B = [0; 0; 0; 1]<br>
+                            C = [1, 0, 0, 0]
+                        </div>
                     </div>
                     <p class="text-gray-400 text-sm">Descrição formal do sistema dinâmico linearizado.</p>
                 </div>
@@ -126,8 +131,9 @@
                     <h3 class="text-2xl font-semibold mb-4 group-hover:text-brand-primary transition-colors">Polos e
                         Zeros</h3>
                     <div
-                        class="aspect-video bg-black/40 rounded-lg flex items-center justify-center border border-dashed border-gray-700 text-gray-500 mb-4">
-                        [Inserir Gráfico PZMap aqui]
+                        class="aspect-video bg-black/40 rounded-lg flex items-center justify-center border border-gray-700 text-gray-500 mb-4 overflow-hidden">
+                        <img src="assets/images/pzmap_openloop.png" alt="Mapa de Polos e Zeros"
+                            class="w-full h-full object-contain opacity-80 hover:opacity-100 transition-opacity">
                     </div>
                     <p class="text-gray-400 text-sm">Visualização da estabilidade em malha aberta.</p>
                 </div>
@@ -172,9 +178,9 @@
                         </div>
                         <div
                             class="flex-1 w-full bg-black/20 rounded-2xl p-2 border border-white/10 h-64 flex items-center justify-center text-gray-500 border-dashed relative overflow-hidden group">
-                            <span class="z-10">[Gráfico Resposta ao Degrau - P]</span>
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-brand-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            <img src="assets/images/step_response_P.png" alt="Resposta ao Degrau P"
+                                class="w-full h-full object-contain">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-primary/10 to-transparent">
                             </div>
                         </div>
                     </div>
@@ -204,9 +210,9 @@
                         </div>
                         <div
                             class="flex-1 w-full bg-black/20 rounded-2xl p-2 border border-white/10 h-64 flex items-center justify-center text-gray-500 border-dashed relative overflow-hidden group">
-                            <span class="z-10">[Diagramas de Bloco & Root Locus]</span>
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-brand-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            <img src="assets/images/step_response_Lead.png" alt="Compensador Lead"
+                                class="w-full h-full object-contain">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-accent/10 to-transparent">
                             </div>
                         </div>
                     </div>
@@ -238,7 +244,8 @@
                         </div>
                         <div
                             class="flex-1 w-full bg-black/20 rounded-2xl p-2 border border-white/10 h-64 flex items-center justify-center text-gray-500 border-dashed">
-                            [Gráfico Resposta ao Degrau - PID]
+                            <img src="assets/images/step_response_PID.png" alt="Resposta ao Degrau PID"
+                                class="w-full h-full object-contain">
                         </div>
                     </div>
                 </div>
