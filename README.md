@@ -14,12 +14,12 @@ Este repositório contém a estrutura para a apresentação final do projeto.
 
 ## Divisão de Tarefas (Conforme Plano PDF)
 
-*   **Membro 1 (Modelagem & Roteiro):** Define matrizes e escreve a história (Intro/Conclusão).
-*   **Membro 2 (Controlador P & Integração):** Faz o P e cuida do HTML/CSS/Git.
-*   **Membro 3 (Lead & Diagramas):** Faz o Compensador Lead e diagramas visuais.
-*   **Membro 4 (Lag & Visualização):** Faz o Compensador Lag e padroniza gráficos Matplotlib.
-*   **Membro 5 (PID & Revisão):** Faz o PID (técnico) e revisa consistência técnica.
-*   **Membro 6 (Robustez & QA):** Faz análise de robustez e testes da apresentação.
+*   **Gabriel (Modelagem & Roteiro):** Define matrizes e escreve a história (Intro/Conclusão).
+*   **Felipe (Controlador P & Integração):** Faz o P e cuida do HTML/CSS/Git.
+*   **Cintia (Lead & Diagramas):** Faz o Compensador Lead e diagramas visuais.
+*   **Dierson (Lag & Visualização):** Faz o Compensador Lag e padroniza gráficos Matplotlib.
+*   **Guilherme (PID & Revisão):** Faz o PID (técnico) e revisa consistência técnica.
+*   **Nicolas (Robustez & QA):** Faz análise de robustez e testes da apresentação.
 
 ## Para o Grupo A (Simulação)
 
