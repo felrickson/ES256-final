@@ -1,0 +1,1431 @@
+[00:00:00:05 - 00:00:06:27]
+Professor
+ O modelo vai conseguir a sensação do modelo de poder de ser, e como é certeza a fé desse estado, né?
+
+[00:00:08:05 - 00:00:16:28]
+Professor
+ Aí vai ter uma quarta variada, x4, pois eu ajusto o que é prédio pra ficar mais variante, tá? Pra ficar junto, sim.
+
+[00:00:19:29 - 00:00:24:28]
+Professor
+ Em que você não vai ter a ação em que...
+
+[00:00:25:29 - 00:00:27:09]
+Professor
+ É na controlada.
+
+[00:00:27:09 - 00:00:38:09]
+Professor
+ Aí é que vocês vão ter que dar aquela líria, dar a líria e mostrar como é que eu mostro que o sistema não é controlado. Por exemplo, quantas variadas os estados é esse sistema?
+
+[00:00:42:05 - 00:00:49:24]
+Professor
+ Tinha três ou outro que eu vou ter mais um, t4. O que vai dizer se o sistema ele é controlado?
+
+[00:00:51:21 - 00:00:58:15]
+Professor
+ É o posto da matriz controlada e dá. Aí tem uma matriz que a gente vai dar lá. A gente tem uma matriz controlada.
+
+[00:00:59:23 - 00:01:00:22]
+Professor
+ E é basicamente...
+
+[00:01:02:29 - 00:01:08:20]
+Professor
+ Eu pego essa matriz B aqui e com a tenda. A, 2, B,
+
+[00:01:09:27 - 00:01:11:06]
+Professor
+ aqui é a segunda onda, né?
+
+[00:01:11:06 - 00:01:12:02]
+Professor
+ Pra ter a segunda onda.
+
+[00:01:15:03 - 00:01:33:13]
+Professor
+ Então pego essa, veja que que essa é a matriz 3, 4, né? Aqui vai ser nesse caso aqui. Porque aqui é uma matriz, essa é a interpretação, porque aqui é uma matriz e aqui é uma matriz, tá? Então, essa aqui é aquela matriz A, do anterior que é 3, 3.
+
+[00:01:34:24 - 00:01:37:26]
+Professor
+ Tá certo? E aqui a matriz B é 3, 1.
+
+[00:01:38:27 - 00:01:49:24]
+Professor
+ Então, no futex aqui é uma forma simplificada, a gente vai dar uma matriz 4x4. Então aqui, esse é feito 3.
+
+[00:01:51:20 - 00:02:02:13]
+Professor
+ São 3, 0, aqui 1, 1. Aqui uma é 1 de 3 zeros, aqui 3 de 1 zeros. Uma com um 0 e dá uma matriz 4x4. Sendo?
+
+[00:02:05:20 - 00:02:05:24]
+Professor
+ Sendo?
+
+[00:02:08:26 - 00:02:09:21]
+Professor
+ Mais ou menos por quê?
+
+[00:02:10:26 - 00:02:12:26]
+Speaker 3
+ Tem uma matriz aqui, uma matriz aí.
+
+[00:02:12:26 - 00:02:19:03]
+Professor
+ Isso, imagina que essa matriz aqui, por exemplo, o que quer? Vou fazer um exemplo aqui, por exemplo.
+
+[00:02:20:07 - 00:02:23:16]
+Speaker 4
+ O
+
+[00:02:23:16 - 00:02:27:11]
+Professor
+ que isso aqui que representa?
+
+[00:02:38:25 - 00:02:40:08]
+Speaker 4
+ Ah, aqui é uma possibilidade.
+
+[00:02:40:08 - 00:02:45:24]
+Professor
+ Sério? Essa matriz aqui faz um papel de acerpimento. Sério?
+
+[00:02:48:10 - 00:02:48:20]
+Professor
+ Tudo bem?
+
+[00:02:53:24 - 00:02:53:29]
+Professor
+ Sério?
+
+[00:02:58:14 - 00:03:00:12]
+Professor
+ O que é o posto de uma matriz?
+
+[00:03:03:24 - 00:03:05:02]
+Speaker 4
+ Quanto é 5x?
+
+[00:03:05:02 - 00:03:07:02]
+Professor
+ Quanto é 5x?
+
+[00:03:08:19 - 00:03:11:02]
+Speaker 4
+ Não luta. Não luta, só para ter que falar.
+
+[00:03:11:02 - 00:03:17:26]
+Professor
+ Depois se eu faço, ah? Não, não. O que é o posto que quer dizer?
+
+[00:03:17:26 - 00:03:20:08]
+Speaker 4
+ Como
+
+[00:03:20:08 - 00:03:21:25]
+Professor
+ é que eu interpreto isso matemáticamente?
+
+[00:03:24:08 - 00:03:26:23]
+Speaker 4
+ Isso.
+
+[00:03:30:23 - 00:03:35:24]
+Professor
+ O que é que se o posto da matriz é menor do que o posto da matriz? Isso significa que ela não é?
+
+[00:03:44:23 - 00:03:48:27]
+Professor
+ Uma matriz sem um investível, o que que eu tenho de ver?
+
+[00:04:00:22 - 00:04:11:20]
+Speaker 4
+ É, é, é, é. O posto tem que ser maior. Se o posto
+
+[00:04:11:20 - 00:04:32:14]
+Professor
+ for igual à direção da matriz, significa que está dentro, uma direção 4 e em posto é 4, tem aqui 4 virtudes ali, como a masa tem ali. Se eu vou conseguir 0, é determinante, não vai ser 0. É isso, se eu fizer, se eu zerar, significa que eu consigo escrever um dos funções das outras.
+
+[00:04:33:21 - 00:04:33:26]
+Professor
+ Isso?
+
+[00:04:35:05 - 00:04:42:01]
+Professor
+ Então, vocês vão ver lá, como vocês forem ver lá sobre controlabilidade, vocês vão ver que se o posto for menor,
+
+[00:04:43:10 - 00:04:50:10]
+Professor
+ a matriz, o sistema não é controlável. Então, o menos um está pelo que eu consigo controlar, o que é o fato dos outros, certo?
+
+[00:04:53:21 - 00:04:54:17]
+Speaker 4
+ O posto for menor também.
+
+[00:04:55:21 - 00:04:57:06]
+Professor
+ Aqui, o que ele está dizendo?
+
+[00:05:00:23 - 00:05:01:02]
+Professor
+ X4?
+
+[00:05:05:02 - 00:05:05:24]
+Professor
+ Só que tem que lembrar.
+
+[00:05:08:08 - 00:05:13:09]
+Professor
+ Não vou conseguir atuar X4, se eu não mexer no X4, certo?
+
+[00:05:19:08 - 00:05:20:21]
+Professor
+ Imaginando que é separado ali dentro.
+
+[00:05:22:06 - 00:05:22:12]
+Professor
+ Sério?
+
+[00:05:23:20 - 00:05:26:15]
+Professor
+ Se eu conseguir acessar,
+
+[00:05:26:15 - 00:05:27:22]
+Professor
+ claro, não vou acessar.
+
+[00:05:31:20 - 00:05:32:29]
+Professor
+ Beleza?
+
+[00:05:34:28 - 00:05:46:19]
+Professor
+ E, uma coisa seguinte, quando o P, quando o V tinha um variável e o afeta as outras, ele diz que o sistema está ato do lado, por exemplo. Imagina que vocês estão petalando esse cléu.
+
+[00:05:47:19 - 00:05:55:25]
+Professor
+ Vocês já tentaram virar para o lado, não? Se você vai virar para o lado, quem é que todo mundo tem um cléu? Tem alguém que não? Não? Tá.
+
+[00:05:56:27 - 00:06:06:21]
+Professor
+ Depois eu faço outro exemplo para vocês. Quem é aí? Mas vocês já viram que o pessoal está na minha cima? O cara já pagou. Se eu estou petalando e preciso virar para a esquerda, como é que ele faz?
+
+[00:06:10:01 - 00:06:11:00]
+Speaker 3
+ Oi? O que?
+
+[00:06:14:19 - 00:06:18:01]
+Speaker 4
+ O povo não vai. O povo não vai.
+
+[00:06:18:01 - 00:06:25:01]
+Professor
+ Vai voar, imagina agora então. É o cléu, eu tive um cléu. Você tem que virar para a esquerda, seja um pouco para a direita ou a colônia?
+
+[00:06:25:01 - 00:06:26:11]
+Speaker 3
+ Ah, tá, é só um pouco em presidência.
+
+[00:06:26:11 - 00:06:32:11]
+Professor
+ Não, você quer virar, você quer, você está de bicicleta total, quer virar para a esquerda, o que você faz?
+
+[00:06:32:11 - 00:06:34:13]
+Speaker 3
+ É uma direção. Você é a perda contumada.
+
+[00:06:36:18 - 00:06:40:29]
+Professor
+ Tem um vídeo legal, não é bom, não é isso? Não dá para virar para a esquerda, só para virar para a esquerda.
+
+[00:06:42:17 - 00:06:47:09]
+Professor
+ Já parado? Já? Sempre você virar para a esquerda, sempre vira, você joga para a direita e você faz isso.
+
+[00:06:49:26 - 00:06:50:14]
+Professor
+ Você dá uma hora.
+
+[00:06:52:07 - 00:06:57:27]
+Professor
+ Você tem acomplamamento entre esses coisas lá. O povo não fala do equilíbrio da bicicleta porque...
+
+[00:06:59:13 - 00:07:06:17]
+Professor
+ Se você está parado na bicicleta e joga para o lado, o que acontece? Tá bom? Tá bom? Tá?
+
+[00:07:08:12 - 00:07:10:22]
+Professor
+ Se você está envolvido, joga para o lado, o que acontece?
+
+[00:07:12:07 - 00:07:12:17]
+Professor
+ Você cai?
+
+[00:07:13:21 - 00:07:13:27]
+Professor
+ Não.
+
+[00:07:15:07 - 00:07:22:01]
+Professor
+ Você caiu? Você caiu? Não, não. Cuidado, não é da moda. Mas sempre que não pouquinho, o que vai acontecer?
+
+[00:07:23:20 - 00:07:26:19]
+Professor
+ Você desce só assim, não? Como é que eu vou ver o que acontece?
+
+[00:07:31:10 - 00:07:34:15]
+Professor
+ Se eu estou assim e tomo um pouco para o lado, o que vai acontecer?
+
+[00:07:37:24 - 00:07:42:09]
+Professor
+ Eu vou só cair aqui, eu vou só fazer isso. O que vai acontecer com o movimento?
+
+[00:07:45:12 - 00:07:45:20]
+Professor
+ Porque?
+
+[00:07:47:29 - 00:07:48:12]
+Speaker 4
+ Porque?
+
+[00:07:53:15 - 00:08:00:01]
+Professor
+ Eu só não sigo o rádio e cara, assim não. O que é que é a bicicleta vira para o lado?
+
+[00:08:01:11 - 00:08:02:08]
+Professor
+ Conservação do momento.
+
+[00:08:03:11 - 00:08:04:06]
+Professor
+ Conservação do momento?
+
+[00:08:04:06 - 00:08:06:20]
+Speaker 4
+ É. Vamos
+
+[00:08:06:20 - 00:08:17:18]
+Professor
+ lá, o lineá é para o freio, não é? Mas porque quando eu faço isso aqui, eu estou provocando uma mudança no momento de lineá das rodas, estão virando o lado,
+
+[00:08:18:24 - 00:08:27:09]
+Professor
+ e eu estou tentando jogar ele para cá e aí vem aquela questão da conversação. Mas surgiu um toque para tentar conversar, não é? Vocês estudaram isso lá?
+
+[00:08:28:14 - 00:08:35:18]
+Professor
+ Lembra do caso da precessão de um pião? Vocês estudaram isso? É a precessão do pião. O meu pião está girando,
+
+[00:08:36:24 - 00:08:39:17]
+Professor
+ aí eu tomo para o lado, aí ele cai.
+
+[00:08:41:01 - 00:08:45:03]
+Professor
+ Ele começa a fazer o movimento e virar algo, não é?
+
+[00:08:45:03 - 00:08:50:15]
+Speaker 3
+ Tem um vídeo que parece que um professor faz com uma moda de mcclag, né? E vira no próximo.
+
+[00:08:50:15 - 00:08:56:04]
+Professor
+ E isso inclusive acontece dentro do que ele chama a ressonância na brecha, né?
+
+[00:08:57:05 - 00:09:00:08]
+Professor
+ Você tem os elétrons que são girando, o termo começa,
+
+[00:09:01:20 - 00:09:03:21]
+Professor
+ você cita ele e depois você solta e ele vai,
+
+[00:09:04:23 - 00:09:09:21]
+Professor
+ o campo vai precessionando, não é? Aí você muda lá, você não pode.
+
+[00:09:11:13 - 00:09:38:21]
+Professor
+ Então um pouco disso, tipo, quando eu dou um comando em uma direção, eu vou mentir nas outras porque as variáveis estão acopladas. Não é uma coisa, não é um avião, eu preciso mexer e girar em um eixo, eu vou fazer e mexer em outro. Controle é uma coisa distinta. Então se a gente pensar que é uma porrada de coisas acontecendo, para, por exemplo, manter o controle funcionando fino, a gente tem que citar conta para protocar o corpo do pé, certo?
+
+[00:09:42:16 - 00:09:48:25]
+Professor
+ Então aí você vai estudar lá, vamos ver qual é a matura de controlabilidade e vamos ver, por exemplo,
+
+[00:09:50:13 - 00:09:55:23]
+Professor
+ qual é o posto dela e qual é a edificação dela e ela sofre a controlabilidade desse sistema.
+
+[00:10:10:11 - 00:10:23:25]
+Professor
+ Veja que eu falo aqui, ó, bem em valor, considera incerteza, para quê? Para que uma hora de qualidade? É porque vocês possam também discutir isso, a luz do mundo real. Então a gente vê que ele tem primeiro exercício.
+
+[00:10:29:11 - 00:10:34:19]
+Professor
+ Então pegarem um fenômeno de fio a pegar.
+
+[00:10:35:24 - 00:10:37:12]
+Professor
+ Aqui é a matriz do modelo.
+
+[00:10:38:23 - 00:10:44:19]
+Professor
+ Aí mostra que esse sistema é controlado, mostra que ele não vai observar, então também tem a matriz de observabilidade,
+
+[00:10:46:04 - 00:10:47:19]
+Professor
+ interprete o x4,
+
+[00:10:49:10 - 00:10:56:05]
+Professor
+ e escuta o impacto da excertez, certo? Aí agora é parte de controle mais programatismo.
+
+[00:10:57:08 - 00:11:01:02]
+Professor
+ Então vocês vão agora fazer os minutos.
+
+[00:11:02:04 - 00:11:10:14]
+Professor
+ Vai ter uma matriz de controle, o que vocês vão fazer, por exemplo, controle de proporção, certo? Vou pegar aquela blanca,
+
+[00:11:12:11 - 00:11:16:08]
+Professor
+ aquele sistema, e vou colocar o controle de proporção, que é o que?
+
+[00:11:17:09 - 00:11:21:22]
+Professor
+ Faça a regração unitária e tem um ganho proporcional, certo?
+
+[00:11:23:20 - 00:11:30:20]
+Professor
+ Eu quero que vocês serem o sistema o erro de regime em mercado e grau, menor ou igual a 1%. Ok?
+
+[00:11:30:20 - 00:11:37:09]
+Speaker 3
+ Ele 2% é dentro... Espera, ele quanto por cento? A gente define...
+
+[00:11:38:09 - 00:11:38:26]
+Professor
+ Você decora que?
+
+[00:11:38:26 - 00:11:40:14]
+Speaker 3
+ Tem que ficar dentro...
+
+[00:11:47:25 - 00:11:50:20]
+Professor
+ Aí vocês vão, o que é o EGN?
+
+[00:11:52:00 - 00:11:54:12]
+Professor
+ Um grande momento atrás.
+
+[00:11:55:18 - 00:12:00:13]
+Professor
+ Aí escolha um card que justifique, segundo o sinal de normal,
+
+[00:12:01:25 - 00:12:04:25]
+Professor
+ segundo será de excertez, que terá de excertez.
+
+[00:12:06:25 - 00:12:22:06]
+Professor
+ Você vai pegar aquele barulho que você tem lá, e vai acessar uma pequena proporção. Uma tensão de feitar a curva. É, sei lá, o suponho é que é 500 a mais ou 540, 100 a mais ou 440, certo? E aí eu quero que vocês digam o que acontece
+
+[00:12:23:07 - 00:12:26:29]
+Professor
+ com esse sistema, com essas pequenas variações, certo?
+
+[00:12:29:07 - 00:12:39:26]
+Professor
+ Então, se o AR varia a 500, se o AR varia a 500, se o GA varia a 500, o que muda no sistema? É que eu quero que vocês se reflitam sobre isso, ok?
+
+[00:12:42:25 - 00:12:46:10]
+Professor
+ E aí, vocês se avaliam e a rouba se fez, até claro.
+
+[00:12:50:25 - 00:12:57:22]
+Professor
+ Aqui é um compensador de avanço de fase, certo? É um compensador que vai ter um zero no pouco, certo?
+
+[00:12:59:00 - 00:13:06:23]
+Professor
+ Então, em vez de seu controle proporcional, a dor de populador é o regulador de avanço de fase. Ele tem um zero, ele tem um ponto,
+
+[00:13:08:04 - 00:13:09:03]
+Professor
+ e o pó é maior que o zero, certo?
+
+[00:13:12:17 - 00:13:12:20]
+Professor
+ Ok?
+
+[00:13:14:08 - 00:13:17:00]
+Professor
+ E o zero está intervalo de 10 e 30, certo?
+
+[00:13:19:04 - 00:13:19:15]
+Professor
+ Beleza?
+
+[00:13:21:02 - 00:13:25:21]
+Professor
+ É a gente escolher o Z, e vamos dizer por que escolher a dizer,
+
+[00:13:27:02 - 00:13:27:05]
+Professor
+ certo?
+
+[00:13:28:12 - 00:13:30:01]
+Professor
+ Um base disso e um ponto P.
+
+[00:13:31:16 - 00:13:43:26]
+Professor
+ Como é que o ponto P vai estar lá? O gajo vai para os A, tem a função de volta, a função de fase, eu sempre quero ter aquela faixa de perforno,
+
+[00:13:45:06 - 00:13:47:07]
+Professor
+ a faixa de perforno que é a mesma,
+
+[00:13:48:12 - 00:13:49:05]
+Professor
+ nesse aqui, tá?
+
+[00:13:51:00 - 00:13:52:19]
+Professor
+ Essa é a gente antes de se impedir, certo?
+
+[00:13:57:04 - 00:13:57:19]
+Professor
+ Beleza?
+
+[00:14:00:01 - 00:14:07:20]
+Professor
+ Eu vou... colocar aquele controlador, e quero chegar naquela fase de faixa de perforno.
+
+[00:14:15:06 - 00:14:19:15]
+Professor
+ Eu vou encontrar, vou comparar agora no estado do ganho, nesse aqui,
+
+[00:14:21:00 - 00:14:48:14]
+Professor
+ e vou comparar a resposta que vocês vão viver usando esse controlador com um caso superior, tá certo? Então, primeiro, é só o controle proporcional. Agora, eu vou torturar o controle proporcional, vou colocar uma compensação de agosto de fase. O que acontece com a resposta do sistema, comparando esses dois casos, certo? Bom, quando eu sou um realimento proporcional, eu vou levar um sistema para essa resposta.
+
+[00:14:49:14 - 00:15:04:29]
+Professor
+ Agora que eu tenho esse outro controlador, eu consigo levar um sistema para essa resposta. Ela foi mais barata, foi mais cara, foi mais preto, foi mais branco, mais azul, mais verde, entendeu? Quero que vocês saibam de como é rápido, mas lê, aumentou o esparano, o diminui o esparano.
+
+[00:15:06:03 - 00:15:07:21]
+Professor
+ Eu quero que vocês experimentem,
+
+[00:15:09:01 - 00:15:18:09]
+Professor
+ como se fossem projetistas, e que vocês indivíduo o que vocês estão observando, certo? Com um parano base, um esparano que vai resolver.
+
+[00:15:19:19 - 00:15:19:28]
+Professor
+ Sério?
+
+[00:15:21:16 - 00:15:22:17]
+Professor
+ Ah, conclui a lei.
+
+[00:15:24:25 - 00:15:24:28]
+Professor
+ Sério?
+
+[00:15:28:06 - 00:15:40:07]
+Professor
+ Com um pensador de atraso. É um pensador parecido com o anterior, só que o zero é maior que o bom, certo?
+
+[00:15:42:19 - 00:15:43:19]
+Professor
+ O que acontece agora?
+
+[00:15:45:01 - 00:15:47:00]
+Professor
+ Calcule o erro de sacionar inicial.
+
+[00:15:48:09 - 00:15:52:24]
+Professor
+ E escolha a IB para aumentar o do NDC em dez vezes.
+
+[00:15:54:07 - 00:15:57:13]
+Professor
+ Mostre que os fobos dominantes pouco mudam.
+
+[00:15:58:14 - 00:16:02:12]
+Professor
+ Comparem para o IB com o proporcional, com os outros dois anteriores. Tá certo?
+
+[00:16:06:19 - 00:16:18:01]
+Professor
+ E o quarto com o isolador. Controlador PNG, PED. O PED você vai ter a ação do controle proporcional, de um controle integrativo e de um controle diferencial.
+
+[00:16:19:01 - 00:16:23:20]
+Professor
+ Então, é a minha versão só para o que são, para a minha versão do MEI-A, velocidade.
+
+[00:16:26:16 - 00:16:44:20]
+Professor
+ Lívio método de simporia, dizíquania, livre e escorre. Você quer ver na literatura que tem pelo menos dois métodos listados para vocês ajustar os parâmetros do compor de PED, tá certo? Então, só colocar que eu estou, eu vou ver. No lívio tem o rússia internet, tudo é...
+
+[00:16:46:05 - 00:16:46:07]
+Professor
+ Bom?
+
+[00:16:48:06 - 00:16:54:29]
+Professor
+ E aí vocês veem como é que você está aflorando. Diz que é o momento que eu estou,
+
+[00:16:55:29 - 00:16:59:16]
+Professor
+ determino os quatro a seis constrâns, KB, KE, KD,
+
+[00:17:00:29 - 00:17:02:13]
+Professor
+ simule o caso nominal,
+
+[00:17:03:29 - 00:17:07:08]
+Professor
+ aprende algumas incertezas, compare com os outros, ok?
+
+[00:17:09:02 - 00:17:13:15]
+Professor
+ Se comparar um um, o popso geral, você está, então faça um grande sessão dele,
+
+[00:17:14:28 - 00:17:16:00]
+Professor
+ para a sessão, certo?
+
+[00:17:17:28 - 00:17:19:19]
+Professor
+ Que que a gente tem até aqui? Sup.
+
+[00:17:25:18 - 00:17:28:05]
+Professor
+ Por que é isso? Meu sonho, vocês são um grande colado.
+
+[00:17:29:05 - 00:17:55:28]
+Professor
+ Então, isso já é final de seguida, tá? Então, vocês vão estruturar, pode ser no formão de aprecação, mas documento que fizeram, tratam, resultaram, documentem as comparações, tá certo? E aí, a forma, nesse caso aqui, vai importar. Vocês não... Ah, eu falei que eu vou dar a forma, não. Vamos dar um pouquinho, mas esse é o trabalho que vai consolidar, o trabalho que você vai fazer.
+
+[00:17:58:27 - 00:18:16:16]
+Professor
+ Então, o que é você, com base nesses, nessas situações que você vai fazer, vocês vão dizer, com base nas comparações, nós achamos que o controlador ABCUD é o mais adequado, por isso, por isso, por isso é que o outro, certo?
+
+[00:18:19:18 - 00:18:24:28]
+Professor
+ Quero que vocês justifiquem o base de desempenho, marmos os beios, o expulso,
+
+[00:18:26:02 - 00:18:34:08]
+Professor
+ a estabilidade, em qualquer outra característica que você acha que seja importante aumentar em relação ao desempenho, certo?
+
+[00:18:38:01 - 00:18:43:05]
+Professor
+ Deixe-me ter que os motos no controlador ABCUD observar as limitações do modelo de disminución de distância, tá certo?
+
+[00:18:44:14 - 00:18:58:07]
+Professor
+ Cada grupo PR até 30 minutos de apretação, e é esperado que os valores, na certeza, sejam diferentes, tá certo? Aqui o que a gente falou antes, porque a gente chegou depois. Vocês vão ter intervalo de faixa de valores.
+
+[00:18:59:19 - 00:19:04:25]
+Professor
+ Quatro grupos dos valores dos valores, eu vou entender que é o que é isso. É um cavalo de quatro grupos.
+
+[00:19:05:25 - 00:19:06:26]
+Professor
+ Isso é?
+
+[00:19:08:04 - 00:19:09:01]
+Professor
+ Vem dar um avanço de 24.
+
+[00:19:11:11 - 00:19:14:29]
+Speaker 4
+ É um
+
+[00:19:14:29 - 00:19:15:25]
+Professor
+ critério, tá certo?
+
+[00:19:17:01 - 00:19:20:20]
+Professor
+ Três trabalhos, quatro grupos. Dos dois trabalhos que são iguais,
+
+[00:19:21:23 - 00:19:22:28]
+Professor
+ vivem na última metade.
+
+[00:19:24:29 - 00:19:25:14]
+Professor
+ Isso é?
+
+[00:19:27:10 - 00:19:28:23]
+Professor
+ Pode ser certo também, se você sabe.
+
+[00:19:32:03 - 00:19:44:13]
+Professor
+ A gente não vai ter isso, né? Vocês se ajudam, vocês podem discutir, podem ajudar o outro, mas não compartilhem as respostas. Não compartilhem os fórdios.
+
+[00:19:45:16 - 00:19:46:21]
+Professor
+ Porque na hora do apê,
+
+[00:19:48:02 - 00:19:56:12]
+Professor
+ uma dessa errada pode vir aí. E uma dessa errada pode prejudicar todo o seu sexo. Quem incedeu o código, quem nos usa o código de forma livre.
+
+[00:19:57:24 - 00:20:18:25]
+Professor
+ Certo? Ajuda, te lhe duda, vai ao lado, compartilha conhecimento. Mas não pegue na mão e faça o seu trabalho no colégio. Tem a diferença em me ajudar em fazer o seu trabalho no colégio. Beleza? Isso é um papo chato, não faz sentido isso. Às vezes você deixa isso claro, tá certo? Espero que você não apareça aqui no dia. Beleza?
+
+[00:20:22:28 - 00:20:35:18]
+Professor
+ Ajuda muito, é igual, exata, mas cada grupo deve ter um projeto único, um caminho único. O que o senhor concorda? Não recomendamos com faixa meditória o seu sonho entre os grupos. Viz a legitar cópias e problemas relacionados a isso.
+
+[00:20:36:22 - 00:21:00:23]
+Professor
+ Cada grupo tem que aparecer até que o senhor vai pra edição dos colégios. Certo? Então a gente pode ver se faz individual, se faz um grupo isso aí. E será analisado, principalmente, se será apagado também. Eu acho que não parecer é mais fácil que seja individual. Você quer ir ao informar, que vocês fazem parecer cada um do que foi abandonado o fundo, certo?
+
+[00:21:03:14 - 00:21:23:04]
+Professor
+ Entendeu que é assim. Vocês vão fazer uma entrega, vão se arcoíte. Então vai, grupo, é a recuperação. Lembre-se de que, para ter um individual, a gente vai arrosar uma variação que vai ser sempre. Ele tem que saber se a Fernanda trabalha mais com o Guilherme, com a Fernanda, com o Guilherme, com a Juliana, com o Guilherme.
+
+[00:21:24:21 - 00:21:34:05]
+Professor
+ Então vou passar para vocês no dia da apresentação um formulário em que vocês vão avaliar os colégios.
+
+[00:21:35:11 - 00:21:39:07]
+Professor
+ Professor, você está falando para eu ser sacana com o meu colega?
+
+[00:21:41:06 - 00:21:41:17]
+Professor
+ É isso?
+
+[00:21:41:17 - 00:21:42:14]
+Professor
+ Não.
+
+[00:21:44:16 - 00:21:47:06]
+Professor
+ Eu estou dizendo assim, cara, aqui vocês são profissionais.
+
+[00:21:48:15 - 00:21:56:15]
+Professor
+ Aqui está todo mundo lascado, e não tem condições de carregar o trabalho para o trabalho do sozinho. Tem alguém aqui que quer fazer o trabalho do sozinho, sozinho?
+
+[00:21:58:16 - 00:21:58:21]
+Professor
+ Tem?
+
+[00:22:01:01 - 00:22:01:18]
+Professor
+ Não, não é?
+
+[00:22:02:28 - 00:22:07:19]
+Professor
+ Uma coisa que vale na vida, galera, é que combinado não sai cargo. Certo?
+
+[00:22:09:04 - 00:22:10:22]
+Professor
+ Patros claros, amizades,
+
+[00:22:12:04 - 00:22:13:06]
+Professor
+ eternas. Certo?
+
+[00:22:14:21 - 00:22:23:24]
+Professor
+ E as amizades, é difícil você ter uma relação perigenda, não é? Uma relação periguradura se ela não for periguradura.
+
+[00:22:25:09 - 00:22:28:01]
+Professor
+ Aquela relação que eu retaco a Taro, que eu retaco com o... Certo?
+
+[00:22:30:11 - 00:22:30:21]
+Professor
+ Beleza?
+
+[00:22:31:25 - 00:22:32:29]
+Speaker 4
+ Então, que é isso?
+
+[00:22:32:29 - 00:22:35:18]
+Professor
+ Usem isso como insumento de
+
+[00:22:36:19 - 00:22:38:03]
+Professor
+ engajamento, certo?
+
+[00:22:39:19 - 00:22:48:01]
+Professor
+ Ah, professor, tive um problema aqui, o grupo não participou e não foi um fulano, tem que ir em cima da comunicação, tá certo?
+
+[00:22:49:08 - 00:22:54:08]
+Professor
+ Aquela coisa, ah, o Fernando fez todas as insumações e eu fiz o PowerPoint.
+
+[00:22:56:18 - 00:22:59:06]
+Professor
+ Já aconteceu, tá? Isso é mais frequente do que...
+
+[00:23:00:20 - 00:23:09:24]
+Professor
+ O que você acha que vai ter tudo no meu mesmo? Então, vou passar para você, é chato, eu fico na minha moça, preenchei o que cada vez eu preenchei a avaliação pra esse certo,
+
+[00:23:12:18 - 00:23:13:19]
+Professor
+ essa coisa do tipo
+
+[00:23:14:22 - 00:23:29:26]
+Professor
+ aí eu trabalho em tudo, cara, eu fiz nada, não é pra dizer uma coisa ou outra, é justamente o inverso. É dizer, vamos balizar o que vai ter que ser feito, cada um aqui vai ser responsável por uma parte, apesar de todos tem que conseguir
+
+[00:23:31:10 - 00:23:33:12]
+Professor
+ explicar qualquer coisa, porque eu trabalho em tudo, certo?
+
+[00:23:34:15 - 00:23:39:12]
+Professor
+ Mas eu sempre vou se dividir e ir em qualquer ensinamento. Como é que funciona a avaliação 360?
+
+[00:23:41:10 - 00:23:42:05]
+Professor
+ É uma avaliação 360,
+
+[00:23:43:09 - 00:23:45:06]
+Professor
+ os outros são 6 pessoas, não é isso?
+
+[00:23:48:28 - 00:23:53:10]
+Professor
+ Você não acertou o formulário, ou é que você não teve dá uma nota de 1 a 5,
+
+[00:23:57:01 - 00:24:01:25]
+Professor
+ com 3 critérios. Eu preciso checar ali, mas acho que é produtividade.
+
+[00:24:10:16 - 00:24:18:09]
+Professor
+ É isso que é disponibilidade, que a gente voltou em convivência.
+
+[00:24:20:08 - 00:24:25:16]
+Professor
+ Essas notas de 1 a 5, elas têm uma divisão.
+
+[00:24:26:21 - 00:24:33:29]
+Professor
+ Tipo, 4 é acender as expectativas. 5 vai contribuir acima das expectativas.
+
+[00:24:35:08 - 00:24:37:13]
+Professor
+ 3, um pouco abaixo
+
+[00:24:38:15 - 00:24:52:03]
+Professor
+ das expectativas. 2, muito abaixo das expectativas. 1, não entregou, tá? Não entregou. Tipo, tá disponível, é tipo, olha, apareceu na Sembrões,
+
+[00:24:53:11 - 00:25:05:07]
+Professor
+ segundo, produtividade, entregou, o que foi recomendado? Foi produtivo, certo? A dizer a pessoa, não apareceu com o jogo, mas fez o que tinha que fazer, certo?
+
+[00:25:06:22 - 00:25:10:14]
+Professor
+ Tem aquele também que apareceu as unões, mas não entrega nada, certo?
+
+[00:25:11:29 - 00:25:28:12]
+Professor
+ E tem a questão da convivência. Tem aquela pessoa que consegue melhorar o ambiente do trabalho, e atrapalha o grupo como todos, certo? Então, vocês vão ver que é um escalar semérico, certo? E é o que eu faço.
+
+[00:25:29:23 - 00:25:34:02]
+Professor
+ Cada pessoa volta na pessoa, então cada pessoa vai receber 6 mortes.
+
+[00:25:36:27 - 00:25:38:06]
+Professor
+ Não é alto, né?
+
+[00:25:41:07 - 00:25:47:20]
+Professor
+ Aí o que a gente faz? A gente pega esses valores e calcula a mediama.
+
+[00:25:51:21 - 00:26:01:29]
+Professor
+ E eu vou olhar a mediama do alumno e em relação à mediama do grupo.
+
+[00:26:03:27 - 00:26:08:22]
+Professor
+ Já? Vou fazer essa experiência.
+
+[00:26:16:28 - 00:26:18:18]
+Professor
+ Tem uma forma que faz ali e que acontece.
+
+[00:26:18:18 - 00:26:20:00]
+Speaker 4
+ Então, o segundo
+
+[00:26:22:12 - 00:26:24:11]
+Professor
+ recebe a nota de partida 8,
+
+[00:26:26:22 - 00:26:30:19]
+Professor
+ e ali o trabalho é pra caralho, tudo, o trabalho é bastante,
+
+[00:26:31:27 - 00:26:35:06]
+Professor
+ e que o grupo falou que o alívio ficou um pouco meio acima
+
+[00:26:36:12 - 00:26:39:09]
+Professor
+ da mediama do grupo. Qual é a nossa alívia?
+
+[00:26:41:13 - 00:26:44:12]
+Speaker 3
+ Tudo bem. Ô Glória, senhor! É tudo certo.
+
+[00:26:45:21 - 00:26:46:10]
+Professor
+ Brunica!
+
+[00:26:48:11 - 00:26:49:10]
+Professor
+ Não gosto de cenário.
+
+[00:26:51:09 - 00:26:52:21]
+Professor
+ A gente conversou o alívio,
+
+[00:26:54:16 - 00:26:58:20]
+Professor
+ ganhou uma negocena da virada, e a alívia subiu. Não, não.
+
+[00:27:00:11 - 00:27:01:09]
+Speaker 4
+ Não, não.
+
+[00:27:01:09 - 00:27:02:23]
+Speaker 3
+ Vamos lá.
+
+[00:27:04:11 - 00:27:05:01]
+Speaker 3
+ E
+
+[00:27:05:01 - 00:27:06:23]
+Professor
+ aí, o alívio ficou com menos seis.
+
+[00:27:06:23 - 00:27:08:16]
+Professor
+ Não, responda, a cada um responde.
+
+[00:27:10:11 - 00:27:17:00]
+Professor
+ O conchaço não se acara. E aí, o que acontece? Qual é a nossa alívia nesse caso? Isso.
+
+[00:27:21:03 - 00:27:21:09]
+Professor
+ Certo?
+
+[00:27:24:11 - 00:27:26:18]
+Professor
+ Professor, você que é um um e um, outro outro,
+
+[00:27:28:24 - 00:27:30:09]
+Professor
+ eu consigo me prevençar a vocês,
+
+[00:27:32:01 - 00:27:34:04]
+Professor
+ eu consigo observar, trabalhar pra vocês,
+
+[00:27:35:23 - 00:27:36:16]
+Professor
+ eu consigo controlar.
+
+[00:27:38:09 - 00:27:38:15]
+Professor
+ Certo?
+
+[00:27:40:20 - 00:27:41:20]
+Professor
+ Como é que a gente vai fazer?
+
+[00:27:43:28 - 00:27:45:12]
+Professor
+ A nota da prova um,
+
+[00:27:46:25 - 00:27:47:29]
+Professor
+ mas a nota individual.
+
+[00:27:50:27 - 00:27:51:14]
+Professor
+ Tavares,
+
+[00:27:52:27 - 00:27:54:21]
+Professor
+ da la os prens, aí que eu sou, tenho
+
+[00:27:54:21 - 00:28:01:20]
+Professor
+ um alo, outro, eu
+
+[00:28:01:20 - 00:28:02:01]
+Speaker 4
+ sou.
+
+[00:28:52:07 - 00:28:52:07]
+Professor
+ Tá?
+
+[00:29:12:06 - 00:29:41:00]
+Professor
+ E aí, que eu sou, tenho um alívio.
+
+[00:30:08:05 - 00:30:08:09]
+Professor
+ É,
+
+[00:30:36:04 - 00:30:39:04]
+Professor
+ é,
+
+[00:31:06:04 - 00:31:08:21]
+Speaker 3
+ é, é, é, é, é.
+
+[00:31:34:03 - 00:31:35:10]
+Speaker 5
+ Então, o
+
+[00:31:35:10 - 00:31:38:04]
+Speaker 3
+ que é o que é o final do dia? O dia
+
+[00:31:38:04 - 00:31:43:05]
+Professor
+ de hoje, o dia de setembro, quatro, onze e vinte e oito.
+
+[00:31:44:19 - 00:31:50:20]
+Professor
+ Já deixem de ir lá, aí, a final é para o dia dezoito, às dez horas.
+
+[00:31:52:15 - 00:31:56:05]
+Professor
+ Espero estar livre na
+
+[00:31:56:05 - 00:31:57:01]
+Professor
+ decidida, tá certo?
+
+[00:31:57:01 - 00:31:59:18]
+Professor
+ Apesar de revisar, eu vou com muita fé.
+
+[00:32:01:02 - 00:32:06:28]
+Speaker 3
+ Então, se eu quiser, assim, nos lá na quarta... É, as quatro horas que vem, tu vai fazer, João.
+
+[00:32:06:28 - 00:32:08:27]
+Speaker 4
+ Ah, na visão da primeira.
+
+[00:32:08:27 - 00:32:12:02]
+Speaker 3
+ Será que compensou o default da primeira?
+
+[00:32:13:02 - 00:32:19:19]
+Speaker 3
+ Tipo, compensou o default da primeira? Não sei se compensou, mas o que ele está fazendo? A gente tinha muita opção. Meu Deus.
+
+[00:32:21:06 - 00:32:21:19]
+Speaker 5
+ Traga.
+
+[00:32:21:19 - 00:32:27:15]
+Professor
+ Eu estou fazendo assim, num chamado, tenho 30 dados e você vai para o final, a gente tem um chamado.
+
+[00:32:27:15 - 00:32:38:08]
+Speaker 3
+ Ah, de uma professão, o senhor vai dar uma capa, que acontece aí, em sábado e no final. Para que você sabe, né? Você vai ter que estudar um... Tem que estudar? Imagina, tem 17, você vai voltar em ponto, e aí?
+
+[00:32:38:08 - 00:32:39:05]
+Professor
+ É, você acha?
+
+[00:32:39:05 - 00:32:40:16]
+Speaker 3
+ Que tal?
+
+[00:32:43:01 - 00:32:44:05]
+Professor
+ Você viu tudo.
+
+[00:32:44:05 - 00:32:48:18]
+Speaker 4
+ Mas eu vou ver o show. Eu vou falar com você, na última.
+
+[00:32:48:18 - 00:32:51:20]
+Speaker 3
+ Eu estou com essa janeira no seu show.
+
+[00:32:51:20 - 00:32:56:17]
+Speaker 4
+ O janeiro quer mulher. A gente vai ter que nos ensinar, mas o janeiro não.
+
+[00:32:56:17 - 00:33:00:23]
+Speaker 3
+ O janeiro é outro ano, não tem... De dois mil e seis não mexe.
+
+[00:33:00:23 - 00:33:02:20]
+Professor
+ Não pode.
+
+[00:33:05:00 - 00:33:06:13]
+Speaker 3
+ Ok, meu Deus.
+
+[00:33:07:21 - 00:33:12:02]
+Professor
+ Eu vou ver. Até o que eu posso, você se vê em novo.
+
+[00:33:14:00 - 00:33:16:19]
+Professor
+ A gente vai ser de novo, meu.
+
+[00:33:21:09 - 00:33:23:08]
+Speaker 4
+ Você não faz. O que?
+
+[00:33:26:26 - 00:33:30:10]
+Speaker 4
+ Você não faz. Você não faz. Você tem um saco, ela não se sabe.
+
+[00:33:30:10 - 00:33:34:17]
+Professor
+ Quando você já acabava, a branca aí, você sabe.
+
+[00:33:35:29 - 00:33:37:21]
+Professor
+ Eu estou brincando, porque...
+
+[00:33:38:29 - 00:33:42:14]
+Professor
+ A Nui tinha um anso de quando você não passa a lança de pena,
+
+[00:33:43:29 - 00:33:46:05]
+Professor
+ você pode ser francado semécio.
+
+[00:33:47:08 - 00:33:57:01]
+Professor
+ Ou seja, francar o semécio significa que você volta o ano que vem, cai tudo, e custa tudo o jogo, tudo o jogo, você pode provar. E o que é legal? A escola.
+
+[00:33:58:16 - 00:34:07:12]
+Professor
+ Ninguém tem isso, né? Você já foi. A empresa, isso, existe a dependência. Que não é escola? E a dependência. Quando você fica em uma... Quando você reprovou tudo.
+
+[00:34:08:15 - 00:34:09:20]
+Professor
+ Você pode ser essa aula.
+
+[00:34:09:20 - 00:34:13:12]
+Speaker 3
+ É que nem na escola, se você reprovar, não mora, reprovou tudo. Oito.
+
+[00:34:13:12 - 00:34:27:29]
+Professor
+ Mas no ano seguinte, você custa aquelas inspecíveis, aqueles anéis, e faz as provas em cada circúrbio que você tem. Não se acogar, só as colas. Não tem lado. Lá no centro de suba rota, né? Não se é trabalho.
+
+[00:34:31:12 - 00:34:39:10]
+Professor
+ Também era um ferro na terra, certo? Uma vez eu fiz ferro. Só que aí tinha um lance que era bom. Se a sua matéria tivesse uma continuação,
+
+[00:34:40:27 - 00:34:51:18]
+Professor
+ se na matéria fosse sua continuação, se você tirasse acima do ferro, significa que você aprendeu a matéria, e teve o acordo de estar aprovado, e quer ter que ter que ter essa experiência.
+
+[00:34:53:17 - 00:35:17:24]
+Professor
+ Aí, o veja. Ou seja, se é ruim aqui, e se é um lugar que são piores. Se você tem uma calcumulina de 2, 3, e você passa em 4, se você for com 6, e a média é 6,5, e você não passou 5,7, mas você não foi trancado. Você parte para o algodô e você está a 2,3,5, e vai ter que deixar algum.
+
+[00:35:19:22 - 00:35:20:08]
+Professor
+ Aí você tira.
+
+[00:35:20:08 - 00:35:25:08]
+Speaker 5
+ E se eu não passar nem no 1,3, e a essência está franca, vai ficar novo.
+
+[00:35:26:26 - 00:35:32:21]
+Speaker 4
+ Ou seja, você vai me lutar, e você irá ser um príncipe. Você vai ficar noceoso.
+
+[00:35:32:21 - 00:35:38:03]
+Professor
+ E a relação entre a gente e a gente. Ou seja, você não vai errar muito.
+
+[00:35:39:07 - 00:35:40:10]
+Professor
+ Senhor, que caralho.
+
+[00:35:40:10 - 00:35:42:04]
+Speaker 4
+ O que? Que caralho.
+
+[00:35:43:06 - 00:35:43:13]
+Professor
+ É.
+
+[00:35:44:19 - 00:35:48:20]
+Professor
+ E lá, lá noventa e novecentas pessoas moravam para a meta.
+
+[00:35:49:23 - 00:36:00:20]
+Professor
+ E, assim, para aquela comunidade lá, deixam alguns valores. E se você fosse para o Colando, para essa aparência, você era meio expulsado da comunidade.
+
+[00:36:01:24 - 00:36:25:20]
+Professor
+ Você ia se enfrentar ao seu jeito de estudar e aprender, porque se você fosse tentar volar ao sistema, além de tentar se desligar, de se queimar, é grande vez. Você é bem. Você vê que você vai se enfrentar para o mundo. Então você vai se enfrentar ao jeito de decidir, e irá aprender a aprender. O que era bom, porque você acaba desenvolvendo a habilidade de lidar com a pressão e de encontrar
+
+[00:36:25:20 - 00:36:26:17]
+Professor
+ sua melhor leção.
+
+[00:36:26:17 - 00:36:32:09]
+Speaker 4
+ Ou o que? O que é o que? É o que é o que. Então, sim.
+
+[00:36:33:13 - 00:36:35:13]
+Speaker 4
+ Mas é, o que é o que o Marcos falta a S.
+
+[00:36:35:13 - 00:36:39:05]
+Professor
+ Não é isso mesmo. Então, vocês são capazes. Eu amo muito vocês.
+
+[00:36:40:23 - 00:36:43:09]
+Professor
+ Vocês podem mais, mas não vocês não. Pode ser tudo.
+
+[00:36:44:22 - 00:36:45:04]
+Professor
+ Beleza?
+
+[00:36:46:18 - 00:36:46:29]
+Professor
+ Dubles?
+
+[00:36:48:25 - 00:36:52:25]
+Professor
+ Eu vou ajustar, vou ter um detalhezinho ali, e coloco tudo o resto.
+
+[00:36:54:11 - 00:37:02:02]
+Professor
+ Se tiverem duplos, vocês tiverem de contar. De preferência, para o final. Antes de estar perto de você, você vai
+
+[00:37:02:02 - 00:37:04:29]
+Speaker 3
+ ter o exemplo
+
+[00:37:04:29 - 00:37:08:08]
+Professor
+ de um horário tal, que você já tinha feito.
+
+[00:37:09:23 - 00:37:14:23]
+Professor
+ Vocês terão esse tempo para resolver qualquer pressão entre vocês,
+
+[00:37:15:23 - 00:37:19:25]
+Professor
+ para que vocês possam resolver o que é que diz. Sabe?
+
+[00:37:21:22 - 00:37:24:20]
+Professor
+ Sugiram usar esse resto até meio dia agora para alinhar
+
+[00:37:25:22 - 00:37:32:17]
+Professor
+ coisas do trabalho. Mais ou menos, quem faz o que é como é que começa com o D. Para não deixar para fazer isso fora.
+
+[00:37:33:23 - 00:37:34:01]
+Professor
+ Ok?
+
+[00:37:36:06 - 00:37:36:17]
+Professor
+ É isso?
+
+[00:37:40:07 - 00:37:40:23]
+Professor
+ Tirando isso.
+
+[00:37:42:16 - 00:37:48:01]
+Professor
+ Sabe chegando perto do serramento do curso? A minha foi um prazer para vocês e se você merda aqui.
+
+[00:37:49:01 - 00:37:56:27]
+Professor
+ Um desafio, mas foi legal. Vou fazer bastante, uma emada ao fluir. E eu vou fechar uma foto. Ok?
+
+[00:37:58:14 - 00:38:02:22]
+Professor
+ Vou fazer aquela chamadia base.
+
+[00:39:06:19 - 00:39:07:10]
+Professor
+ Vamos lá. Vamos ver, por favor.
+
+[00:39:10:02 - 00:39:10:05]
+Professor
+ Aí.
+
+[00:39:15:02 - 00:39:15:18]
+Professor
+ Vou na clave.
+
+[00:39:17:28 - 00:39:19:23]
+Professor
+ Cartaria. Cartaria não está, né?
+
+[00:39:21:05 - 00:39:22:16]
+Professor
+ Se você está aí,
+
+[00:39:24:03 - 00:39:24:28]
+Professor
+ leva a tararia.
+
+[00:39:26:08 - 00:39:27:04]
+Professor
+ Se você está aí,
+
+[00:39:28:10 - 00:39:29:06]
+Professor
+ desna o tarir.
+
+[00:39:30:09 - 00:39:31:15]
+Professor
+ Esteste no meu mar.
+
+[00:39:33:06 - 00:39:33:19]
+Professor
+ Aptorne de Mar.
+
+[00:39:36:03 - 00:39:39:04]
+Professor
+ Filipe Litzon. Filipe Litzon. Filipe Litzon. Gabriel Bichon.
+
+[00:39:42:28 - 00:39:43:26]
+Professor
+ Gabriel Zatobar.
+
+[00:39:47:01 - 00:39:47:14]
+Professor
+ Gabriel Nima.
+
+[00:39:50:11 - 00:39:52:11]
+Professor
+ Gabriel Nima. William Goubo. William Zabel.
+
+[00:39:55:25 - 00:39:59:29]
+Professor
+ William Atarino. Laura Montar. William Atarino.
+
+[00:40:01:27 - 00:40:04:04]
+Professor
+ Lucas Atarino.
+
+[00:40:05:11 - 00:40:08:17]
+Professor
+ Maria Fernanda Atarino. Maria Anilisa. Anilisa. Maria Fernanda. Maria Anilisa.
+
+[00:40:10:13 - 00:40:13:19]
+Professor
+ Nicolas Nel. Maria Anilita aí. Delta aí.
+
+[00:40:14:21 - 00:40:15:01]
+Professor
+ Beleza?
+
+[00:40:20:17 - 00:40:21:05]
+Professor
+ Aí, galera.
+
+[00:40:23:08 - 00:40:24:04]
+Professor
+ Um bom fim de semana.
+
+[00:40:25:04 - 00:40:26:14]
+Professor
+ Boa semana de pronta.
+
+[00:40:27:23 - 00:40:29:05]
+Professor
+ Beleza?
+
+[00:40:30:27 - 00:40:33:11]
+Professor
+ É. Nossa, ela é uma sessão assim.
+
+[00:40:34:17 - 00:40:40:22]
+Professor
+ Beleza? Beleza? Beleza?
+
+[00:40:40:22 - 00:40:42:29]
+Speaker 4
+ Beleza? Bem, bem?
+
+[00:40:44:16 - 00:40:45:17]
+Speaker 4
+ Eu vou usar o meu dedo.
+
+[00:40:45:17 - 00:40:49:10]
+Professor
+ O dedo e o projete também. É.
+
+[00:40:50:16 - 00:40:56:25]
+Professor
+ Vocês só teriam o grupo, o grupo da série, o outro estava com a tacete do... Me ia ter muito que fazer.
+
+[00:40:57:28 - 00:41:07:02]
+Professor
+ Então, eu estou separado da minha tacete. Ah, bem. Até amanhã a gente vai em sala. Até amanhã. Boa semana de pronta. Beleza?
+
+[00:41:07:02 - 00:41:08:28]
+Professor
+ Tchau, tchau. Tchau.
+
+[00:41:14:15 - 00:41:15:10]
+Speaker 4
+ Oi.
+
+[00:41:32:15 - 00:41:35:01]
+Speaker 3
+ Aquele caprazo é todo, da portão.
+
+[00:41:44:14 - 00:41:45:04]
+Speaker 5
+ E aí, rapazinha?
+
+[00:41:46:17 - 00:41:47:24]
+Speaker 5
+ Como é que ele vai ver essa bronca aí?
+
+[00:41:47:24 - 00:41:54:01]
+Speaker 3
+ Estou falando aqui no grupo, estou falando que não há dentro esse reunhinho aqui, porque eu acho que tem gente que... Acho não.
