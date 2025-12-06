@@ -64,12 +64,12 @@
         <div class="container mx-auto px-6 text-center z-10">
             <div
                 class="inline-block mb-4 px-4 py-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/10 text-brand-primary text-sm font-semibold tracking-wide uppercase">
-                Projeto Final ES256
+                Período 2025.2
             </div>
             <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
                 Servomecanismo <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-accent">Sistemas
-                    Dinâmicos</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-accent">Projeto
+                    Final</span>
             </h1>
             <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-10 font-light">
                 Análise de controlabilidade, projetos de compensadores e sintonia de controladores PID robustos.
@@ -81,16 +81,29 @@
         </div>
     </section>
 
-    <!-- Model Analysis Section (Placeholders for Group A) -->
+    <!-- Model Analysis Section -->
     <section id="model" class="py-24 bg-brand-dark relative">
         <div class="container mx-auto px-6">
-            <div class="mb-16">
-                <h2 class="text-4xl font-bold mb-4">Análise do <span class="text-brand-primary">Modelo</span></h2>
-                <div class="w-20 h-1 bg-brand-accent rounded mb-8"></div>
-                <p class="text-gray-400 text-lg max-w-3xl">
-                    Detalhes sobre as matrizes de estados, análise de estabilidade em malha aberta e propriedades
-                    estruturais do sistema (Controlabilidade e Observabilidade).
-                </p>
+            <div class="mb-16 flex justify-between items-end">
+                <div>
+                    <h2 class="text-4xl font-bold mb-4">Análise do <span class="text-brand-primary">Modelo</span></h2>
+                    <div class="w-20 h-1 bg-brand-accent rounded mb-8"></div>
+                    <p class="text-gray-400 text-lg max-w-3xl">
+                        Detalhes sobre as matrizes de estados, análise de estabilidade em malha aberta e propriedades
+                        estruturais.
+                    </p>
+                </div>
+                <!-- Author Badge -->
+                <div class="hidden md:flex flex-col items-end">
+                    <span
+                        class="text-xs text-brand-primary uppercase tracking-wider font-semibold mb-1">Responsável</span>
+                    <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                        <div
+                            class="w-8 h-8 rounded-full bg-gradient-to-br from-brand-primary to-blue-400 flex items-center justify-center text-white font-bold text-xs">
+                            G</div>
+                        <span class="text-gray-300 font-medium">Gabriel (M1)</span>
+                    </div>
+                </div>
             </div>
 
             <!-- Content Grid Placeholder -->
@@ -122,55 +135,110 @@
         </div>
     </section>
 
-    <!-- Controllers Section (Placeholders for Group A) -->
+    <!-- Controllers Section -->
     <section id="controllers" class="py-24 bg-brand-dark/50 relative">
         <div class="container mx-auto px-6">
             <div class="mb-16 text-right">
                 <h2 class="text-4xl font-bold mb-4">Projeto de <span class="text-brand-accent">Controladores</span></h2>
                 <div class="w-20 h-1 bg-brand-primary rounded mb-8 ml-auto"></div>
                 <p class="text-gray-400 text-lg max-w-3xl ml-auto">
-                    Desenvolvimento e comparação entre diferentes estratégias de controle: Proporcional, Compensadores e
-                    PID.
+                    Desenvolvimento e comparação entre diferentes estratégias de controle.
                 </p>
             </div>
 
-            <div class="space-y-24">
-                <!-- P Controller -->
-                <div class="flex flex-col md:flex-row gap-12 items-center">
-                    <div class="flex-1">
-                        <h3 class="text-3xl font-bold mb-4 text-white">Proporcional (P)</h3>
-                        <p class="text-gray-400 mb-6">Análise do erro em regime estacionário e limitações.</p>
-                        <ul class="space-y-3 text-gray-300 mb-6">
-                            <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-accent rounded-full mr-3"></span>Ke específico para erro <
-                                    1%</li>
-                            <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-accent rounded-full mr-3"></span>Comportamento transitório
-                            </li>
-                        </ul>
+            <div class="space-y-32">
+                <!-- P Controller (Felipe) -->
+                <div class="relative">
+                    <div class="absolute -top-10 left-0 flex items-center gap-2">
+                        <span
+                            class="text-xs text-brand-primary uppercase tracking-wider font-semibold">Responsável:</span>
+                        <span
+                            class="bg-brand-primary/20 text-brand-primary px-3 py-1 rounded-full text-xs font-bold">Felipe
+                            (M2)</span>
                     </div>
                     <div
-                        class="flex-1 w-full bg-white/5 rounded-2xl p-2 border border-white/10 h-64 flex items-center justify-center text-gray-500 border-dashed">
-                        [Gráfico Resposta ao Degrau - P]
+                        class="flex flex-col md:flex-row gap-12 items-center bg-white/5 p-8 rounded-3xl border border-white/5 hover:border-brand-primary/30 transition-all duration-300">
+                        <div class="flex-1">
+                            <h3 class="text-3xl font-bold mb-4 text-white">Proporcional (P)</h3>
+                            <p class="text-gray-400 mb-6 font-light">Estratégia inicial para redução de erro em regime
+                                estacionário. Simples, ideal para validar o modelo.</p>
+                            <ul class="space-y-3 text-gray-300 mb-6">
+                                <li class="flex items-center"><span
+                                        class="w-2 h-2 bg-brand-accent rounded-full mr-3"></span>Análise do K ideal</li>
+                                <li class="flex items-center"><span
+                                        class="w-2 h-2 bg-brand-accent rounded-full mr-3"></span>Trade-off: Erro vs
+                                    Oscilação</li>
+                            </ul>
+                        </div>
+                        <div
+                            class="flex-1 w-full bg-black/20 rounded-2xl p-2 border border-white/10 h-64 flex items-center justify-center text-gray-500 border-dashed relative overflow-hidden group">
+                            <span class="z-10">[Gráfico Resposta ao Degrau - P]</span>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-brand-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- PID Controller -->
-                <div class="flex flex-col md:flex-row-reverse gap-12 items-center">
-                    <div class="flex-1">
-                        <h3 class="text-3xl font-bold mb-4 text-white">Controlador PID</h3>
-                        <p class="text-gray-400 mb-6">Sintonia fina para robustez e performance.</p>
-                        <ul class="space-y-3 text-gray-300 mb-6">
-                            <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-accent rounded-full mr-3"></span>Método de Sintonia</li>
-                            <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-accent rounded-full mr-3"></span>Rejeição de perturbações
-                            </li>
-                        </ul>
+                <!-- Compensadores (M3/M4) -->
+                <div class="relative">
+                    <div class="absolute -top-10 right-0 flex items-center gap-2">
+                        <span
+                            class="text-xs text-brand-primary uppercase tracking-wider font-semibold">Responsáveis:</span>
+                        <span
+                            class="bg-brand-accent/20 text-brand-accent px-3 py-1 rounded-full text-xs font-bold">Membro
+                            3 & 4</span>
                     </div>
                     <div
-                        class="flex-1 w-full bg-white/5 rounded-2xl p-2 border border-white/10 h-64 flex items-center justify-center text-gray-500 border-dashed">
-                        [Gráfico Resposta ao Degrau - PID]
+                        class="flex flex-col md:flex-row-reverse gap-12 items-center bg-white/5 p-8 rounded-3xl border border-white/5 hover:border-brand-accent/30 transition-all duration-300">
+                        <div class="flex-1 text-right">
+                            <h3 class="text-3xl font-bold mb-4 text-white">Compensadores Lead/Lag</h3>
+                            <p class="text-gray-400 mb-6 font-light">Ajuste fino da resposta transitória e regime
+                                permanente usando Locus das Raízes.</p>
+                            <ul class="space-y-3 text-gray-300 mb-6 inline-block text-left">
+                                <li class="flex items-center"><span
+                                        class="w-2 h-2 bg-white rounded-full mr-3"></span>Lead: Rapidez (Membro 3)</li>
+                                <li class="flex items-center"><span
+                                        class="w-2 h-2 bg-white rounded-full mr-3"></span>Lag: Precisão (Membro 4)</li>
+                            </ul>
+                        </div>
+                        <div
+                            class="flex-1 w-full bg-black/20 rounded-2xl p-2 border border-white/10 h-64 flex items-center justify-center text-gray-500 border-dashed relative overflow-hidden group">
+                            <span class="z-10">[Diagramas de Bloco & Root Locus]</span>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-brand-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PID Controller (M5) -->
+                <div class="relative">
+                    <div class="absolute -top-10 left-0 flex items-center gap-2">
+                        <span
+                            class="text-xs text-brand-primary uppercase tracking-wider font-semibold">Responsável:</span>
+                        <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-xs font-bold">Membro
+                            5</span>
+                    </div>
+                    <div
+                        class="flex flex-col md:flex-row gap-12 items-center bg-white/5 p-8 rounded-3xl border border-white/5 hover:border-purple-500/30 transition-all duration-300">
+                        <div class="flex-1">
+                            <h3 class="text-3xl font-bold mb-4 text-white">Controlador PID</h3>
+                            <p class="text-gray-400 mb-6 font-light">O padrão da indústria. Sintonia robusta para
+                                rejeição de perturbações.</p>
+                            <ul class="space-y-3 text-gray-300 mb-6">
+                                <li class="flex items-center"><span
+                                        class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>Sintonia Ziegler-Nichols
+                                </li>
+                                <li class="flex items-center"><span
+                                        class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>Análise de Robustez
+                                    (Nicolas)</li>
+                            </ul>
+                        </div>
+                        <div
+                            class="flex-1 w-full bg-black/20 rounded-2xl p-2 border border-white/10 h-64 flex items-center justify-center text-gray-500 border-dashed">
+                            [Gráfico Resposta ao Degrau - PID]
+                        </div>
                     </div>
                 </div>
             </div>
@@ -195,7 +263,7 @@
                 <div class="text-sm text-gray-500">Nicolas<br><span class="text-xs text-brand-primary">Robustez</span>
                 </div>
             </div>
-            <p class="mt-12 text-xs text-gray-600">ES256 - 2024.2</p>
+            <p class="mt-12 text-xs text-gray-600">Servomecanismo 2025.2</p>
         </div>
     </footer>
 
