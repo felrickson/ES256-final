@@ -1,4 +1,4 @@
-# Projeto Final ES256 - Controle de Sistemas
+# Projeto Final ES256 - Servomecanismo
 
 Este repositório contém a estrutura para a apresentação final do projeto.
 
