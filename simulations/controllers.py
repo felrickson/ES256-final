@@ -96,7 +96,7 @@ if __name__ == "__main__":
     sys = define_system()
     
     # TODO: Tune these values based on actual analysis
-    design_p_controller(sys, Kp=10)
+    design_p_controller(sys, Kp=5)
     design_pid_controller(sys, Kp=10, Ki=5, Kd=2)
     design_lead_controller(sys)
     design_lag_controller(sys)
