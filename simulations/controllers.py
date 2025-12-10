@@ -133,6 +133,31 @@ def design_lag_controller(sys, Kp, z, p):
              bbox=dict(facecolor='black', alpha=0.5, edgecolor='white'), color='white')
     plt.savefig(os.path.join(assets_dir, 'step_response_Lag.png'))
     plt.close()
+
+    # 2. Root Locus (Lag)
+    plt.figure(figsize=(10, 6))
+    # Open Loop Compensated = ctrl * sys
+    # ctrl = Kp * (s+z)/(s+p)
+    # But rlocus expects the open loop *without* the gain K if we want to vary K, 
+    # or we can plot the loci of (ctrl_without_K * sys)
+    lag_pole_zero = ct.tf([1, z], [1, p])
+    sys_open_lag = lag_pole_zero * sys
+    ct.rlocus(sys_open_lag, plot=True, grid=True)
+    plt.title(f'Lugar das Raízes (Compensador Lag) - Zero: {z}, Polo: {p}')
+    # Mark the operational point K
+    # There isn't a direct way to mark K in standard ct.rlocus easily without calculating roots, 
+    # but the plot is the most important part.
+    plt.savefig(os.path.join(assets_dir, 'rlocus_Lag.png'))
+    plt.close()
+
+    # 3. Bode Plot (Lag)
+    plt.figure(figsize=(10, 6))
+    # Bode of Open Loop Compensated
+    sys_open_compensated = ctrl * sys
+    mag, phase, omega = ct.bode_plot(sys_open_compensated, plot=True, color='#10b981')
+    plt.suptitle(f'Diagrama de Bode (Sistema Compensado Lag)', color='white')
+    plt.savefig(os.path.join(assets_dir, 'bode_Lag.png'))
+    plt.close()
     
     return sys_cl
 
@@ -150,11 +175,10 @@ if __name__ == "__main__":
     
     # 3. Lag Compensator Design
     # Requirement: Increase DC gain by 10x to reduce steady state error.
-    # Dierson's optimization found: K=151.4, a=0.01, b=0.1
-    # This meets all specs including ramp error <= 1%.
-    z_lag = 0.1
+    # User specified values: K=150.6, a=0.01, b=0.10
+    z_lag = 0.10
     p_lag = 0.01
-    K_lag = 151.429
+    K_lag = 150.6
     print(f"Executing P+Lag Controller with K={K_lag}, z={z_lag}, p={p_lag}")
     design_lag_controller(sys, Kp=K_lag, z=z_lag, p=p_lag)
     
