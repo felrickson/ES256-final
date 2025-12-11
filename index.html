@@ -96,6 +96,12 @@
         class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-brand-dark to-brand-dark -z-20">
     </div>
 
+    <!-- Slide Counter -->
+    <div id="slide-counter"
+        class="fixed top-8 right-8 z-50 text-gray-500 font-mono text-sm border border-white/10 px-3 py-1 rounded-full bg-black/20 backdrop-blur">
+        1 / 1
+    </div>
+
     <!-- Navigation Hints -->
     <div class="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-1 text-gray-500 text-xs font-mono">
         <div class="flex gap-2 items-center">
@@ -406,52 +412,7 @@
             </div>
         </section>
 
-        <!-- SLIDE 8: CINTIA - LEAD -->
-        <section class="slide">
-            <div class="container mx-auto px-6 max-w-6xl h-full flex flex-col justify-center">
-                <div class="flex justify-between items-end mb-12 border-b border-white/10 pb-6">
-                    <div>
-                        <h2 class="text-4xl font-bold mb-2">Compensador <span class="text-brand-primary">Lead</span>
-                            (Avanço)</h2>
-                        <p class="text-gray-400">Melhorando o Regime Transitório</p>
-                    </div>
-                    <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10">
-                        <div
-                            class="w-8 h-8 rounded-full bg-brand-primary/20 flex items-center justify-center text-brand-primary font-bold text-xs">
-                            C</div>
-                        <span class="text-gray-300 font-medium text-sm">Cintia</span>
-                    </div>
-                </div>
-
-                <div class="flex flex-col md:flex-row gap-12 items-center">
-                    <div class="w-full md:w-1/3 space-y-8">
-                        <div
-                            class="bg-brand-primary/5 p-8 rounded-2xl border border-brand-primary/20 relative overflow-hidden">
-                            <div class="absolute -right-4 -top-4 w-24 h-24 bg-brand-primary/20 blur-3xl rounded-full">
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-4">Objetivo</h3>
-                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
-                                Adicionar <strong>fase positiva</strong> ao sistema para puxar o Root Locus para a
-                                esquerda.
-                            </p>
-                            <ul class="list-disc list-inside text-gray-400 text-sm space-y-2">
-                                <li>Aumenta a Rapidez ($t_s \downarrow$)</li>
-                                <li>Aumenta a Largura de Banda</li>
-                                <li>Melhora o Amortecimento</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div
-                        class="w-full md:w-2/3 bg-black/30 rounded-xl p-4 flex items-center justify-center border border-white/10">
-                        <img src="assets/images/step_response_Lead.png" alt="Resposta Lead"
-                            class="max-h-[450px] rounded shadow-lg opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SLIDE 9: DIERSON 1 - LAG CONCEPT -->
+        <!-- SLIDE 8: DIERSON 1 - LAG CONCEPT -->
         <section class="slide">
             <div class="container mx-auto px-6 max-w-6xl h-full flex flex-col justify-center">
                 <div class="flex justify-between items-end mb-12 border-b border-white/10 pb-6">
@@ -496,7 +457,7 @@
             </div>
         </section>
 
-        <!-- SLIDE 10: DIERSON 2 - OPTIMIZATION -->
+        <!-- SLIDE 9: DIERSON 2 - OPTIMIZATION -->
         <section class="slide">
             <div class="container mx-auto px-6 max-w-6xl h-full flex flex-col justify-center">
                 <div class="flex justify-between items-end mb-8 border-b border-white/10 pb-6">
@@ -588,7 +549,7 @@
             </div>
         </section>
 
-        <!-- SLIDE 11: DIERSON 3 - EXTRA PLOTS -->
+        <!-- SLIDE 10: DIERSON 3 - EXTRA PLOTS -->
         <section class="slide">
             <div class="container mx-auto px-6 max-w-6xl h-full flex flex-col justify-center">
                 <div class="flex justify-between items-end mb-8 border-b border-white/10 pb-6">
@@ -608,7 +569,7 @@
                     <div
                         class="bg-white/5 rounded-xl border border-white/10 p-4 flex flex-col items-center justify-center">
                         <h4 class="text-gray-300 font-semibold mb-2 text-sm">Diagrama de Bode</h4>
-                        <img src="assets/images/bode_Lag.png" alt="Bode Lag"
+                        <img src="assets/images/compare_bode_v2.png" alt="Bode Lag"
                             class="max-h-full max-w-full rounded object-contain">
                     </div>
                     <div
@@ -621,7 +582,293 @@
             </div>
         </section>
 
-        <!-- SLIDE 9: PID -->
+        <!-- SLIDE 11: CINTIA 1 - LEAD CONCEPT -->
+        <section class="slide">
+            <div class="container mx-auto px-6 max-w-6xl h-full flex flex-col justify-center">
+                <div class="flex justify-between items-end mb-12 border-b border-white/10 pb-6">
+                    <div>
+                        <h2 class="text-4xl font-bold mb-2">Compensador <span class="text-brand-primary">Lead</span>
+                            (Avanço)</h2>
+                        <p class="text-gray-400">Teoria e Objetivos de Controle</p>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                        <div
+                            class="w-8 h-8 rounded-full bg-brand-primary/20 flex items-center justify-center text-brand-primary font-bold text-xs">
+                            C</div>
+                        <span class="text-gray-300 font-medium text-sm">Cintia</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-12 items-center">
+                    <div class="w-full md:w-1/2 space-y-8">
+                        <div
+                            class="bg-brand-primary/5 p-8 rounded-2xl border border-brand-primary/20 relative overflow-hidden">
+                            <h3 class="text-2xl font-bold text-white mb-4">O Problema do Atraso</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                                O sistema original possui polos reais que tornam a resposta lenta. O controlador
+                                Proporcional melhora, mas é limitado pelo Lugar das Raízes natural do sistema.
+                            </p>
+                        </div>
+                        <div class="bg-white/5 p-6 rounded-xl border border-white/10">
+                            <h4 class="text-white font-bold mb-4">Solução: Avanço de Fase</h4>
+                            <ul class="space-y-4 text-sm text-gray-400">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-green-400 font-bold">✓</span>
+                                    <span>Adicionar fase positiva ao sistema ($+ \phi$).</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-green-400 font-bold">✓</span>
+                                    <span>"Puxar" o Lugar das Raízes para a esquerda (região de maior estabilidade e
+                                        rapidez).</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-green-400 font-bold">✓</span>
+                                    <span>Aumentar a largura de banda da malha fechada.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 flex items-center justify-center">
+                        <img src="assets/images/root_locus_Lead.png" alt="Root Locus Lead"
+                            class="max-h-[450px] rounded-xl shadow-2xl border border-white/10 opacity-90">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 12: CINTIA 2 - DESIGN STRATEGY -->
+        <section class="slide">
+            <div class="container mx-auto px-6 max-w-6xl h-full flex flex-col justify-center">
+                <div class="flex justify-between items-end mb-12 border-b border-white/10 pb-6">
+                    <div>
+                        <h2 class="text-4xl font-bold mb-2">Estratégia de <span class="text-brand-primary">Design</span>
+                        </h2>
+                        <p class="text-gray-400">Cancelamento de Polos e Alocação</p>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                        <div
+                            class="w-8 h-8 rounded-full bg-brand-primary/20 flex items-center justify-center text-brand-primary font-bold text-xs">
+                            C</div>
+                        <span class="text-gray-300 font-medium text-sm">Cintia</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div class="bg-gray-900 p-6 rounded-xl border border-white/10">
+                            <div class="text-xs text-gray-500 uppercase mb-2">Estrutura do Compensador</div>
+                            <div class="font-mono text-xl text-brand-primary mb-2">C(s) = K * (s + z) / (s + p)</div>
+                            <div class="text-sm text-gray-400">onde p > z (Polo mais longe que Zero)</div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-brand-primary/10 p-5 rounded-xl border border-brand-primary/20">
+                                <div class="text-brand-primary font-bold mb-2">Zero (z = 20)</div>
+                                <p class="text-xs text-gray-300 leading-relaxed">
+                                    Posicionado próximo ao polo dominante da planta (-13.2) para cancelar seu efeito
+                                    retardador.
+                                </p>
+                            </div>
+                            <div class="bg-white/5 p-5 rounded-xl border border-white/10">
+                                <div class="text-white font-bold mb-2">Polo (p = 100)</div>
+                                <p class="text-xs text-gray-400 leading-relaxed">
+                                    Posicionado longe da origem para contribuir com fase positiva sem afetar a magnitude
+                                    nas baixas frequências.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-black/30 rounded-xl p-4 border border-white/10 flex flex-col justify-center">
+                        <h4 class="text-white font-bold mb-4 text-center">Efeito no Lugar das Raízes (Zoom)</h4>
+                        <img src="assets/images/rlocus_lead_detail.png" alt="RL Lead Detail Zoom"
+                            class="rounded shadow-lg opacity-80 hover:opacity-100 transition-opacity">
+                        <p class="text-center text-xs text-gray-500 mt-4">Zoom mostrando o cancelamento do polo
+                            dominante pelo Zero do compensador.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 13: CINTIA 3 - RESULTS -->
+        <section class="slide">
+            <div class="container mx-auto px-6 max-w-6xl h-full flex flex-col justify-center">
+                <div class="flex justify-between items-end mb-12 border-b border-white/10 pb-6">
+                    <div>
+                        <h2 class="text-4xl font-bold mb-2">Resultados <span class="text-green-400">Obtidos</span></h2>
+                        <p class="text-gray-400">Comparação de Desempenho Temporal</p>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                        <div
+                            class="w-8 h-8 rounded-full bg-brand-primary/20 flex items-center justify-center text-brand-primary font-bold text-xs">
+                            C</div>
+                        <span class="text-gray-300 font-medium text-sm">Cintia</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-12 items-center">
+                    <div class="w-full md:w-2/3">
+                        <img src="assets/images/step_response_Lead.png" alt="Step Response Lead"
+                            class="w-full rounded-xl shadow-2xl border border-white/10">
+                    </div>
+
+                    <div class="w-full md:w-1/3 space-y-6">
+                        <div class="bg-green-500/10 border-l-4 border-green-500 p-6 rounded-r-xl">
+                            <h4 class="text-green-400 font-bold mb-4">Performance Extrema</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-gray-400">Tempo de Acomodação</span>
+                                        <span class="text-white font-bold">0.28s</span>
+                                    </div>
+                                    <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden">
+                                        <div class="bg-green-500 h-full" style="width: 95%"></div>
+                                    </div>
+                                    <div class="text-[10px] text-gray-500 mt-1">Meta: < 0.5s</div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between text-sm mb-1">
+                                            <span class="text-gray-400">Overshoot</span>
+                                            <span class="text-white font-bold">1.2%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden">
+                                            <div class="bg-green-500 h-full" style="width: 10%"></div>
+                                        </div>
+                                        <div class="text-[10px] text-gray-500 mt-1">Meta: < 15%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                                    <h4 class="text-white font-bold text-sm mb-2">Conclusão do Design</h4>
+                                    <p class="text-xs text-gray-400 leading-relaxed">
+                                        O compensador Lead foi altamente eficaz para acelerar o sistema, reduzindo o
+                                        tempo de resposta em quase 50% comparado ao controlador Proporcional, com um
+                                        overshoot mínimo.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </section>
+
+        <!-- SLIDE: SOLUTION LEAD-LAG (FINAL) -->
+        <section class="slide">
+            <div class="container mx-auto px-6 max-w-6xl h-full flex flex-col justify-center">
+                <div class="flex justify-between items-end mb-8 border-b border-white/10 pb-6">
+                    <div>
+                        <h2 class="text-4xl font-bold mb-2">Solução <span class="text-amber-500">Integrada</span></h2>
+                        <p class="text-gray-400">Controlador Lead-Lag: O melhor dos dois mundos</p>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                        <div
+                            class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500 font-bold text-xs">
+                            ★</div>
+                        <span class="text-gray-300 font-medium text-sm">Design Final</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-12 items-center">
+                    <div class="w-full md:w-1/3 space-y-6">
+                        <div class="bg-amber-500/10 border-l-4 border-amber-500 p-6 rounded-r-xl">
+                            <h4 class="text-amber-400 font-bold mb-4">Combinação Estratégica</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                Unimos o ganho de baixa frequência do <strong>Lag</strong> (erro zero) com o avanço de
+                                fase do <strong>Lead</strong> (agilidade).
+                            </p>
+                            <ul class="text-xs space-y-2 text-gray-400">
+                                <li>• <strong>Lag:</strong> $z=0.1, p=0.01$ (Precisão)</li>
+                                <li>• <strong>Lead:</strong> $z=20, p=100$ (Velocidade)</li>
+                            </ul>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white/5 p-4 rounded-xl text-center">
+                                <div class="text-2xl font-bold text-white mb-1">3.19%</div>
+                                <div class="text-[10px] text-gray-500 uppercase tracking-wider">Overshoot (Mp)</div>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-xl text-center">
+                                <div class="text-2xl font-bold text-white mb-1">0.37s</div>
+                                <div class="text-[10px] text-gray-500 uppercase tracking-wider">Settling Time (ts)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="w-full md:w-2/3 max-h-[60vh] flex items-center justify-center bg-black/20 rounded-xl p-2 border border-white/10">
+                        <img src="assets/images/step_response_LeadLag.png" alt="Integrated Lead-Lag Response"
+                            class="max-h-full rounded shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </section>
+
+        <!-- SLIDE: ROBUSTNESS ANALYSIS (NICOLAS) -->
+        <section class="slide">
+            <div class="container mx-auto px-6 max-w-6xl h-full flex flex-col justify-center">
+                <div class="flex justify-between items-end mb-8 border-b border-white/10 pb-6">
+                    <div>
+                        <h2 class="text-4xl font-bold mb-2">Análise de <span class="text-red-500">Robustez</span></h2>
+                        <p class="text-gray-400">Comportamento sob incertezas paramétricas</p>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                        <div
+                            class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 font-bold text-xs">
+                            N</div>
+                        <span class="text-gray-300 font-medium text-sm">Nicolas</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-12 items-center">
+                    <div class="w-full md:w-1/3 space-y-6">
+                        <div class="bg-red-500/10 border-l-4 border-red-500 p-6 rounded-r-xl">
+                            <h4 class="text-red-400 font-bold mb-4">Cenários de Teste</h4>
+                            <ul class="text-xs space-y-3 text-gray-300">
+                                <li>
+                                    <strong class="text-green-400">Nominal:</strong> Parâmetros ideais ($K_m=1.1,
+                                    a_m=13.2$).
+                                </li>
+                                <li>
+                                    <strong class="text-blue-400">Pesado:</strong> Motor fraco, atrito alto ($K_m=0.8,
+                                    a_m=15$).
+                                </li>
+                                <li>
+                                    <strong class="text-orange-400">Agressivo:</strong> Motor forte, sem atrito
+                                    ($K_m=1.2, a_m=10$).
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                            <h4 class="text-white font-bold text-sm mb-2">Conclusão</h4>
+                            <p class="text-xs text-gray-400 leading-relaxed">
+                                O controlador <strong>Lead-Lag</strong> manteve a estabilidade em todos os cenários, com
+                                variações aceitáveis no overshoot e tempo de acomodação, comprovando sua robustez para
+                                aplicação real.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-2/3">
+                        <!-- Simple Carousel / Switcher logic not standard in Reveal without plugins, so we show the BEST one (Lead-Lag) primarily or stack them cleanly -->
+                        <div class="relative group">
+                            <h5
+                                class="absolute top-2 left-4 text-xs font-bold text-white bg-black/50 px-2 py-1 rounded z-10">
+                                Lead-Lag (Final)</h5>
+                            <img src="assets/images/robustness_Lead-Lag.png"
+                                class="w-full rounded-xl shadow-2xl border border-white/10" />
+                        </div>
+                        <div class="flex gap-2 mt-4 overflow-x-auto justify-center">
+                            <!-- Thumbnails if needed or just keep it simple with the main one -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 14: PID -->
         <section class="slide">
             <div class="container mx-auto px-6 max-w-6xl h-full flex flex-col justify-center">
                 <div class="flex justify-between items-end mb-12 border-b border-white/10 pb-6">

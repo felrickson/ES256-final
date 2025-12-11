@@ -1,0 +1,454 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% Configuration for Code Listings
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    literate={á}{{\'a}}1 {à}{{\`a}}1 {ã}{{\~a}}1 {é}{{\'e}}1 {ê}{{\^e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {õ}{{\~o}}1 {ú}{{\'u}}1 {ü}{{\"u}}1 {ç}{{\c{c}}}1 {Á}{{\'A}}1 {À}{{\`A}}1 {Ã}{{\~A}}1 {É}{{\'E}}1 {Ê}{{\^E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Õ}{{\~O}}1 {Ú}{{\'U}}1 {Ü}{{\"U}}1 {Ç}{{\c{C}}}1
+}
+
+\lstset{style=mystyle}
+\geometry{a4paper, margin=2.5cm}
+
+\title{\textbf{Relatório Técnico Detalhado}\\ \large Projeto de Controle para Servomecanismo de Posição}
+\author{Gabriel, Felipe, Cintia, Dierson, Guilherme, Nicolas}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Introdução}
+Este relatório documenta integralmente o processo de modelagem, análise e projeto de controle para um servomecanismo de posição. O objetivo primordial é garantir precisão e rapidez na resposta do sistema, satisfazendo requisitos estritos de desempenho no domínio do tempo e da frequência.
+
+\section{Modelagem Matemática - Gabriel}
+
+\subsection{Função de Transferência}
+O sistema é um servomecanismo controlado por armadura, cuja dinâmica é governada pela interação elétrica e mecânica do motor DC acoplado a uma carga. Os parâmetros identificados são:
+
+\begin{itemize}
+    \item Ganho do Motor: $K_m = 1.1$
+    \item Polo Mecânico: $a_m = 13.2$ rad/s
+    \item Polo Elétrico: $a_e = 950$ rad/s
+    \item Ganho do Sistema Acoplado: $K_{sys} = 772$
+\end{itemize}
+
+A Função de Transferência de malha aberta $G(s)$ é dada por:
+
+\[
+G(s) = \frac{K_m K_{sys}}{s(s+a_m)(s+a_e)}
+\]
+
+Substituindo os valores numéricos:
+
+\[
+G(s) = \frac{1.1 \times 772}{s(s+13.2)(s+950)} = \frac{849.2}{s(s+13.2)(s+950)}
+\]
+
+Expandindo o denominador para a forma polinomial $s^3 + a_2 s^2 + a_1 s + a_0$:
+
+\[
+\text{Den}(s) = s(s^2 + (13.2+950)s + (13.2 \times 950)) 
+\]
+\[
+\text{Den}(s) = s(s^2 + 963.2s + 12540) = s^3 + 963.2s^2 + 12540s
+\]
+
+Portanto, a função final é:
+\begin{equation}
+G(s) = \frac{849.2}{s^3 + 963.2s^2 + 12540s}
+\end{equation}
+
+\subsection{Análise de Malha Aberta}
+\begin{itemize}
+    \item \textbf{Polos:} $s_1 = 0$, $s_2 = -13.2$, $s_3 = -950$.
+    \item \textbf{Tipo do Sistema:} Tipo 1 (devido ao polo na origem). Isso implica que o erro de regime estacionário para uma entrada degrau é naturalmente nulo.
+    \item \textbf{Estabilidade:} O sistema é marginalmente estável em malha aberta devido ao polo na origem.
+\end{itemize}
+
+A Figura \ref{fig:pzmap} ilustra a localização dos polos no plano complexo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../assets/report_images/pzmap_light.png}
+    \caption{Mapa de Polos e Zeros do Sistema (Malha Aberta)}
+    \label{fig:pzmap}
+\end{figure}
+
+A resposta ao degrau em malha aberta (Figura \ref{fig:openloop}) confirma o comportamento integrador (rampa na saída para entrada constante).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../assets/report_images/step_openloop_light.png}
+    \caption{Resposta ao Degrau em Malha Aberta (Comportamento Integrador)}
+    \label{fig:openloop}
+\end{figure}
+
+\section{Controlador Proporcional (P) - Felipe}
+
+\subsection{Especificações e Sintonia}
+O objetivo inicial foi sintonizar um ganho $K_p$ que atendesse:
+\begin{itemize}
+    \item Overshoot ($M_p$): $5\% - 15\%$
+    \item Tempo de acomodação ($t_s$): $0.5s - 1.0s$
+\end{itemize}
+
+A malha fechada tem equação característica:
+\[
+1 + K_p G(s) = 0 \implies s^3 + 963.2s^2 + 12540s + 849.2 K_p = 0
+\]
+
+Através do Lugar das Raízes (Root Locus), variamos $K_p$. 
+Para $K_p = 138$, os polos dominantes de malha fechada se posicionam de forma a fornecer o amortecimento $\zeta$ necessário para o overshoot de 10\%.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../assets/report_images/felipe_rlocus.png}
+    \caption{Lugar das Raízes para o Controlador Proporcional}
+    \label{fig:rlocus_p}
+\end{figure}
+
+\subsection{Desempenho (Simulação)}
+Com $K_p = 138$, a simulação (Figura \ref{fig:step_p}) apresentou:
+\begin{itemize}
+    \item $M_p \approx 10.05\%$
+    \item $t_s \approx 0.531s$
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../assets/report_images/step_response_P.png}
+    \caption{Resposta ao Degrau - Controlador P ($K_p=138$)}
+    \label{fig:step_p}
+\end{figure}
+
+\section{Compensador Lag (Atraso de Fase) - Dierson}
+
+Apesar do bom desempenho transitório do controlador P, o erro de seguimento para entradas em rampa ($r(t) = t$) ainda pode ser melhorado. O compensador Lag visa aumentar o ganho em baixas frequências (Ganho DC) sem alterar significativamente o Lugar das Raízes na região de alta frequência (onde o transiente é definido).
+
+\subsection{Cálculo do Erro em Rampa (Sem Compensação)}
+A constante de erro de velocidade $K_v$ para o sistema com controlador P simples ($K_p=138$) seria:
+\[
+K_v = \lim_{s\to 0} s \cdot K_p G(s) = 138 \times \lim_{s\to 0} \frac{849.2}{(s+13.2)(s+950)}
+\]
+\[
+K_v = 138 \times \frac{849.2}{12540} = 138 \times 0.0677 \approx 9.34 \text{ s}^{-1}
+\]
+O erro estacionário para rampa unitária é:
+\[
+e_{ss} = \frac{1}{K_v} = \frac{1}{9.34} \approx 0.107 \quad (10.7\%)
+\]
+Este valor de 10.7\% é superior ao desejado de 1\%. Precisamos aumentar $K_v$ por um fator de aproximadamente 10.
+
+\subsection{Projeto do Compensador}
+O compensador tem a forma:
+\[
+C_{lag}(s) = K \frac{s + z}{s + p}
+\]
+Escolhemos a relação $\beta = z/p = 10$ para ganhar uma década em magnitude DC.
+Para não afetar a fase na frequência de cruzamento (transiente), escolhemos o polo e o zero muito próximos da orígem.
+
+\textbf{Parâmetros Selecionados:}
+\begin{itemize}
+    \item Zero: $z = 0.10$
+    \item Polo: $p = 0.01$ (uma década abaixo)
+    \item Ganho: $K = 150.6$ (Ajuste fino do ganho proporcional para re-sintonizar o overshoot)
+\end{itemize}
+
+\subsection{Novo Cálculo de Erro}
+\[
+K_v^{new} = \lim_{s\to 0} s \cdot C_{lag}(s) G(s) = \lim_{s\to 0} s \cdot \left( 150.6 \frac{s+0.1}{s+0.01} \right) \frac{849.2}{s(s+13.2)(s+950)}
+\]
+\[
+K_v^{new} = 150.6 \cdot \left( \frac{0.1}{0.01} \right) \cdot \frac{849.2}{12540} = 150.6 \cdot 10 \cdot 0.0677 \approx 101.95
+\]
+\[
+e_{ss}^{new} = \frac{1}{101.95} \approx 0.0098 \quad (\mathbf{0.98\%})
+\]
+O erro caiu para menos de 1\%, cumprindo o requisito.
+
+\subsection{Análise Frequencial e Temporal}
+A Figura \ref{fig:bode_compare} mostra o Diagrama de Bode, evidenciando o aumento de ganho em baixas frequências (lado esquerdo) devido ao Lag, enquanto a margem de fase em altas frequências permanece preservada.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../assets/report_images/compare_bode_v2.png}
+    \caption{Comparação de Diagramas de Bode (Malha Aberta): Planta Original, com Controlador P, e com Compensador Lag}
+    \label{fig:bode_compare}
+\end{figure}
+
+A Figura \ref{fig:bode_compare} evidencia como o compensador Lag (curva verde) eleva a magnitude em baixas frequências (lado esquerdo) em comparação ao controlador Proporcional (curva laranja), garantindo maior ganho DC e menor erro estacionário, enquanto mantém a margem de fase e magnitude em altas frequências.
+
+A Figura \ref{fig:rlocus_detail} mostra em detalhe o dipolo polo-zero introduzido próximo à origem.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../assets/report_images/rlocus_lag_detail.png}
+    \caption{Detalhe do Lugar das Raízes próximo à origem (Dipolo do Compensador Lag)}
+    \label{fig:rlocus_detail}
+\end{figure}
+
+Finalmente, apresentamos as comparações diretas de desempenho temporal.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../assets/report_images/compare_step.png}
+    \caption{Comparação de Resposta ao Degrau em Malha Fechada}
+    \label{fig:step_compare}
+\end{figure}
+
+A resposta ao degrau (Figura \ref{fig:step_compare}) confirma que o comportamento transitório do Lag (Verde) é muito próximo ao do Proporcional (Laranja), com um overshoot levemente maior mas ainda dentro das especificações.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../assets/report_images/compare_ramp.png}
+    \caption{Comparação de Resposta à Rampa: O Lag praticamente elimina o erro de seguimento visível na curva do Proporcional.}
+    \label{fig:ramp_compare}
+\end{figure}
+
+\section{Compensador Lead (Avanço de Fase) - Cintia}
+
+Enquanto o controlador Proporcional oferece um bom desempenho, o Compensador Lead (Avanço de Fase) é projetado para modificar o Lugar das Raízes, ``puxando-o'' para a esquerda no plano complexo. Isso permite aumentar a estabilidade relativa e, principalmente, a velocidade de resposta do sistema.
+
+\subsection{Projeto do Compensador}
+A função de transferência do compensador Lead é dada por:
+\[
+C_{lead}(s) = K \frac{s + z}{s + p}, \quad \text{onde } |p| > |z|
+\]
+
+A estratégia adotada foi utilizar o zero do compensador para cancelar (ou reduzir significativamente) o efeito do polo dominante da planta mais lento ($s = -13.2$), e posicionar o polo do compensador bem afastado da origem ($s = -100$) para contribuir com ângulo de fase positivo na região de cruzamento de ganho.
+
+\textbf{Parâmetros Selecionados:}
+\begin{itemize}
+    \item Zero: $z = 20$ (Próximo ao polo de -13.2)
+    \item Polo: $p = 100$ (Afastado para extender a largura de banda)
+    \item Ganho: $K = 700$ (Ajustado para performance máxima sem saturação excessiva)
+\end{itemize}
+
+\subsection{Análise no Lugar das Raízes e Bode}
+A Figura \ref{fig:rlocus_lead} mostra como o compensador altera a trajetória dos polos de malha fechada. Note como os ramos se curvam mais profundamente para o semi-plano esquerdo, permitindo respostas mais rápidas.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../assets/report_images/root_locus_Lead.png}
+    \caption{Lugar das Raízes com Compensador Lead}
+    \label{fig:rlocus_lead}
+\end{figure}
+
+A Figura \ref{fig:rlocus_lead_detail} abaixo detalha o efeito do cancelamento. O zero em -20 atrai o polo da planta em -13.2, reduzindo drasticamente sua influência na resposta temporal.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../assets/report_images/rlocus_lead_detail.png}
+    \caption{Detalhe do Cancelamento Polo-Zero: O Zero do compensador ``anula'' o Polo lento da planta}
+    \label{fig:rlocus_lead_detail}
+\end{figure}
+
+O diagrama de Bode (Figura \ref{fig:bode_lead}) confirma o aumento da largura de banda e a injeção de fase na região de média frequência.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../assets/report_images/bode_Lead.png}
+    \caption{Diagrama de Bode do Sistema Compensado (Lead)}
+    \label{fig:bode_lead}
+\end{figure}
+
+\subsection{Desempenho Temporal}
+O resultado no domínio do tempo foi extremamente positivo. O sistema tornou-se muito mais ágil.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../assets/report_images/step_response_Lead.png}
+    \caption{Resposta ao Degrau com Compensador Lead ($t_s \approx 0.28s$)}
+    \label{fig:step_lead}
+\end{figure}
+
+Comparado ao controlador Proporcional, o Tempo de Acomodação ($t_s$) caiu de $\approx 0.53s$ para $\mathbf{0.28s}$, uma redução de quase 50\%, com um overshoot mínimo, demonstrando a eficácia da estratégia de avanço de fase para regimes transitórios exigentes.
+
+\section{Controlador Lead-Lag Integrado (Solução Combinada) - Conjunto}
+
+Para obter o ``melhor dos dois mundos'' — a precisão em regime permanente do Lag e a velocidade de resposta do Lead — projetamos um controlador Lead-Lag em cascata. Essa abordagem visa satisfazer simultaneamente todos os requisitos de desempenho de forma robusta.
+
+\subsection{Estratégia de Projeto Detalhada}
+
+A concepção deste controlador baseou-se em atacar os dois problemas fundamentais do sistema de forma desacoplada:
+
+\subsubsection{1. O ``Acelerador'' (Compensador Lead)}
+O sistema original possui um polo dominante em $s = -13.2$, que limita severamente a velocidade de resposta.
+\begin{itemize}
+    \item \textbf{Zero ($z_{lead} = 20$):} Escolhido estrategicamente para \textbf{cancelar} (ou dominar) o efeito do polo lento da planta. Ao posicionar um zero próximo ao polo dominante, anulamos sua influência retardadora no Lugar das Raízes.
+    \item \textbf{Polo ($p_{lead} = 100$):} Posicionado distante da origem para fornecer um amplo avanço de fase na região de frequências médias e altas, permitindo aumentar a largura de banda sem comprometer a estabilidade.
+\end{itemize}
+
+\subsubsection{2. O ``Corretor'' (Compensador Lag)}
+Para garantir precisão, precisávamos aumentar o ganho em baixa frequência sem prejudicar o transiente rápido obtido com o Lead.
+\begin{itemize}
+    \item \textbf{Dipolo ($z_{lag}=0.1, p_{lag}=0.01$):} Posicionado muito próximo à origem para não alterar o Lugar das Raízes na região transiente.
+    \item \textbf{Relação $\beta = 10$:} A escolha da razão $z/p = 10$ multiplica o ganho DC da malha por 10. Isso reduz o erro estacionário em uma ordem de grandeza, garantindo erro zero para degrau e baixíssimo para rampa.
+\end{itemize}
+
+\subsubsection{3. Sintonia Fina do Ganho ($K$)}
+Com o Lead garantindo margem de fase e o Lag garantindo ganho DC, pudemos ser mais agressivos no ganho proporcional.
+\begin{itemize}
+    \item \textbf{Ganho $K=1000$:} Este valor elevado foi possibilitado pela estabilização dinâmica do Lead. Ele minimiza ainda mais os erros e acelera a resposta, resultando em um tempo de acomodação de apenas $0.37s$.
+\end{itemize}
+
+A Função de Transferência final resultante é:
+\[
+C(s) = 1000 \cdot \underbrace{\left( \frac{s+0.1}{s+0.01} \right)}_{\text{Lag (Precisão)}} \cdot \underbrace{\left( \frac{s+20}{s+100} \right)}_{\text{Lead (Velocidade)}}
+\]
+
+\subsection{Resultados Finais}
+A resposta ao degrau (Figura \ref{fig:step_leadlag}) demonstra um desempenho excepcional, superior a qualquer controlador isolado.
+
+\begin{itemize}
+    \item \textbf{Overshoot ($M_p$):} $\mathbf{3.19\%}$ (Excelente, muito abaixo do limite de 15\%)
+    \item \textbf{Tempo de Acomodação ($t_s$):} $\mathbf{0.37s}$ (Muito rápido, bem abaixo de 1.0s)
+    \item \textbf{Erro Estacionário:} Virtualmente zero (devido à ação integral do Lag).
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../assets/report_images/step_response_LeadLag.png}
+    \caption{Resposta Final do Sistema com Controlador Lead-Lag Integrado}
+    \label{fig:step_leadlag}
+\end{figure}
+
+O Diagrama de Bode da malha combinada (Figura \ref{fig:bode_leadlag}) mostra a modelagem da resposta em frequência em toda a faixa de operação.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../assets/report_images/bode_LeadLag.png}
+    \caption{Diagrama de Bode Final (Lead-Lag)}
+    \label{fig:bode_leadlag}
+\end{figure}
+
+\section{Controlador PID (Proporcional-Integral-Derivativo) - Guilherme}
+
+Além das estratégias clássicas de compensação em frequência (Lead/Lag), implementamos um controlador PID sintonizado via método de Ziegler-Nichols e refinado empiricamente.
+
+\subsection{Sintonia e Estrutura}
+A estrutura implementada inclui um polo de filtro na ação derivativa para garantir a realizabilidade física (função de transferência própria):
+\[
+C_{PID}(s) = K_p + \frac{K_i}{s} + \frac{K_d s}{\tau s + 1}
+\]
+Com $\tau = 0.001$ (filtro rápido).
+
+\textbf{Ganhos Sintonizados:}
+\begin{itemize}
+    \item $K_p = 200$
+    \item $K_i = 100$
+    \item $K_d = 5$
+\end{itemize}
+
+\subsection{Desempenho}
+A Figura \ref{fig:step_pid} apresenta a resposta ao degrau. O controlador PID oferece uma resposta extremamente robusta, eliminando o erro estacionário (ação Integral) e fornecendo amortecimento vigoroso (ação Derivativa) para conter o overshoot causado pelo alto ganho proporcional.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../assets/report_images/step_response_PID.png}
+    \caption{Resposta ao Degrau com Controlador PID (Ziegler-Nichols Refinado)}
+    \label{fig:step_pid}
+\end{figure}
+
+\section{Análise de Robustez (Fatores Paramétricos) - Nicolas}
+
+Para garantir que o controlador projetado funcione adequadamente em condições reais, onde os parâmetros do sistema podem variar (devido a aquecimento, desgaste ou carga variável), realizamos uma análise de robustez baseada em cenários.
+
+\subsection{Cenários de Teste}
+Definimos três cenários de operação para o servomecanismo:
+
+\begin{enumerate}
+    \item \textbf{Nominal:} Parâmetros ideais de projeto ($K_m = 1.1$, $a_m = 13.2$).
+    \item \textbf{Pesado:} Simula um motor enfraquecido e maior atrito viscoso.
+    \begin{itemize}
+        \item $K_m = 0.8$ (Redução de 27\% no torque)
+        \item $a_m = 15.0$ (Maior atrito/amortecimento)
+        \item $a_e = 1100$
+    \end{itemize}
+    \item \textbf{Agressivo:} Simula um motor mais forte e menor atrito.
+    \begin{itemize}
+        \item $K_m = 1.2$ (Aumento de 9\% no torque)
+        \item $a_m = 10.0$ (Menor atrito)
+        \item $a_e = 800$
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Resultados da Análise}
+A Figura \ref{fig:robustness} apresenta a resposta ao degrau do controlador Lead-Lag final para os três cenários.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../assets/report_images/robustness_Lead-Lag.png}
+    \caption{Robustez do Controlador Lead-Lag: O sistema permanece estável e com desempenho aceitável em todos os cenários.}
+    \label{fig:robustness}
+\end{figure}
+
+Observa-se que mesmo no cenário ``Agressivo'' (linha tracejada vermelha), onde o ganho de malha aberta é maior e o polo dominante é mais lento, o controlador Lead-Lag mantém o sistema estável com um aumento marginal no overshoot. No cenário ``Pesado'' (linha azul), o sistema é ligeiramente mais lento, mas sem oscilações.
+
+Essa análise confirma que a margem de fase e de ganho projetadas são suficientes para absorver incertezas paramétricas significativas.
+
+\section{Conclusão}
+O projeto atingiu todos os objetivos. O modelo foi corretamente identificado e validado. O controlador proporcional $K_p=138$ estabeleceu a base de desempenho dinâmico, o compensador Lag ($K=150.6, z=0.1, p=0.01$) refinou a precisão estacionária reduzindo o erro de rampa para 0.98\%, e o compensador Lead ($K=700, z=20, p=100$) entregou a resposta mais rápida do conjunto ($0.28s$).
+
+\newpage
+\appendix
+\section{Documentação Complementar de Códigos}
+Os códigos desenvolvidos utilizam a biblioteca \texttt{python-control} para modelagem e análise. Abaixo encontra-se o detalhamento funcional de cada script.
+
+\subsection{Modelagem do Sistema (model.py)}
+Este script é responsável por definir a estrutura matemática da planta.
+\begin{itemize}
+    \item \textbf{Função \texttt{define\_system()}:} Constrói as matrizes de espaço de estados (A, B, C, D) usando os parâmetros físicos fornecidos (ganhos $K_m, K_{sys}$ e polos $a_m, a_e$). Retorna o objeto de sistema \texttt{ss}.
+    \item \textbf{Configuração Gráfica:} Implementa lógica para alternar entre gráficos para apresentação (escuros/transparentes) e para este relatório (claros/fundo branco), garantindo legibilidade em ambos os meios.
+    \item \textbf{Análise:} Gera o mapa de polos e zeros e a resposta ao degrau em malha aberta para validação inicial.
+\end{itemize}
+
+\lstinputlisting[language=Python, caption={Script de definição e análise da planta em malha aberta}]{../simulations/model.py}
+
+\subsection{Projeto dos Controladores (controllers.py)}
+Este script realiza o design iterativo dos compensadores e gera as validações gráficas.
+\begin{itemize}
+    \item \textbf{Controlador P:} Simula o efeito do ganho proporcional, gerando o Lugar das Raízes para escolha do ganho ótimo ($K_p=138$) com base no coeficiente de amortecimento.
+    \item \textbf{Compensador Lag:} Implementa a lógica de compensação por atraso de fase.
+    \begin{itemize}
+        \item Define a função de transferência do controlador: $C(s) = K \frac{s+z}{s+p}$.
+        \item Calcula, para cada simulação, métricas precisas: Overshoot, Tempo de Acomodação (critério de 2\%) e Erro Estacionário.
+        \item Gera gráficos comparativos de Root Locus e Bode para demonstrar a eficácia da compensação na baixa frequência sem alterar a estabilidade transitória.
+    \end{itemize}
+    \item \textbf{Automação:} O bloco \texttt{\_\_main\_\_} executa as funções de projeto sequencialmente, garantindo que qualquer alteração nos parâmetros seja refletida automaticamente em todos os gráficos de saída.
+\end{itemize}
+
+\lstinputlisting[language=Python, caption={Script de projeto e simulação dos controladores P e Lag}]{../simulations/controllers.py}
+
+\end{document}

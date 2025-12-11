@@ -1,0 +1,33 @@
+\babel@toc {portuguese}{}\relax 
+\contentsline {section}{\numberline {1}Introdução}{3}{section.1}%
+\contentsline {section}{\numberline {2}Modelagem Matemática - Gabriel}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Função de Transferência}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Análise de Malha Aberta}{3}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Controlador Proporcional (P) - Felipe}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Especificações e Sintonia}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Desempenho (Simulação)}{5}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Compensador Lag (Atraso de Fase) - Dierson}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Cálculo do Erro em Rampa (Sem Compensação)}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Projeto do Compensador}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Novo Cálculo de Erro}{7}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Análise Frequencial e Temporal}{7}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Compensador Lead (Avanço de Fase) - Cintia}{10}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Projeto do Compensador}{10}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Análise no Lugar das Raízes e Bode}{11}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Desempenho Temporal}{12}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Controlador Lead-Lag Integrado (Solução Combinada) - Conjunto}{13}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Estratégia de Projeto Detalhada}{13}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}1. O ``Acelerador'' (Compensador Lead)}{13}{subsubsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.2}2. O ``Corretor'' (Compensador Lag)}{13}{subsubsection.6.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.3}3. Sintonia Fina do Ganho ($K$)}{13}{subsubsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.2}Resultados Finais}{14}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Controlador PID (Proporcional-Integral-Derivativo) - Guilherme}{15}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Sintonia e Estrutura}{15}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Desempenho}{16}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Análise de Robustez (Fatores Paramétricos) - Nicolas}{16}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Cenários de Teste}{16}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Resultados da Análise}{17}{subsection.8.2}%
+\contentsline {section}{\numberline {9}Conclusão}{17}{section.9}%
+\contentsline {section}{\numberline {A}Documentação Complementar de Códigos}{18}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Modelagem do Sistema (model.py)}{18}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}Projeto dos Controladores (controllers.py)}{21}{subsection.A.2}%
