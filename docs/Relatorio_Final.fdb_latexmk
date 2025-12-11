@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1765430248.24848 "/Users/Rickson/Documents/GitHub/ES256-final/docs/Relatorio_Final.tex" "Relatorio_Final.pdf" "Relatorio_Final" 1765430249.55855 0
+["pdflatex"] 1765431728.62668 "/Users/Rickson/Documents/GitHub/ES256-final/docs/Relatorio_Final.tex" "Relatorio_Final.pdf" "Relatorio_Final" 1765431730.01838 0
   "../assets/report_images/01_pzmap_light.png" 1765430202.61051 29522 c57713154941207602abb7d13d89490c ""
   "../assets/report_images/02_step_openloop_light.png" 1765430202.65712 33006 7c212dd7aadb6d1268d2d1a340ee1a24 ""
   "../assets/report_images/03_rlocus_P.png" 1765430225.61331 30673 ec75d1a5b6abe9599a6da2b801315f30 ""
@@ -19,7 +19,7 @@
   "../assets/report_images/17_robustness_LeadLag.png" 1765430243.34741 57224 ea5eff37a7b2f305d2fafe1f2e971651 ""
   "../simulations/controllers.py" 1765430189.71495 21333 a9001e668f310e60a8c98b89c63f5585 ""
   "../simulations/model.py" 1765429457.13735 6001 58ee258edc44f0ce0fffa3605b1c4357 ""
-  "/Users/Rickson/Documents/GitHub/ES256-final/docs/Relatorio_Final.tex" 1765428629.32383 24387 c7214030c56478380c01f1087c1bb28e ""
+  "/Users/Rickson/Documents/GitHub/ES256-final/docs/Relatorio_Final.tex" 1765431722.14777 24342 abc7efa5bc180315c3bce6dac58890bc ""
   "/Users/Rickson/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk" 1765409006.7605 14040 954d868b85eb716bc8b9bad64db41666 ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -127,10 +127,10 @@
   "/usr/local/texlive/2025basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1764896393 80308 b9144e526a5eb326f6f78b7b21cc69e0 ""
   "/usr/local/texlive/2025basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1741448339 2663854 a6f6b8c904d47faabe5d94cfdac61310 ""
   "/usr/local/texlive/2025basic/texmf.cnf" 1741448314 628 81d1ada0f601fb1ffa62f1323192d946 ""
-  "Relatorio_Final.aux" 1765430249.50926 10584 3dc7836161084922f27f86dc6b5d5c94 "pdflatex"
-  "Relatorio_Final.out" 1765430249.51026 7747 da6aaaba152f2f8b5fcfee9b0e6343fa "pdflatex"
-  "Relatorio_Final.tex" 1765428629.32383 24387 c7214030c56478380c01f1087c1bb28e ""
-  "Relatorio_Final.toc" 1765430249.51043 3465 83ad28749ef2a2711585f45ad285f563 "pdflatex"
+  "Relatorio_Final.aux" 1765431729.96797 10592 a1fe70d237c54611a96d19c06b39165b "pdflatex"
+  "Relatorio_Final.out" 1765431729.96943 7747 da6aaaba152f2f8b5fcfee9b0e6343fa "pdflatex"
+  "Relatorio_Final.tex" 1765431722.14777 24342 abc7efa5bc180315c3bce6dac58890bc ""
+  "Relatorio_Final.toc" 1765431729.96995 3465 4d1e5858fe67275271c1cf49d75ac215 "pdflatex"
   (generated)
   "Relatorio_Final.aux"
   "Relatorio_Final.log"

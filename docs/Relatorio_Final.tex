@@ -69,7 +69,7 @@ A função de transferência de malha aberta utilizada para o projeto é:
 G(s) = \frac{K_m}{s(s+a_m)(s+a_e)} = \frac{1.2}{s(s+13.2)(s+950)} = \frac{1.2}{s(s^2 + 963.2s + 12540)}
 \]
 
-Observe que o ganho estático da planta é baixo devido à magnitude dos coeficientes do denominador em relação ao numerador ($1.2/12540 \approx 9.5 \times 10^{-5}$). Isso exigirá um ganho elevado do controlador para atender aos requisitos.
+Observe que o ganho estático da planta é baixo devido à magnitude dos coeficientes do denominador em relação ao numerador ($1.2/12540 \approx 9.5 \times 10^{-5}$). Tal fato demanda um ganho elevado do controlador para atender aos requisitos.
 
 Expandindo o denominador para a forma polinomial $s^3 + a_2 s^2 + a_1 s + a_0$:
 
@@ -123,9 +123,9 @@ A equação característica de malha fechada é dada por $1 + K_p G(s) = 0$:
 \[
 1 + K_p G(s) = 0 \implies s^3 + 963.2s^2 + 12540s + 1.2 K_p = 0
 \]
-Aplicando o critério de Routh-Hurwitz, determinamos o ganho crítico ($K_{crit}$) a partir do qual o sistema se torna instável. Devido ao ganho reduzido da planta ($1.2$), o $K_{crit}$ será significativamente maior do que no modelo anterior.
-Através do Lugar das Raízes (Root Locus), variamos $K_p$. 
-Para manter o mesmo desempenho do projeto anterior (overshoot $\approx 10\%$), o ganho proporcional foi ajustado para $K_p = 97.600$.
+Aplicando o critério de Routh-Hurwitz, determinou-se o ganho crítico ($K_{crit}$) a partir do qual o sistema se torna instável. Devido ao ganho reduzido da planta ($1.2$), o $K_{crit}$ é significativamente maior do que no modelo anterior.
+Através do Lugar das Raízes (Root Locus), variou-se $K_p$. 
+Para manter o desempenho aceitável, o ganho proporcional foi ajustado para $K_p = 77.000$.
 
 \begin{figure}[H]
     \centering
@@ -140,21 +140,21 @@ Com $K_p = 97.600$, a simulação (Figura \ref{fig:step_p}) apresentou:
 Utilizando o ganho ajustado $K_p = 97.600$:
 \begin{itemize}
     \item \textbf{Estabilidade:} O sistema é \textbf{estável}.
-    \item \textbf{Erro de Regime:} O ganho de velocidade é $K_v = 97.600 \times \frac{1.2}{12540} \approx 9.34$.
+    \item \textbf{Erro de Regime:} O ganho de velocidade é $K_v = 77.000 \times \frac{1.2}{12540} \approx 7.37$.
     \[
-    e_{rampa} = \frac{1}{K_v} \approx \frac{1}{9.34} \approx 10.7\%
+    e_{rampa} = \frac{1}{K_v} \approx \frac{1}{7.37} \approx 13.5\%
     \]
     O erro é superior ao requisito de $1\%$.
 \end{itemize}
 \begin{itemize}
-    \item $M_p \approx 10.16\%$
-    \item $t_s \approx 0.534s$
+    \item $M_p \approx 6.14\%$
+    \item $t_s \approx 0.61s$
 \end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../assets/report_images/04_step_response_P.png}
-    \caption{Resposta ao Degrau - Controlador P ($K_p=97.600$)}
+    \caption{Resposta ao Degrau - Controlador P ($K_p=77.000$)}
     \label{fig:step_p}
 \end{figure}
 
@@ -175,15 +175,15 @@ O erro de estado estacionário será:
 \[
 e_{ss} = \frac{1}{7.37} \approx 0.135 (13.5\%)
 \]
-Este valor de 13.5\% é superior ao desejado de 1\%. Precisamos aumentar $K_v$ por um fator de aproximadamente 10.
+Este valor de 13.5\% é superior ao desejado de 1\%. Torna-se necessário aumentar $K_v$ por um fator de aproximadamente 10.
 
 \subsection{Projeto do Compensador}
 O compensador tem a forma:
 \[
 C_{lag}(s) = K \frac{s + z}{s + p}
 \]
-Escolhemos a relação $\beta = z/p = 10$ para ganhar uma década em magnitude DC.
-Para não afetar a fase na frequência de cruzamento (transiente), escolhemos o polo e o zero muito próximos da orígem.
+Optou-se pela relação $\beta = z/p = 10$ para ganhar uma década em magnitude DC.
+Para não afetar a fase na frequência de cruzamento (transiente), selecionaram-se o polo e o zero muito próximos da orígem.
 
 \textbf{Parâmetros Selecionados:}
 \subsubsection{Análise de Ganho e Resultado (Dierson)}
@@ -200,13 +200,14 @@ Com esses valores:
     \item \textbf{Aumento de ganho DC:} O termo Lag contribui com um ganho de 10 em baixas frequências.
     \item \textbf{Novo Kv:} $K_v \approx 7.37 \times 10 \approx 73.7$.
     \item \textbf{Erro estimado:} $\approx 1.35\%$. (Simulação aponta valores próximos a 1.3\%).
-    \item \textbf{Estabilidade:} O sistema mantém a estabilidade.
+    \item \textbf{Estabilidade:} O sistema mantém a estabilidade e atende aos requisitos temporais.
+    \item \textbf{Desempenho Transitório:} $M_p \approx 6.46\%$ (dentro de 5-15\%), $t_s \approx 0.62s$ (dentro de 0.5-1.0s).
 \end{enumerate}
 
 \textbf{Conclusão:} A solução de Dierson ($K_p=77k$) é robusta e fisicamente coerente com a planta modelada.
 
 \subsection{Novo Cálculo de Erro}
-Calculamos o novo $K_v$ em malha aberta:
+Calcula-se o novo $K_v$ em malha aberta:
 \[
 K_v^{new} = \lim_{s\to 0} s \cdot C_{lag}(s) G(s) = \lim_{s\to 0} s \cdot \left( 77000 \frac{s+0.1}{s+0.01} \right) \frac{1.2}{s(s+13.2)(s+950)}
 \]
@@ -242,7 +243,7 @@ A Figura \ref{fig:rlocus_detail} mostra em detalhe o dipolo polo-zero introduzid
     \label{fig:rlocus_detail}
 \end{figure}
 
-Finalmente, apresentamos as comparações diretas de desempenho temporal.
+Finalmente, apresentam-se as comparações diretas de desempenho temporal.
 
 \begin{figure}[H]
     \centering
@@ -270,12 +271,12 @@ A função de transferência do compensador Lead é dada por:
 C_{lead}(s) = K \frac{s + z}{s + p}, \quad \text{onde } |p| > |z|
 \]
 
-A estratégia adotada foi utilizar o zero do compensador para cancelar (ou reduzir significativamente) o efeito do polo dominante da planta mais lento ($s = -13.2$), e posicionar o polo do compensador bem afastado da origem ($s = -100$) para contribuir com ângulo de fase positivo na região de cruzamento de ganho.
+A estratégia adotada foi utilizar o zero do compensador para cancelar o efeito do polo dominante da planta ($s = -13.2$), e posicionar o polo do compensador bem afastado da origem ($s = -150$) para contribuir com ângulo de fase positivo na região de cruzamento de ganho.
 
 \textbf{Parâmetros Selecionados:}
 \begin{itemize}
-    \item Zero: $z = 20$ (Próximo ao polo de -13.2)
-    \item Polo: $p = 100$ (Afastado para extender a largura de banda)
+    \item Zero: $z = 13.2$ (Cancelamento exato do polo dominante)
+    \item Polo: $p = 150$ (Afastado para extender a largura de banda)
     \item Ganho: $K = 700$ (Ajustado para performance máxima sem saturação excessiva)
 \end{itemize}
 
@@ -294,7 +295,7 @@ A Figura \ref{fig:rlocus_lead_detail} abaixo detalha o efeito do cancelamento. O
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../assets/report_images/10_rlocus_lead_detail.png}
-    \caption{Detalhe do Cancelamento Polo-Zero: O Zero do compensador ``anula'' o Polo lento da planta}
+    \caption{Detalhe do Cancelamento Polo-Zero: O Zero do compensador ($z=-13.2$) cancela o Polo da planta}
     \label{fig:rlocus_lead_detail}
 \end{figure}
 
@@ -321,7 +322,7 @@ Comparado ao controlador Proporcional, o Tempo de Acomodação ($t_s$) ficou pr�
 
 \section{Controlador Lead-Lag Integrado (Solução Combinada) - Conjunto}
 
-Para obter o ``melhor dos dois mundos'' — a precisão em regime permanente do Lag e a velocidade de resposta do Lead — projetamos um controlador Lead-Lag em cascata. Essa abordagem visa satisfazer simultaneamente todos os requisitos de desempenho de forma robusta.
+Para obter o ``melhor dos dois mundos'' — a precisão em regime permanente do Lag e a velocidade de resposta do Lead — projetou-se um controlador Lead-Lag em cascata. Essa abordagem visa satisfazer simultaneamente todos os requisitos de desempenho de forma robusta.
 
 \subsection{Estratégia de Projeto Detalhada}
 
@@ -330,19 +331,19 @@ A concepção deste controlador baseou-se em atacar os dois problemas fundamenta
 \subsubsection{1. O ``Acelerador'' (Compensador Lead)}
 O sistema original possui um polo dominante em $s = -13.2$, que limita severamente a velocidade de resposta.
 \begin{itemize}
-    \item \textbf{Zero ($z_{lead} = 13.2$):} Escolhido estrategicamente para \textbf{cancelar exatamente} o efeito do polo lento da planta. Ao posicionar um zero sobre o polo dominante, anulamos sua influência retardadora no Lugar das Raízes.
-    \item \textbf{Polo ($p_{lead} = 150$):} Posicionado distante da origem para fornecer um amplo avanço de fase na região de frequências médias e altas, permitindo aumentar a largura de banda sem comprometer a estabilidade.
+    \item \textbf{Zero ($z_{lead} = 20$):} Escolhido para avançar fase e aumentar a velocidade, sem necessariamente cancelar o polo dominante de forma exata na estratégia integrada.
+    \item \textbf{Polo ($p_{lead} = 100$):} Posicionado distante da origem para fornecer um amplo avanço de fase.
 \end{itemize}
 
 \subsubsection{2. O ``Corretor'' (Compensador Lag)}
-Para garantir precisão, precisávamos aumentar o ganho em baixa frequência sem prejudicar o transiente rápido obtido com o Lead.
+Para garantir precisão, era necessário aumentar o ganho em baixa frequência sem prejudicar o transiente rápido obtido com o Lead.
 \begin{itemize}
     \item \textbf{Dipolo ($z_{lag}=0.1, p_{lag}=0.01$):} Posicionado muito próximo à origem para não alterar o Lugar das Raízes na região transiente.
     \item \textbf{Relação $\beta = 10$:} A escolha da razão $z/p = 10$ multiplica o ganho DC da malha por 10. Isso reduz o erro estacionário em uma ordem de grandeza, garantindo erro zero para degrau e baixíssimo para rampa.
 \end{itemize}
 
 \subsubsection{3. Sintonia Fina do Ganho ($K$)}
-Com o Lead garantindo margem de fase e o Lag garantindo ganho DC, pudemos ajustar o ganho proporcional.
+Com o Lead garantindo margem de fase e o Lag garantindo ganho DC, foi possível ajustar o ganho proporcional.
 \begin{itemize}
     \item \textbf{Ganho $K=77.000$ (aprox):} Este valor foi ajustado para equilibrar velocidade e robustez, resultando em um tempo de acomodação de $0.98s$.
 \end{itemize}
@@ -379,7 +380,7 @@ O Diagrama de Bode da malha combinada (Figura \ref{fig:bode_leadlag}) mostra a m
 
 \section{Controlador PID (Proporcional-Integral-Derivativo) - Guilherme}
 
-Além das estratégias clássicas de compensação em frequência (Lead/Lag), implementamos um controlador PID sintonizado via método de Ziegler-Nichols e refinado empiricamente.
+Além das estratégias clássicas de compensação em frequência (Lead/Lag), implementou-se um controlador PID sintonizado via método de Ziegler-Nichols e refinado empiricamente.
 
 \subsection{Sintonia e Estrutura}
 A estrutura implementada inclui um polo de filtro na ação derivativa para garantir a realizabilidade física (função de transferência própria):
@@ -419,10 +420,10 @@ Assim como nos compensadores clássicos, o PID também foi submetido aos cenári
 
 \section{Análise de Robustez (Fatores Paramétricos) - Nicolas}
 
-Para garantir que o controlador projetado funcione adequadamente em condições reais, onde os parâmetros do sistema podem variar (devido a aquecimento, desgaste ou carga variável), realizamos uma análise de robustez baseada em cenários.
-
-\subsection{Cenários de Teste}
-Definimos três cenários de operação para o servomecanismo:
+Para garantir que o controlador projetado funcione adequadamente em condições reais, onde os parâmetros do sistema podem variar (devido a aquecimento, desgaste ou carga variável), realizou-se uma análise de robustez baseada em cenários.
+ 
+ \subsection{Cenários de Teste}
+ Foram definidos três cenários de operação para o servomecanismo:
 
 \begin{enumerate}
     \item \textbf{Nominal:} Parâmetros ideais de projeto ($K_m = 1.1$, $a_m = 13.2$).
@@ -455,7 +456,7 @@ Observa-se que mesmo no cenário ``Agressivo'' (linha tracejada vermelha), onde 
 Essa análise confirma que a margem de fase e de ganho projetadas são suficientes para absorver incertezas paramétricas significativas.
 
 \section{Conclusão}
-O projeto atingiu os objetivos. O modelo foi corretamente identificado. O controlador proporcional $K_p=97.600$ estabeleceu a base de desempenho dinâmico, o compensador Lag ($K_p=77.000, z=0.1, p=0.01$) refinou a precisão estacionária reduzindo o erro de rampa para 1.35\%, o compensador Lead ($K=700, z=13.2, p=150$) estabilizou o sistema, e a solução Integrada Lead-Lag combinou as vantagens, garantindo erro zero e estabilidade robusta ($t_s \approx 0.98s$). O PID sintonizado com $K_p=80.000$ também provou ser altamente eficaz.
+O projeto atingiu os objetivos. O modelo foi corretamente identificado. O controlador proporcional $K_p=77.000$ estabeleceu a base de desempenho dinâmico, o compensador Lag ($K_p=77.000, z=0.1, p=0.01$) refinou a precisão estacionária reduzindo o erro de rampa para 1.35\%, o compensador Lead ($K=700, z=13.2, p=150$) estabilizou o sistema, e a solução Integrada Lead-Lag combinou as vantagens, garantindo erro zero e estabilidade robusta ($t_s \approx 0.98s$). O PID sintonizado com $K_p=80.000$ também provou ser altamente eficaz.
 
 \newpage
 \appendix
