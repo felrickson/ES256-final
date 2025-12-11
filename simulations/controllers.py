@@ -149,9 +149,9 @@ def generate_comparative_plots(sys, Kp, z, p, mode='dark'):
 def design_p_controller(sys, mode='dark'):
     """
     Design and simulate a Proportional Controller.
-    Dierson Value: Kp = 77000
+    Dierson Value Equivalent: Kp = 97600 (Maintains old loop gain)
     """
-    Kp = 77000 # Dierson's Value
+    Kp = 97600
     """
     Design and simulate a Proportional Controller.
     """
@@ -173,61 +173,31 @@ def design_p_controller(sys, mode='dark'):
     
     # Step Response
     sys_cl = ct.feedback(Kp * sys, 1)
-    t, y = ct.step_response(sys_cl)
+    t = np.linspace(0, 1.5, 1000)
+    t, y = ct.step_response(sys_cl, T=t)
+    
+    # Calculate metrics for annotation
+    info = ct.step_info(sys_cl)
+    Mp = info['Overshoot']
+    ts = info['SettlingTime']
+    
+    print(f"[{mode.upper()}] P Result (Kp={Kp}): Mp={Mp:.3f}%, ts={ts:.4f}s")
     
     plt.figure(figsize=(10, 6))
     plt.plot(t, y, linewidth=2, color=colors[1]) # Blueish
     plt.title(f'Resposta ao Degrau (P, Kp={Kp})', color='white' if mode=='dark' else 'black')
     plt.grid(True, which='both', color=grid_color, alpha=grid_alpha)
+    
+    # Add metrics text box
+    text_color = 'white' if mode=='dark' else 'black'
+    bg_color = 'black' if mode=='dark' else 'white'
+    plt.text(0.6 * np.max(t), 0.5 * np.max(y), f'Mp = {Mp:.2f}%\nts = {ts:.3f}s', 
+             bbox=dict(facecolor=bg_color, alpha=0.5, edgecolor=text_color), color=text_color)
+             
     plt.savefig(os.path.join(assets_dir, 'step_response_P.png'))
     plt.close()
 
-def design_lag_controller(sys, mode='dark'):
-    """
-    Design Lag controller based on Dierson's approach (EXACT).
-    Dierson's Logic:
-    - Kp = 76000
-    - a = 0.01
-    - b = 0.1
-    """
-    print(f"[{mode.upper()}] Aplicando Controlador Lag (Dierson: Kp=76k, a=0.01, b=0.1)...")
-    
-    # Exact parameters from Dierson's Latex
-    Kp = 76000
-    a = 0.01
-    b = 0.1
-    
-    s = ct.TransferFunction.s
-    C_structure = (s + b) / (s + a)
-    ctrl = Kp * C_structure
-    
-    # Calculate Info
-    L = ctrl * sys
-    T = ct.feedback(L, 1)
-    info = ct.step_info(T)
-    
-    # Kv calculation (Theoretical using Product of poles)
-    # Kv = Limit s -> 0 of s * Kp * C(s) * G(s)
-    # G(s) approx 1.2 / (12540 * s) near 0? No, 1.2 / (s * 12540).
-    # s G(s) -> 1.2 / 12540 approx 9.5e-5.
-    # C(0) = b/a = 10.
-    # Kv = 76000 * 10 * (1.2 / 12540) = 72.7
-    Kv_calc = Kp * (b/a) * (1.2 / 12540)
-    
-    best_info = {
-        'Kp': Kp, 'a': a, 'b': b,
-        'Mp': info['Overshoot'], 
-        'ts': info['SettlingTime'],
-        'Kv': Kv_calc
-    }
 
-    print(f"[{mode.upper()}] Lag Result: Kp={Kp}, Mp={best_info['Mp']:.2f}%, ts={best_info['ts']:.4f}s, Kv={best_info['Kv']:.2f}")
-    
-    # Generate Plots
-    generate_step_plot(sys, ctrl, 'Lag', mode, best_info)
-    generate_root_locus_zoom(sys, ctrl, 'Lag', mode, xlim=[-0.5, 0.1], ylim=[-0.2, 0.2])
-    
-    return ctrl
 
 def design_lead_controller(sys, mode='dark'):
     """
@@ -282,6 +252,8 @@ def design_lead_controller(sys, mode='dark'):
     # Root Locus Plot
     plt.figure(figsize=(10, 6))
     ct.rlocus(ctrl*sys, plot=True, grid=True)
+    plt.xlim([-1200, 100])
+    plt.ylim([-1000, 1000])
     plt.title(f'Lugar das Raízes (Lead)', color='white' if mode=='dark' else 'black')
     plt.savefig(os.path.join(assets_dir, 'root_locus_Lead.png'))
     plt.close()
@@ -326,14 +298,22 @@ def design_lead_controller(sys, mode='dark'):
     return ctrl
 
 
-def design_lag_controller(sys, Kp, z, p, mode='dark'):
+def design_lag_controller(sys, mode='dark'):
     """
-    Design and simulate a Proportional-Lag Compensator.
+    Design and simulate a Proportional-Lag Compensator (Dierson Strategy).
+    Kp=77000, z=0.1, p=0.01
     """
     colors = configure_plot_style(mode)
     assets_dir = get_assets_dir(mode)
     grid_color = 'black' if mode == 'light' else 'white'
     grid_alpha = 0.3 if mode == 'light' else 0.3
+
+    # Dierson Parameters
+    Kp = 77000
+    z = 0.1  # Zero at -0.1
+    p = 0.01 # Pole at -0.01
+
+    print(f"[{mode.upper()}] Lag Design (Dierson): Kp={Kp}, z={z}, p={p}")
 
     # Lag Compensator Transfer Function
     lag_tf = ct.tf([1, z], [1, p])
@@ -621,8 +601,8 @@ def analyze_robustness(controllers_dict, mode='dark'):
         plt.tick_params(colors=text_color, which='both')
         for spine in plt.gca().spines.values():
             spine.set_color(text_color)
-     # Main Execution Loop
-    
+if __name__ == "__main__":
+    sys = define_system()
     # 1. Open Loop Analysis (Run once for assets)
     if not os.path.exists('../assets/images'): os.makedirs('../assets/images')
     if not os.path.exists('../assets/report_images'): os.makedirs('../assets/report_images')
@@ -655,22 +635,19 @@ def analyze_robustness(controllers_dict, mode='dark'):
         'PID': ctrl_pid
     }
     
-    # Robustness Analysis (Dark)
-    analyze_robustness(sys, controllers_to_test, mode='dark')
-    
-    print("\n--- Running Control Simulation in LIGHT mode ---")
+    print("\n--- Running Control Simulation in LIGHT mode (Prioritizing Report Assets) ---")
     configure_plot_style('light')
     design_p_controller(sys, mode='light')
     design_lag_controller(sys, mode='light')
     design_lead_controller(sys, mode='light')
     design_lead_lag_controller(sys, mode='light')
     design_pid_controller(sys, mode='light')
-    
+    generate_comparative_plots(sys, ctrl_p, ctrl_lag, mode='light')
+
+    # Robustness Analysis (Dark)
+    analyze_robustness(sys, controllers_to_test, mode='dark')
+
     # Robustness Analysis (Light)
     analyze_robustness(sys, controllers_to_test, mode='light')
-    
-    # Compare (Light only usually needed for report, but generate both)
-    generate_comparative_plots(sys, ctrl_p, ctrl_lag, mode='light')
-    
     
     print("\nTodas as simulações e gráficos foram atualizados.")
