@@ -146,7 +146,12 @@ def generate_comparative_plots(sys, Kp, z, p, mode='dark'):
     plt.savefig(os.path.join(assets_dir, 'rlocus_lag_detail.png'))
     plt.close()
 
-def design_p_controller(sys, Kp, mode='dark'):
+def design_p_controller(sys, mode='dark'):
+    """
+    Design and simulate a Proportional Controller.
+    Dierson Value: Kp = 77000
+    """
+    Kp = 77000 # Dierson's Value
     """
     Design and simulate a Proportional Controller.
     """
@@ -177,6 +182,53 @@ def design_p_controller(sys, Kp, mode='dark'):
     plt.savefig(os.path.join(assets_dir, 'step_response_P.png'))
     plt.close()
 
+def design_lag_controller(sys, mode='dark'):
+    """
+    Design Lag controller based on Dierson's approach (EXACT).
+    Dierson's Logic:
+    - Kp = 76000
+    - a = 0.01
+    - b = 0.1
+    """
+    print(f"[{mode.upper()}] Aplicando Controlador Lag (Dierson: Kp=76k, a=0.01, b=0.1)...")
+    
+    # Exact parameters from Dierson's Latex
+    Kp = 76000
+    a = 0.01
+    b = 0.1
+    
+    s = ct.TransferFunction.s
+    C_structure = (s + b) / (s + a)
+    ctrl = Kp * C_structure
+    
+    # Calculate Info
+    L = ctrl * sys
+    T = ct.feedback(L, 1)
+    info = ct.step_info(T)
+    
+    # Kv calculation (Theoretical using Product of poles)
+    # Kv = Limit s -> 0 of s * Kp * C(s) * G(s)
+    # G(s) approx 1.2 / (12540 * s) near 0? No, 1.2 / (s * 12540).
+    # s G(s) -> 1.2 / 12540 approx 9.5e-5.
+    # C(0) = b/a = 10.
+    # Kv = 76000 * 10 * (1.2 / 12540) = 72.7
+    Kv_calc = Kp * (b/a) * (1.2 / 12540)
+    
+    best_info = {
+        'Kp': Kp, 'a': a, 'b': b,
+        'Mp': info['Overshoot'], 
+        'ts': info['SettlingTime'],
+        'Kv': Kv_calc
+    }
+
+    print(f"[{mode.upper()}] Lag Result: Kp={Kp}, Mp={best_info['Mp']:.2f}%, ts={best_info['ts']:.4f}s, Kv={best_info['Kv']:.2f}")
+    
+    # Generate Plots
+    generate_step_plot(sys, ctrl, 'Lag', mode, best_info)
+    generate_root_locus_zoom(sys, ctrl, 'Lag', mode, xlim=[-0.5, 0.1], ylim=[-0.2, 0.2])
+    
+    return ctrl
+
 def design_lead_controller(sys, mode='dark'):
     """
     Design and simulate a Lead Compensator.
@@ -189,9 +241,10 @@ def design_lead_controller(sys, mode='dark'):
     grid_alpha = 0.3 if mode == 'light' else 0.3
     
     # Lead Compensator Design
-    # Zero at 20 (approx cancelling/dominating), Pole at 100 (far left)
-    z = 20
-    p = 100
+    # Zero at -10, Pole at -100 (Example high freq boost)
+    # Search gain to stabilize
+    z = 13.2 # Cancel mechanical pole?
+    p = 150  # Far pole
     # Gain K needs to be tuned. Let's try to maintain high loop gain.
     # Root Locus analysis would show optimum.
     # Trial for reasonable overshoot < 15%
@@ -354,6 +407,16 @@ def design_lead_lag_controller(sys, mode='dark'):
     grid_color = 'black' if mode == 'light' else 'white'
     grid_alpha = 0.3 if mode == 'light' else 0.3
     
+    s = ct.TransferFunction.s
+    # Combined Lead-Lag
+    # Lag part: pole=0.01, zero=0.1 (Dierson)
+    # Lead part: zero=13.2, pole=150
+    # Gain scan
+    gains = np.linspace(50000, 150000, 200)
+    
+    lag_part = (s + 0.1) / (s + 0.01)
+    lead_part = (s + 13.2) / (s + 150)
+    
     # Lag Part
     z_lag = 0.1
     p_lag = 0.01
@@ -451,13 +514,19 @@ def design_pid_controller(sys, mode='dark'):
     # Slide mentions "Ziegler Nichols". 
     # Let's use a "good" PID.
     
-    # Kp=100, Ki=50, Kd=10 (Guessed for stability/robustness mentioned in slide)
-    Kp_pid = 200
-    Ki_pid = 100
-    Kd_pid = 5
+    # Kp = 200, Ki = 100, Kd = 5 -> Tuning for Dierson Model
+    # Need much higher K values.
+    # Ziegler Nichols alike?
+    Kp_pid = 80000
+    Ki_pid = 10000
+    Kd_pid = 500
     
-    # Real PID needs a filter on the derivative term to be proper (implementable)
-    # C(s) = (Kd*s^2 + Kp*s + Ki) / (s * (tau*s + 1))
+    # Filter for derivative: N=100 -> tau = Kd/N ? or just pole
+    tau = 0.001
+    
+    s = ct.TransferFunction.s
+    pid_s = Kp_pid + Ki_pid/s + Kd_pid*s/(tau*s + 1)
+    ctrl = pid_s
     # Let tau = 0.001 (very fast filter pole)
     tau = 0.001
     
@@ -552,50 +621,56 @@ def analyze_robustness(controllers_dict, mode='dark'):
         plt.tick_params(colors=text_color, which='both')
         for spine in plt.gca().spines.values():
             spine.set_color(text_color)
-            
-        plt.tight_layout()
-        save_path = os.path.join(assets_dir, f"robustness_{ctrl_name.replace(' ', '')}.png")
-        plt.savefig(save_path, transparent=True)
-        plt.close()
-
-if __name__ == "__main__":
-    sys = define_system()
+     # Main Execution Loop
     
-    for mode in ['dark', 'light']:
-        print(f"\n--- Running Control Simulation in {mode.upper()} mode ---")
-        
-        # 0. Open Loop Analysis (Poles, Zeros, Step)
-        analyze_open_loop(sys, mode=mode)
-
-        # 1. Proportional Controller
-        best_Kp = 138
-        design_p_controller(sys, Kp=best_Kp, mode=mode)
-        
-        # 2. Lead Controller
-        ctrl_lead = design_lead_controller(sys, mode=mode)
-        
-        # 3. Lag Controller
-        z_lag = 0.10
-        p_lag = 0.01
-        K_lag = 150.6
-        ctrl_lag = design_lag_controller(sys, Kp=K_lag, z=z_lag, p=p_lag, mode=mode)
-        
-        # 4. Integrated Lead-Lag Controller
-        ctrl_leadlag = design_lead_lag_controller(sys, mode=mode)
-
-        # 5. PID Controller
-        ctrl_pid = design_pid_controller(sys, mode=mode)
-        
-        # 6. Comparative Plots (Rich Details)
-        generate_comparative_plots(sys, Kp=K_lag, z=z_lag, p=p_lag, mode=mode)
-
-        # 6. Robustness Analysis (Nicolas)
-        controllers_to_test = {
-            "Lead": ctrl_lead,
-            "Lag": ctrl_lag,
-            "Lead-Lag": ctrl_leadlag,
-            "PID": ctrl_pid
-        }
-        analyze_robustness(controllers_to_test, mode=mode)
+    # 1. Open Loop Analysis (Run once for assets)
+    if not os.path.exists('../assets/images'): os.makedirs('../assets/images')
+    if not os.path.exists('../assets/report_images'): os.makedirs('../assets/report_images')
+    
+    # Analyze open loop for both modes
+    analyze_open_loop(sys, mode='dark')
+    analyze_open_loop(sys, mode='light')
+    
+    # 2. Controller Design & Simulation
+    controllers_to_test = {}
+    
+    print("\n--- Running Control Simulation in DARK mode ---")
+    configure_plot_style('dark')
+    # Design P
+    ctrl_p = design_p_controller(sys, mode='dark')
+    # Design Lag (Dierson Strategy)
+    ctrl_lag = design_lag_controller(sys, mode='dark')
+    # Design Lead
+    ctrl_lead = design_lead_controller(sys, mode='dark')
+    # Design Lead-Lag
+    ctrl_leadlag = design_lead_lag_controller(sys, mode='dark')
+    # Design PID
+    ctrl_pid = design_pid_controller(sys, mode='dark')
+    
+    # Save controllers for robustness test (using Dark mode objects is fine)
+    controllers_to_test = {
+        'Lead': ctrl_lead,
+        'Lag': ctrl_lag,
+        'Lead-Lag': ctrl_leadlag,
+        'PID': ctrl_pid
+    }
+    
+    # Robustness Analysis (Dark)
+    analyze_robustness(sys, controllers_to_test, mode='dark')
+    
+    print("\n--- Running Control Simulation in LIGHT mode ---")
+    configure_plot_style('light')
+    design_p_controller(sys, mode='light')
+    design_lag_controller(sys, mode='light')
+    design_lead_controller(sys, mode='light')
+    design_lead_lag_controller(sys, mode='light')
+    design_pid_controller(sys, mode='light')
+    
+    # Robustness Analysis (Light)
+    analyze_robustness(sys, controllers_to_test, mode='light')
+    
+    # Compare (Light only usually needed for report, but generate both)
+    generate_comparative_plots(sys, ctrl_p, ctrl_lag, mode='light')
+    
     
     print("\nTodas as simulações e gráficos foram atualizados.")

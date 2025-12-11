@@ -67,17 +67,17 @@ def define_system():
     """
     Define the State Space matrices based on Gabriel's PDF.
     Parameters:
-    Km = 1.1 (Motor Gain)
+    Km = 1.2 (Motor Gain - Dierson's value)
     am = 13.2 (Mechanical Pole)
     ae = 950.0 (Electrical Pole)
-    K_sys = 772 (System Constant)
+    K_sys = 1.0 (Removed intrinsic gain 772)
     
-    Transfer Function: G(s) = (Km * K_sys) / (s * (s + am) * (s + ae))
+    Transfer Function: G(s) = Km / (s * (s + am) * (s + ae))
     """
-    Km = 1.1
+    Km = 1.2
     am = 13.2
     ae = 950.0
-    K_sys = 772
+    # K_sys removed (or set to 1) per Dierson's model
     
     # Coefficients for denominator: s^3 + a2*s^2 + a1*s + a0
     # den = s(s^2 + (am+ae)s + am*ae) = s^3 + (am+ae)s^2 + (am*ae)s
@@ -86,7 +86,7 @@ def define_system():
     a0 = 0
     
     # Numerator coefficient
-    b0 = Km * K_sys    # 849.2
+    b0 = Km            # 1.2
     
     # State Space in Controllable Canonical Form (as per PDF)
     # x_dot = A x + B u
