@@ -147,13 +147,20 @@ def design_p_controller(sys, mode='dark'):
     grid_alpha = 0.3
 
     # Root Locus
-    plt.figure(figsize=(10, 6))
-    ct.rlocus(sys, plot=True, grid=True)
-    plt.xlim([-2, 2])
+    plt.figure(figsize=(10, 10))
+    rlist, klist = ct.rlocus(sys, plot=True, grid=True)
+    
+    # Enhanced visibility for poles and zeros
+    poles, zeros = ct.pzmap(sys, plot=False)
+    plt.plot(np.real(poles), np.imag(poles), 'x', markersize=12, markeredgewidth=3, color='orange', label='Open Loop Poles')
+    plt.plot(np.real(zeros), np.imag(zeros), 'o', markersize=12, markeredgewidth=3, markerfacecolor='none', color='orange', label='Open Loop Zeros')
+    
     plt.title(f'Lugar das Raízes (Kp={Kp})', color='white' if mode=='dark' else 'black')
     plt.xlabel('Eixo Real')
     plt.ylabel('Eixo Imaginário')
     plt.grid(True, which='both', color=grid_color, alpha=grid_alpha)
+    # plt.xlim([-2, 2]) # Auto-scale requested
+    plt.legend()
     plt.savefig(os.path.join(assets_dir, '03_rlocus_P.png'))
     plt.close()
     
@@ -235,17 +242,28 @@ def design_lag_controller(sys, mode='dark'):
     plt.close()
 
     # Root Locus (Lag)
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(10, 10))
     # Standard RL of the Lag*Sys
     sys_open_lag = lag_tf * sys
     ct.rlocus(sys_open_lag, plot=True, grid=True)
+    
+    # Enhanced visibility
+    poles, zeros = ct.pzmap(sys_open_lag, plot=False)
+    plt.plot(np.real(poles), np.imag(poles), 'x', markersize=12, markeredgewidth=3, color='orange')
+    plt.plot(np.real(zeros), np.imag(zeros), 'o', markersize=12, markeredgewidth=3, markerfacecolor='none', color='orange')
+
     plt.title(f'Lugar das Raízes (Compensador Lag) - Zero: {z}, Polo: {p}', color='white' if mode=='dark' else 'black')
     plt.savefig(os.path.join(assets_dir, '06a_rlocus_Lag.png'))
     plt.close()
     
     # Root Locus Detail (Dipole)
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(10, 10))
     ct.rlocus(sys_open_lag, plot=True, grid=True)
+    
+    # Enhanced visibility
+    plt.plot(np.real(poles), np.imag(poles), 'x', markersize=12, markeredgewidth=3, color='orange')
+    plt.plot(np.real(zeros), np.imag(zeros), 'o', markersize=12, markeredgewidth=3, markerfacecolor='none', color='orange')
+
     plt.xlim([-0.5, 0.5]) 
     plt.ylim([-0.5, 0.5])
     plt.title(f'Lugar das Raízes (Detalhe do Dipolo)\nZero={z}, Polo={p}', color='white' if mode=='dark' else 'black')
@@ -294,16 +312,27 @@ def design_lead_controller(sys, mode='dark'):
     plt.savefig(os.path.join(assets_dir, '12_step_response_Lead.png'))
     plt.close()
     
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(10, 10))
     ct.rlocus(ctrl*sys, plot=True, grid=True)
-    plt.xlim([-200, 50])
-    plt.ylim([-150, 150])
+    
+    # Enhanced visibility
+    poles, zeros = ct.pzmap(ctrl*sys, plot=False)
+    plt.plot(np.real(poles), np.imag(poles), 'x', markersize=12, markeredgewidth=3, color='orange')
+    plt.plot(np.real(zeros), np.imag(zeros), 'o', markersize=12, markeredgewidth=3, markerfacecolor='none', color='orange')
+
+    # plt.xlim([-200, 50]) # Auto-scale
+    # plt.ylim([-150, 150])
     plt.title(f'Lugar das Raízes (Lead)', color='white' if mode=='dark' else 'black')
     plt.savefig(os.path.join(assets_dir, '09_root_locus_Lead.png'))
     plt.close()
 
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(10, 10))
     ct.rlocus(ctrl*sys, plot=True, grid=True)
+    
+    # Enhanced visibility
+    plt.plot(np.real(poles), np.imag(poles), 'x', markersize=12, markeredgewidth=3, color='orange')
+    plt.plot(np.real(zeros), np.imag(zeros), 'o', markersize=12, markeredgewidth=3, markerfacecolor='none', color='orange')
+
     plt.xlim([-20.0, 5.0])
     plt.ylim([-10.0, 10.0])
     plt.title(f'Detalhe do Cancelamento Polo-Zero (Lead)', color='white' if mode=='dark' else 'black')
@@ -384,10 +413,16 @@ def design_lead_lag_controller(sys, mode='dark'):
     plt.savefig(os.path.join(assets_dir, '13_step_response_LeadLag.png'))
     plt.close()
     
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(10, 10))
     ct.rlocus(ctrl*sys, plot=True, grid=True)
+    
+    # Enhanced visibility
+    poles, zeros = ct.pzmap(ctrl*sys, plot=False)
+    plt.plot(np.real(poles), np.imag(poles), 'x', markersize=12, markeredgewidth=3, color='orange')
+    plt.plot(np.real(zeros), np.imag(zeros), 'o', markersize=12, markeredgewidth=3, markerfacecolor='none', color='orange')
+    
     plt.title(f'Lugar das Raízes (Lead-Lag)', color='white' if mode=='dark' else 'black')
-    plt.savefig(os.path.join(assets_dir, '17_robustness_LeadLag.png'))
+    plt.savefig(os.path.join(assets_dir, '14a_rlocus_LeadLag.png')) # Renamed to avoid collision
     plt.close()
     
     plt.figure(figsize=(10, 8))
@@ -423,9 +458,9 @@ def design_pid_controller(sys, mode='dark'):
     grid_color = 'black' if mode == 'light' else 'white'
     grid_alpha = 0.3
     
-    Kp_pid = 80000
-    Ki_pid = 10000
-    Kd_pid = 500
+    Kp_pid = 60000
+    Ki_pid = 5000
+    Kd_pid = 1000
     
     # Filter for derivative
     tau = 0.001
@@ -501,10 +536,19 @@ def analyze_robustness(controllers_dict, mode='dark'):
             
             color = params["color_dark"] if mode == 'dark' else params["color_light"]
             
-            y_peak = np.max(y)
-            mp = (y_peak - 1) * 100
+            y_peak_abs = np.max(np.abs(y))
             
-            plt.plot(t, y, linestyle=params["style"], linewidth=2, label=f"{name} (Mp={mp:.1f}%)", color=color)
+            if y_peak_abs > 50:
+                label_text = f"{name} (Instável)"
+                # Clip data to prevent visual artifacts (vertical lines filling the plot)
+                y_plot = np.clip(y, -5.0, 5.0)
+            else:
+                y_peak = np.max(y)
+                mp = (y_peak - 1) * 100
+                label_text = f"{name} (Mp={mp:.1f}%)"
+                y_plot = y
+            
+            plt.plot(t, y_plot, linestyle=params["style"], linewidth=2, label=label_text, color=color)
             
         plt.axhline(1.0, color=text_color, linestyle=':', linewidth=0.8, alpha=0.5)
         plt.grid(True, which='both', linestyle='--', linewidth=0.5, color=grid_color, alpha=grid_alpha)
@@ -512,6 +556,7 @@ def analyze_robustness(controllers_dict, mode='dark'):
         plt.title(f'Análise de Robustez - {ctrl_name}', color=text_color, fontsize=14)
         plt.xlabel('Tempo (s)', color=text_color, fontsize=12)
         plt.ylabel('Amplitude', color=text_color, fontsize=12)
+        plt.ylim(-0.2, 2.0)
         
         legend = plt.legend(facecolor=face_color, edgecolor=text_color)
         for text in legend.get_texts():
@@ -557,8 +602,7 @@ if __name__ == "__main__":
     ctrl_pid = design_pid_controller(sys, mode='dark')
     
     controllers_to_test = {
-        'Lead': ctrl_lead,
-        'Lag': ctrl_lag,
+        'Proportional': Kp_p,
         'Lead-Lag': ctrl_leadlag,
         'PID': ctrl_pid
     }

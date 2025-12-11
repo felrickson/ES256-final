@@ -35,11 +35,19 @@ def configure_plot_style(mode='dark'):
             "ytick.color":       "white",
             "text.color":        "white",
             "grid.color":        "white",
-            "grid.alpha":        0.2,
-            "legend.facecolor":  (0.0, 0.0, 0.0, 0.5),
+            "grid.alpha":        0.4,
+            "legend.facecolor":  (0.0, 0.0, 0.0, 0.7),
             "legend.edgecolor":  "white",
             "lines.color":       "white",
-            "patch.edgecolor":   "white"
+            "patch.edgecolor":   "white",
+            "font.size":         14,
+            "axes.titlesize":    24,
+            "axes.labelsize":    20,
+            "xtick.labelsize":   16,
+            "ytick.labelsize":   16,
+            "legend.fontsize":   16,
+            "lines.linewidth":   3,
+            "grid.linewidth":    1.5
         })
         return ['#f59e0b', '#3b82f6', '#10b981', '#ef4444'] # Orange, Blue, Green, Red
     else:
@@ -58,7 +66,15 @@ def configure_plot_style(mode='dark'):
             "legend.facecolor":  "white",
             "legend.edgecolor":  "black",
             "lines.color":       "black",
-            "patch.edgecolor":   "black"
+            "patch.edgecolor":   "black",
+            "font.size":         12,
+            "axes.titlesize":    20,
+            "axes.labelsize":    16,
+            "xtick.labelsize":   12,
+            "ytick.labelsize":   12,
+            "legend.fontsize":   12,
+            "lines.linewidth":   2,
+            "grid.linewidth":    1.0
         })
         # Standard academic colors (Blue, Orange, Green, Red) - darker shades for white paper
         return ['#d35400', '#2980b9', '#27ae60', '#c0392b'] 

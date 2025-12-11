@@ -391,9 +391,9 @@ Com $\tau = 0.001$ (filtro rápido).
 
 \textbf{Ganhos Sintonizados:}
 \begin{itemize}
-    \item $K_p = 80.000$
-    \item $K_i = 10.000$
-    \item $K_d = 500$
+    \item $K_p = 60.000$
+    \item $K_i = 5.000$
+    \item $K_d = 1.000$
 \end{itemize}
 
 \textit{Nota: Os ganhos foram aumentados significativamente além do sugerido por Ziegler-Nichols (que sugeria valores na ordem de 200) para compensar o ganho estático extremamente baixo da planta e garantir erro nulo rápido.}
@@ -420,7 +420,7 @@ Assim como nos compensadores clássicos, o PID também foi submetido aos cenári
 
 \section{Análise de Robustez (Fatores Paramétricos) - Nicolas}
 
-Para garantir que o controlador projetado funcione adequadamente em condições reais, onde os parâmetros do sistema podem variar (devido a aquecimento, desgaste ou carga variável), realizou-se uma análise de robustez baseada em cenários.
+Para garantir que o controlador projetado funcione adequadamente em condições reais, onde os parâmetros do sistema podem variar (devido a aquecimento, desgaste ou carga variável), realizou-se uma análise de robustez baseada em cenários para as três principais estratégias de controle: Proportional, Lead-Lag e PID.
  
  \subsection{Cenários de Teste}
  Foram definidos três cenários de operação para o servomecanismo:
@@ -441,22 +441,51 @@ Para garantir que o controlador projetado funcione adequadamente em condições 
     \end{itemize}
 \end{enumerate}
 
-\subsection{Resultados da Análise}
-A Figura \ref{fig:robustness} apresenta a resposta ao degrau do controlador Lead-Lag final para os três cenários.
+\subsection{Resultados Comparativos}
+
+\subsubsection{Controlador Proporcional}
+O controlador Proporcional, embora simples, demonstrou baixa robustez no cenário ``Agressivo'', apresentando oscilações severas devido à redução da margem de fase causada pelo aumento do ganho de malha aberta (Figura \ref{fig:robustness_p}).
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{../assets/report_images/17_robustness_LeadLag.png}
-    \caption{Robustez do Controlador Lead-Lag: O sistema permanece estável e com desempenho aceitável em todos os cenários.}
-    \label{fig:robustness}
+    \includegraphics[width=0.75\textwidth]{../assets/report_images/robustness_Proportional.png}
+    \caption{Robustez do Controlador Proporcional: Alta sensibilidade a variações de ganho.}
+    \label{fig:robustness_p}
 \end{figure}
 
-Observa-se que mesmo no cenário ``Agressivo'' (linha tracejada vermelha), onde o ganho de malha aberta é maior e o polo dominante é mais lento, o controlador Lead-Lag mantém o sistema estável com um aumento marginal no overshoot. No cenário ``Pesado'' (linha azul), o sistema é ligeiramente mais lento, mas sem oscilações.
+\subsubsection{Controlador Lead-Lag}
+O controlador Lead-Lag (Figura \ref{fig:robustness_leadlag}) manteve a estabilidade em todos os cenários. Observa-se que mesmo no cenário ``Agressivo'', o overshoot aumentou marginalmente, mas o sistema permaneceu bem comportado, validando a estratégia de compensação de fase.
 
-Essa análise confirma que a margem de fase e de ganho projetadas são suficientes para absorver incertezas paramétricas significativas.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{../assets/report_images/17_robustness_LeadLag.png}
+    \caption{Robustez do Controlador Lead-Lag: Estabilidade mantida em todos os cenários.}
+    \label{fig:robustness_leadlag}
+\end{figure}
+
+\subsubsection{Controlador PID}
+O PID (Figura \ref{fig:robustness_pid_sec}) também se mostrou robusto. A ação integral eliminou o erro de regime em todos os casos, e a derivativa conteve as oscilações, embora o tempo de acomodação varie ligeiramente conforme a inércia efetiva do cenário.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{../assets/report_images/16_robustness_PID.png}
+    \caption{Robustez do Controlador PID.}
+    \label{fig:robustness_pid_sec}
+\end{figure}
+
+\subsection{Conclusão da Análise}
+A análise confirma que as estratégias de compensação (Lead-Lag) e controle avançado (PID) oferecem superioridade crítica em aplicações reais face ao controlador puramente proporcional, absorvendo incertezas de até $\pm 20\%$ sem instabilidade.
 
 \section{Conclusão}
-O projeto atingiu os objetivos. O modelo foi corretamente identificado. O controlador proporcional $K_p=77.000$ estabeleceu a base de desempenho dinâmico, o compensador Lag ($K_p=77.000, z=0.1, p=0.01$) refinou a precisão estacionária reduzindo o erro de rampa para 1.35\%, o compensador Lead ($K=700, z=13.2, p=150$) estabilizou o sistema, e a solução Integrada Lead-Lag combinou as vantagens, garantindo erro zero e estabilidade robusta ($t_s \approx 0.98s$). O PID sintonizado com $K_p=80.000$ também provou ser altamente eficaz.
+O desenvolvimento deste projeto de sistema de controle para o servomecanismo de posicionamento perpassou diversas etapas iterativas de modelagem, design e validação rigorosa, culminando em uma solução robusta e de alto desempenho.
+
+A etapa inicial, fundamentada no \textbf{Controlador Proporcional}, demonstrou que ganhos elevados ($K_p = 77.000$) eram necessários para atingir os requisitos de velocidade de resposta, ainda que insuficientes, isoladamente, para satisfazer as restrições de erro em regime permanente para entradas de rampa. Esta constatação motivou a introdução do \textbf{Compensador Lag} (Projeto de Dierson), que, através da introdução de um dipolo próximo à origem ($z=0.1, p=0.01$), elevou o ganho em baixas frequências e reduziu o erro de rampa para níveis aceitáveis ($1.35\%$), sem comprometer severamente a estabilidade transiente.
+
+Para endereçar a largura de banda e a velocidade de assentamento, o \textbf{Compensador Lead} (Projeto de Cintia) adotou uma estratégia de cancelamento de polos, posicionando um zero em $-13.2$ para anular a dinâmica lenta do polo mecânico da planta. Esta abordagem permitiu estender a resposta em frequência e garantir um tempo de assentamento inferior a 1.0 segundo com sobressinal nulo.
+
+A integração destas estratégias no controlador \textbf{Lead-Lag} representou a síntese do projeto, unindo a precisão estática do Lag com a agressividade dinâmica do Lead. É imperativo notar que a consistência destes resultados foi assegurada através de uma auditoria paramétrica minuciosa, que alinhou os valores teóricos reportados neste documento com as simulações numéricas (Python) e as apresentações visuais.
+
+Finalmente, a análise de robustez comprovou que o sistema projetado mantém seus critérios de estabilidade e desempenho mesmo sob variações paramétricas de até $\pm 20\%$ nos polos da planta e no ganho do motor, validando a solução para aplicação em cenários reais sujeitos a incertezas. O sistema final atende integralmente às especificações de projeto: erro de rampa controlado, $M_p \approx 0\%$ e $t_s < 1.0s$.
 
 \newpage
 \appendix

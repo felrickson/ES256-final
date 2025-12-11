@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" style="font-size: 125%;">
 
 <head>
     <meta charset="UTF-8">
@@ -828,91 +828,7 @@
 
         </section>
 
-        <!-- SLIDE: ROBUSTNESS ANALYSIS (NICOLAS) -->
-        <section class="slide">
-            <div class="container mx-auto px-6 max-w-6xl h-full flex flex-col justify-center">
-                <div class="flex justify-between items-end mb-8 border-b border-white/10 pb-6">
-                    <div>
-                        <h2 class="text-4xl font-bold mb-2">Análise de <span class="text-red-500">Robustez</span></h2>
-                        <p class="text-gray-400">Comportamento sob incertezas paramétricas</p>
-                    </div>
-                    <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10">
-                        <div
-                            class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 font-bold text-xs">
-                            N</div>
-                        <span class="text-gray-300 font-medium text-sm">Nicolas</span>
-                    </div>
-                </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-                    <div class="space-y-4">
-                        <div class="bg-white/5 p-6 rounded-lg border border-white/10">
-                            <h3 class="text-xl text-brand-primary mb-2">Parâmetros (Dierson)</h3>
-                            <ul class="list-disc list-inside space-y-2 text-gray-300">
-                                <li><strong>$K_m = 1.2$</strong>: Constante Motor</li>
-                                <li><strong>$a_m = 13.2$</strong>: Polo Mecânico</li>
-                                <li><strong>$a_e = 950$</strong>: Polo Elétrico</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="bg-white/5 p-6 rounded-lg border border-white/10">
-                            <h3 class="text-xl text-brand-primary mb-2">Função de Transferência Nominal</h3>
-                            <p class="mb-4 text-gray-300">Modelo sem ganho intrínseco elevado:</p>
-                            <div class="text-2xl">
-                                $$G(s) = \frac{1.2}{s(s+13.2)(s+950)}$$
-                            </div>
-                            <p class="mt-4 text-sm text-gray-400">* Atenuação dos pólos exige ganho controlador $\approx
-                                10^5$.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col md:flex-row gap-12 items-center">
-                    <div class="w-full md:w-1/3 space-y-6">
-                        <div class="bg-red-500/10 border-l-4 border-red-500 p-6 rounded-r-xl">
-                            <h4 class="text-red-400 font-bold mb-4">Cenários de Teste</h4>
-                            <ul class="text-xs space-y-3 text-gray-300">
-                                <li>
-                                    <strong class="text-green-400">Nominal:</strong> Parâmetros ideais ($K_m=1.1,
-                                    a_m=13.2$).
-                                </li>
-                                <li>
-                                    <strong class="text-blue-400">Pesado:</strong> Motor fraco, atrito alto ($K_m=0.8,
-                                    a_m=15$).
-                                </li>
-                                <li>
-                                    <strong class="text-orange-400">Agressivo:</strong> Motor forte, sem atrito
-                                    ($K_m=1.2, a_m=10$).
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
-                            <h4 class="text-white font-bold text-sm mb-2">Conclusão</h4>
-                            <p class="text-xs text-gray-400 leading-relaxed">
-                                O controlador <strong>Lead-Lag</strong> manteve a estabilidade em todos os cenários, com
-                                variações aceitáveis no overshoot e tempo de acomodação, comprovando sua robustez para
-                                aplicação real.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="w-full md:w-2/3">
-                        <!-- Simple Carousel / Switcher logic not standard in Reveal without plugins, so we show the BEST one (Lead-Lag) primarily or stack them cleanly -->
-                        <div class="relative group">
-                            <h5
-                                class="absolute top-2 left-4 text-xs font-bold text-white bg-black/50 px-2 py-1 rounded z-10">
-                                Lead-Lag (Final)</h5>
-                            <img src="assets/images/17_robustness_LeadLag.png"
-                                class="w-full rounded-xl shadow-2xl border border-white/10" />
-                        </div>
-                        <div class="flex gap-2 mt-4 overflow-x-auto justify-center">
-                            <!-- Thumbnails if needed or just keep it simple with the main one -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- SLIDE 14: PID -->
         <section class="slide">
@@ -953,6 +869,65 @@
                         class="w-full md:w-1/2 bg-black/20 rounded-xl p-4 flex items-center justify-center border border-white/10">
                         <img src="assets/images/15_step_response_PID.png" alt="PID Results"
                             class="max-h-[400px] rounded">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE: ROBUSTNESS ANALYSIS (NICOLAS) -->
+        <section class="slide">
+            <div class="container mx-auto px-6 max-w-6xl h-full flex flex-col justify-center">
+                <div class="flex justify-between items-end mb-8 border-b border-white/10 pb-6">
+                    <div>
+                        <h2 class="text-4xl font-bold mb-2">Análise de <span class="text-red-500">Robustez</span></h2>
+                        <p class="text-gray-400">Comportamento sob incertezas paramétricas (±20%)</p>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                        <div
+                            class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 font-bold text-xs">
+                            N</div>
+                        <span class="text-gray-300 font-medium text-sm">Nicolas</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-8 h-full justify-center">
+
+                    <div class="grid grid-cols-3 gap-6">
+                        <!-- P -->
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10 flex flex-col items-center">
+                            <h4 class="text-brand-primary font-bold mb-2 text-sm">Proporcional</h4>
+                            <img src="assets/images/robustness_Proportional.png"
+                                class="rounded border border-white/10 w-full mb-2">
+                            <span class="text-[10px] text-red-400">Instável/Oscilatório no Cenário Agressivo</span>
+                        </div>
+
+                        <!-- Lead-Lag -->
+                        <div
+                            class="bg-white/5 p-4 rounded-xl border border-brand-accent/50 flex flex-col items-center relative overflow-hidden">
+                            <div
+                                class="absolute top-0 right-0 bg-brand-accent/20 text-[10px] font-bold px-2 py-1 text-brand-accent">
+                                FINAL</div>
+                            <h4 class="text-brand-accent font-bold mb-2 text-sm">Lead-Lag</h4>
+                            <img src="assets/images/17_robustness_LeadLag.png"
+                                class="rounded border border-white/10 w-full mb-2">
+                            <span class="text-[10px] text-green-400">Estável em todos os cenários</span>
+                        </div>
+
+                        <!-- PID -->
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10 flex flex-col items-center">
+                            <h4 class="text-purple-400 font-bold mb-2 text-sm">PID</h4>
+                            <img src="assets/images/16_robustness_PID.png"
+                                class="rounded border border-white/10 w-full mb-2">
+                            <span class="text-[10px] text-green-400">Robusto e Preciso</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-red-500/10 border-l-4 border-red-500 p-4 rounded-r-xl text-center max-w-4xl mx-auto">
+                        <p class="text-gray-300 text-sm">
+                            <strong class="text-red-400">Conclusão:</strong> Enquanto o Proporcional sofre com variações
+                            no ganho da planta, os controladores compensados <strong>(Lead-Lag e PID)</strong> garantem
+                            a integridade do sistema mesmo nos piores casos ("Pesado" e "Agressivo").
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1007,13 +982,55 @@
         <!-- SLIDE 11: CONCLUSION -->
         <section class="slide">
             <div class="container mx-auto px-6 max-w-4xl h-full flex flex-col justify-center text-center">
-                <h2 class="text-5xl font-bold mb-8">Conclusão</h2>
-                <div class="w-32 h-2 bg-brand-accent rounded-full mx-auto mb-16"></div>
+                <h2 class="text-4xl font-bold mb-4">Conclusão do Projeto</h2>
+                <div class="w-32 h-1 bg-brand-accent rounded-full mx-auto mb-8"></div>
 
-                <p class="text-3xl text-gray-300 font-light leading-relaxed mb-16">
-                    "A aplicação de controle avançado transformou um sistema mecanicamente lento (<span
-                        class="text-brand-primary">inercial</span>) em um servomecanismo de <span
-                        class="text-brand-accent">alta precisão</span> e resposta rápida."
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mb-12">
+                    <div class="space-y-6">
+                        <div class="bg-white/5 p-6 rounded-xl border border-white/10">
+                            <h3 class="text-xl font-bold text-brand-primary mb-2">A Jornada do Design</h3>
+                            <ul class="space-y-3 text-sm text-gray-300">
+                                <li class="flex gap-2">
+                                    <span class="text-brand-accent">1.</span>
+                                    <span><strong>Proporcional:</strong> Garantiu velocidade, mas falhou na
+                                        precisão.</span>
+                                </li>
+                                <li class="flex gap-2">
+                                    <span class="text-brand-accent">2.</span>
+                                    <span><strong>Lag (Dierson):</strong> Introduziu o dipolo para zerar o erro de
+                                        rampa.</span>
+                                </li>
+                                <li class="flex gap-2">
+                                    <span class="text-brand-accent">3.</span>
+                                    <span><strong>Lead (Cintia):</strong> Cancelou o polo lento (-13.2) para resposta
+                                        ideal.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-brand-accent/10 p-6 rounded-xl border border-brand-accent/20">
+                            <h3 class="text-xl font-bold text-white mb-2">Resultados Validados</h3>
+                            <p class="text-sm text-gray-300 mb-4">
+                                Auditoria completa de consistência parametrica realizada entre Código, Relatório e
+                                Apresentação.
+                            </p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-white">0.98s</div>
+                                    <div class="text-xs text-brand-primary">Tempo de Assentamento</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-white">0.0%</div>
+                                    <div class="text-xs text-brand-primary">Overshoot (Lead-Lag)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-lg text-gray-400 font-light italic">
+                    "Uma solução robusta, auditada e pronta para implementação."
                 </p>
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-50 text-sm">
@@ -1043,14 +1060,23 @@
             // 4: Dierson (Slides 8, 9, 10) - Added Slide 10
             // 5: Guilherme/Nicolas (Slide 11)
             // 6: Results/Conclusion (Slides 12, 13)
+            // 0: Intro
+            // 1: Gabriel
+            // 2: Felipe
+            // 3: Dierson
+            // 4: Cintia (+ Lead-Lag)
+            // 5: PID
+            // 6: Robustness
+            // 7: Conclusion
             const groups = [
                 [0],              // Intro
                 [1, 2, 3, 4],     // Gabriel
                 [5, 6],           // Felipe
-                [7],              // Cintia
-                [8, 9, 10],       // Dierson
-                [11],             // PID
-                [12, 13]          // Results/Conclusion
+                [7, 8, 9],        // Dierson
+                [10, 11, 12, 13], // Cintia + Lead-Lag
+                [14],             // PID
+                [15],             // Robustness
+                [16, 17]          // Results/Conclusion
             ];
 
             let globalCurrentSlide = 0;
