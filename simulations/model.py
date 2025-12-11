@@ -118,29 +118,56 @@ def analyze_open_loop(sys, mode='dark'):
     print("Polos do sistema:", ct.poles(sys))
     print("Zeros do sistema:", ct.zeros(sys))
     
-    # Plot 1: Pole-Zero Map
-    plt.figure(figsize=(6, 5))
-    poles, zeros = ct.pzmap(sys, plot=False)
-    plt.scatter(np.real(poles), np.imag(poles), marker='x', s=100, color=colors[0], label='Polos') 
-    plt.title('Mapa de Polos', color='white' if mode=='dark' else 'black')
-    plt.xlabel('Real')
-    plt.ylabel('Imaginário')
-    plt.grid(True)
-    plt.legend()
-    plt.tight_layout()
-    plt.savefig(os.path.join(assets_dir, 'pzmap_dark.png' if mode=='dark' else 'pzmap_light.png'))
-    plt.close()
+    # Plot 1: PZ Map
+    # Plot 1: PZ Map (Manual Plot for High Visibility)
+    plt.figure(figsize=(8, 6))
+    poles = ct.poles(sys)
+    zeros = ct.zeros(sys)
+    
+    # Grid
+    grid_color = 'white' if mode == 'dark' else 'black'
+    grid_alpha = 0.3
+    plt.grid(True, which='both', linestyle='--', color=grid_color, alpha=grid_alpha)
+    plt.axhline(0, color=grid_color, linewidth=1, alpha=0.5)
+    plt.axvline(0, color=grid_color, linewidth=1, alpha=0.5)
 
-    # Plot 2: Step Response
-    plt.figure(figsize=(8, 5))
+    # Markers
+    if mode == 'dark':
+        pole_color = '#00ffff' # Cyan
+        zero_color = '#ffff00' # Yellow
+    else:
+        pole_color = 'blue'
+        zero_color = 'red'
+
+    plt.scatter(np.real(poles), np.imag(poles), marker='x', s=150, linewidth=3, color=pole_color, label='Polos')
+    if len(zeros) > 0:
+        plt.scatter(np.real(zeros), np.imag(zeros), marker='o', s=150, linewidth=3, edgecolor=zero_color, facecolor='none', label='Zeros')
+
+    # Annotate Poles
+    for p in poles:
+        plt.annotate(f"{p.real:.1f}", (np.real(p), np.imag(p)), 
+                     textcoords="offset points", xytext=(10,10), ha='center', 
+                     color=grid_color, fontsize=10)
+
+    plt.title('Mapa de Polos e Zeros (Malha Aberta)', color='white' if mode=='dark' else 'black')
+    plt.xlabel('Eixo Real')
+    plt.ylabel('Eixo Imaginário')
+    plt.legend()
+    
+    # Save
+    plt.savefig(os.path.join(assets_dir, f'01_pzmap_{mode}.png'))
+    plt.close()
+    
+    # Plot 2: Open Loop Step
+    plt.figure(figsize=(10, 6))
     t, y = ct.step_response(sys)
-    plt.plot(t, y, linewidth=2, color=colors[1]) 
-    plt.title('Resposta ao Degrau (Malha Aberta)', color='white' if mode=='dark' else 'black')
+    plt.plot(t, y, linewidth=2, color='#f59e0b' if mode=='dark' else '#d35400')
+    plt.title('Resposta ao Degrau em Malha Aberta', color='white' if mode=='dark' else 'black')
     plt.xlabel('Tempo (s)')
     plt.ylabel('Amplitude')
-    plt.grid(True)
-    plt.tight_layout()
-    plt.savefig(os.path.join(assets_dir, 'step_openloop_dark.png' if mode=='dark' else 'step_openloop_light.png'))
+    plt.grid(True, which='both', color='white' if mode=='dark' else 'black', alpha=0.3)
+    
+    plt.savefig(os.path.join(assets_dir, f'02_step_openloop_{mode}.png'))
     plt.close()
 
 if __name__ == "__main__":

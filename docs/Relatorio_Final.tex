@@ -96,7 +96,7 @@ A Figura \ref{fig:pzmap} ilustra a localização dos polos no plano complexo.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{../assets/report_images/pzmap_light.png}
+    \includegraphics[width=0.6\textwidth]{../assets/report_images/01_pzmap_light.png}
     \caption{Mapa de Polos e Zeros do Sistema (Malha Aberta)}
     \label{fig:pzmap}
 \end{figure}
@@ -105,7 +105,7 @@ A resposta ao degrau em malha aberta (Figura \ref{fig:openloop}) confirma o comp
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{../assets/report_images/step_openloop_light.png}
+    \includegraphics[width=0.7\textwidth]{../assets/report_images/02_step_openloop_light.png}
     \caption{Resposta ao Degrau em Malha Aberta (Comportamento Integrador)}
     \label{fig:openloop}
 \end{figure}
@@ -129,7 +129,7 @@ Para manter o mesmo desempenho do projeto anterior (overshoot $\approx 10\%$), o
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../assets/report_images/felipe_rlocus.png}
+    \includegraphics[width=0.8\textwidth]{../assets/report_images/03_rlocus_P.png}
     \caption{Lugar das Raízes para o Controlador Proporcional}
     \label{fig:rlocus_p}
 \end{figure}
@@ -153,7 +153,7 @@ Utilizando o ganho ajustado $K_p = 97.600$:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../assets/report_images/step_response_P.png}
+    \includegraphics[width=0.8\textwidth]{../assets/report_images/04_step_response_P.png}
     \caption{Resposta ao Degrau - Controlador P ($K_p=97.600$)}
     \label{fig:step_p}
 \end{figure}
@@ -226,7 +226,7 @@ A Figura \ref{fig:bode_compare} mostra o Diagrama de Bode, evidenciando o aument
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{../assets/report_images/compare_bode_v2.png}
+    \includegraphics[width=1.0\textwidth]{../assets/report_images/05_compare_bode.png}
     \caption{Comparação de Diagramas de Bode (Malha Aberta): Planta Original, com Controlador P, e com Compensador Lag}
     \label{fig:bode_compare}
 \end{figure}
@@ -237,7 +237,7 @@ A Figura \ref{fig:rlocus_detail} mostra em detalhe o dipolo polo-zero introduzid
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{../assets/report_images/rlocus_lag_detail.png}
+    \includegraphics[width=0.7\textwidth]{../assets/report_images/06_rlocus_lag_detail.png}
     \caption{Detalhe do Lugar das Raízes próximo à origem (Dipolo do Compensador Lag)}
     \label{fig:rlocus_detail}
 \end{figure}
@@ -246,7 +246,7 @@ Finalmente, apresentamos as comparações diretas de desempenho temporal.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{../assets/report_images/compare_step.png}
+    \includegraphics[width=1.0\textwidth]{../assets/report_images/07_compare_step.png}
     \caption{Comparação de Resposta ao Degrau em Malha Fechada}
     \label{fig:step_compare}
 \end{figure}
@@ -255,7 +255,7 @@ A resposta ao degrau (Figura \ref{fig:step_compare}) confirma que o comportament
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{../assets/report_images/compare_ramp.png}
+    \includegraphics[width=1.0\textwidth]{../assets/report_images/08_compare_ramp.png}
     \caption{Comparação de Resposta à Rampa: O Lag praticamente elimina o erro de seguimento visível na curva do Proporcional.}
     \label{fig:ramp_compare}
 \end{figure}
@@ -284,7 +284,7 @@ A Figura \ref{fig:rlocus_lead} mostra como o compensador altera a trajetória do
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../assets/report_images/root_locus_Lead.png}
+    \includegraphics[width=0.8\textwidth]{../assets/report_images/09_root_locus_Lead.png}
     \caption{Lugar das Raízes com Compensador Lead}
     \label{fig:rlocus_lead}
 \end{figure}
@@ -293,7 +293,7 @@ A Figura \ref{fig:rlocus_lead_detail} abaixo detalha o efeito do cancelamento. O
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../assets/report_images/rlocus_lead_detail.png}
+    \includegraphics[width=0.8\textwidth]{../assets/report_images/10_rlocus_lead_detail.png}
     \caption{Detalhe do Cancelamento Polo-Zero: O Zero do compensador ``anula'' o Polo lento da planta}
     \label{fig:rlocus_lead_detail}
 \end{figure}
@@ -302,7 +302,7 @@ O diagrama de Bode (Figura \ref{fig:bode_lead}) confirma o aumento da largura de
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../assets/report_images/bode_Lead.png}
+    \includegraphics[width=0.8\textwidth]{../assets/report_images/11_bode_Lead.png}
     \caption{Diagrama de Bode do Sistema Compensado (Lead)}
     \label{fig:bode_lead}
 \end{figure}
@@ -312,7 +312,7 @@ O resultado no domínio do tempo foi extremamente positivo. O sistema tornou-se 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../assets/report_images/step_response_Lead.png}
+    \includegraphics[width=0.8\textwidth]{../assets/report_images/12_step_response_Lead.png}
     \caption{Resposta ao Degrau com Compensador Lead ($t_s \approx 0.98s$)}
     \label{fig:step_lead}
 \end{figure}
@@ -363,7 +363,7 @@ A resposta ao degrau (Figura \ref{fig:step_leadlag}) demonstra um desempenho exc
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{../assets/report_images/step_response_LeadLag.png}
+    \includegraphics[width=0.9\textwidth]{../assets/report_images/13_step_response_LeadLag.png}
     \caption{Resposta Final do Sistema com Controlador Lead-Lag Integrado}
     \label{fig:step_leadlag}
 \end{figure}
@@ -372,7 +372,7 @@ O Diagrama de Bode da malha combinada (Figura \ref{fig:bode_leadlag}) mostra a m
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{../assets/report_images/bode_LeadLag.png}
+    \includegraphics[width=0.9\textwidth]{../assets/report_images/14_bode_LeadLag.png}
     \caption{Diagrama de Bode Final (Lead-Lag)}
     \label{fig:bode_leadlag}
 \end{figure}
@@ -402,7 +402,7 @@ A Figura \ref{fig:step_pid} apresenta a resposta ao degrau. O controlador PID of
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{../assets/report_images/step_response_PID.png}
+    \includegraphics[width=0.9\textwidth]{../assets/report_images/15_step_response_PID.png}
     \caption{Resposta ao Degrau com Controlador PID (Ziegler-Nichols Refinado)}
     \label{fig:step_pid}
 \end{figure}
@@ -412,7 +412,7 @@ Assim como nos compensadores clássicos, o PID também foi submetido aos cenári
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{../assets/report_images/robustness_PID.png}
+    \includegraphics[width=0.9\textwidth]{../assets/report_images/16_robustness_PID.png}
     \caption{Análise de Robustez do Controlador PID: Estabilidade mantida em todos os cenários.}
     \label{fig:robustness_pid}
 \end{figure}
@@ -445,7 +445,7 @@ A Figura \ref{fig:robustness} apresenta a resposta ao degrau do controlador Lead
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{../assets/report_images/robustness_Lead-Lag.png}
+    \includegraphics[width=0.9\textwidth]{../assets/report_images/17_robustness_LeadLag.png}
     \caption{Robustez do Controlador Lead-Lag: O sistema permanece estável e com desempenho aceitável em todos os cenários.}
     \label{fig:robustness}
 \end{figure}
