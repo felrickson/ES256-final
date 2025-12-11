@@ -156,6 +156,20 @@ Utilizando o ganho ajustado $K_p = 97.600$:
     \includegraphics[width=0.8\textwidth]{../assets/report_images/04_step_response_P.png}
     \caption{Resposta ao Degrau - Controlador P ($K_p=77.000$)}
     \label{fig:step_p}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../assets/report_images/04_step_response_P.png}
+    \caption{Resposta ao Degrau - Controlador P ($K_p=77.000$)}
+    \label{fig:step_p}
+\end{figure}
+
+A Figura \ref{fig:nyquist_p} apresenta o diagrama de Nyquist, confirmando a estabilidade (sem circundamentos do ponto -1).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../assets/report_images/04b_nyquist_P.png}
+    \caption{Diagrama de Nyquist do Controlador Proporcional}
+    \label{fig:nyquist_p}
 \end{figure}
 
 \section{Compensador Lag (Atraso de Fase) - Dierson}
@@ -261,6 +275,8 @@ A resposta ao degrau (Figura \ref{fig:step_compare}) confirma que o comportament
     \label{fig:ramp_compare}
 \end{figure}
 
+
+
 \section{Compensador Lead (Avanço de Fase) - Cintia}
 
 Enquanto o controlador Proporcional oferece um bom desempenho, o Compensador Lead (Avanço de Fase) é projetado para modificar o Lugar das Raízes, ``puxando-o'' para a esquerda no plano complexo. Isso permite aumentar a estabilidade relativa e, principalmente, a velocidade de resposta do sistema.
@@ -317,6 +333,8 @@ O resultado no domínio do tempo foi extremamente positivo. O sistema tornou-se 
     \caption{Resposta ao Degrau com Compensador Lead ($t_s \approx 0.98s$)}
     \label{fig:step_lead}
 \end{figure}
+
+
 
 Comparado ao controlador Proporcional, o Tempo de Acomodação ($t_s$) ficou próximo de $\mathbf{0.98s}$, demonstrando que o a estabilidade foi priorizada sobre a velocidade extrema com o ganho selecionado.
 
@@ -378,6 +396,13 @@ O Diagrama de Bode da malha combinada (Figura \ref{fig:bode_leadlag}) mostra a m
     \label{fig:bode_leadlag}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../assets/report_images/14b_nyquist_LeadLag.png}
+    \caption{Diagrama de Nyquist Final (Lead-Lag): Estabilidade garantida com robustez.}
+    \label{fig:nyquist_leadlag}
+\end{figure}
+
 \section{Controlador PID (Proporcional-Integral-Derivativo) - Guilherme}
 
 Além das estratégias clássicas de compensação em frequência (Lead/Lag), implementou-se um controlador PID sintonizado via método de Ziegler-Nichols e refinado empiricamente.
@@ -406,6 +431,13 @@ A Figura \ref{fig:step_pid} apresenta a resposta ao degrau. O controlador PID of
     \includegraphics[width=0.9\textwidth]{../assets/report_images/15_step_response_PID.png}
     \caption{Resposta ao Degrau com Controlador PID (Ziegler-Nichols Refinado)}
     \label{fig:step_pid}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../assets/report_images/15b_nyquist_PID.png}
+    \caption{Diagrama de Nyquist do Controlador PID}
+    \label{fig:nyquist_pid}
 \end{figure}
 
 \subsection{Robustez do PID}
@@ -468,9 +500,20 @@ O PID (Figura \ref{fig:robustness_pid_sec}) também se mostrou robusto. A ação
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{../assets/report_images/16_robustness_PID.png}
-    \caption{Robustez do Controlador PID.}
-    \label{fig:robustness_pid_sec}
+    \includegraphics[width=0.8\textwidth]{../assets/report_images/16_robustness_PID_fixed.png}
+    \caption{Robustez do Controlador PID (Note o erro nulo permanente)}
+    \label{fig:robustness_pid}
+\end{figure}
+
+\section{Comparativo Final de Estabilidade}
+
+Para finalizar a análise de estabilidade, a Figura \ref{fig:comparative_nyquist} apresenta a sobreposição dos diagramas de Nyquist das três principais estratégias (Proporcional, Lead-Lag e PID) em torno do ponto crítico (-1+j0).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../assets/report_images/18_comparative_nyquist.png}
+    \caption{Comparativo de Margens de Estabilidade no Plano de Nyquist. Note como as soluções compensadas (Lead-Lag e PID) contornam o ponto crítico com maior margem de segurança que o Proporcional puro.}
+    \label{fig:comparative_nyquist}
 \end{figure}
 
 \subsection{Conclusão da Análise}

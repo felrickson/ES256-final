@@ -4,6 +4,125 @@ import control as ct
 from model import define_system, configure_plot_style, get_assets_dir, analyze_open_loop
 import os
 
+def generate_nyquist_plot(sys_open_loop, filename, title, mode='dark'):
+    """
+    Generates a Nyquist plot for the given open-loop system.
+    """
+    colors = configure_plot_style(mode)
+    assets_dir = get_assets_dir(mode)
+    grid_color = 'black' if mode == 'light' else 'white'
+    grid_alpha = 0.3
+    text_color = 'black' if mode == 'light' else 'white'
+    
+    plt.figure(figsize=(8, 8))
+    
+    # Calculate Nyquist response
+    # ct.nyquist_plot arguments might conflict if linestyle is passed directly.
+    # We call it without linestyle, then force solid lines on all plot lines.
+    ct.nyquist_plot(sys_open_loop, label='L(s)', color=colors[0])
+    
+    # Force all current lines to be solid (handles negative freq dashed default)
+    for line in plt.gca().get_lines():
+        line.set_linestyle('-')
+    
+    # Draw Unit Circle for reference (Thicker and more visible)
+    theta = np.linspace(0, 2*np.pi, 100)
+    plt.plot(np.cos(theta), np.sin(theta), 'r--', linewidth=2.5, alpha=0.8, label='Círculo Unitário')
+    
+    # Plot formatting
+    plt.title(title, color=text_color)
+    plt.xlabel('Eixo Real', color=text_color)
+    plt.ylabel('Eixo Imaginário', color=text_color)
+    plt.grid(True, which='both', color=grid_color, alpha=grid_alpha)
+    plt.axhline(0, color=grid_color, linewidth=0.5)
+    plt.axvline(0, color=grid_color, linewidth=0.5)
+    
+    # Mark -1 point (Highlighted)
+    plt.plot(-1, 0, 'r+', markersize=14, markeredgewidth=3, label='Ponto Crítico (-1)')
+    
+    # Simplified Legend (Unique entries only, moved to left)
+    handles, labels = plt.gca().get_legend_handles_labels()
+    by_label = dict(zip(labels, handles))
+    
+    legend = plt.legend(by_label.values(), by_label.keys(),
+                       facecolor='black' if mode=='dark' else 'white', 
+                       edgecolor=text_color, 
+                       labelcolor=text_color,
+                       fontsize='small',
+                       loc='center left')
+    
+    # Limit zoom to emphasize the -1 region if needed, but auto-scale is usually safer first
+    # For this specific plant, the plot can be huge, so we might want to zoom in near origin
+    plt.xlim([-2.5, 0.5])
+    plt.ylim([-1.5, 1.5])
+    
+    plt.savefig(os.path.join(assets_dir, filename))
+    plt.close()
+
+def generate_comparative_nyquist(sys, Kp_p, ctrl_leadlag, ctrl_pid, mode='dark'):
+    """
+    Generates a comparative Nyquist plot for Proportional, Lead-Lag, and PID.
+    """
+    colors = configure_plot_style(mode)
+    assets_dir = get_assets_dir(mode)
+    grid_color = 'black' if mode == 'light' else 'white'
+    text_color = 'black' if mode == 'light' else 'white'
+    
+    plt.figure(figsize=(10, 8))
+    
+    # Systems to compare
+    systems = [
+        (Kp_p * sys, 'Proporcional', colors[0]),
+        (ctrl_leadlag * sys, 'Lead-Lag', colors[2]), # Greenish usually
+        (ctrl_pid * sys, 'PID', colors[3])     # Reddish/Purple usually
+    ]
+    
+    # Plot curves
+    for loop, label, color in systems:
+        # Avoid linestyle conflict by not passing it
+        ct.nyquist_plot(loop, label=label, color=color)
+        
+    # Force all plotted lines (nyquist curves) to be solid
+    for line in plt.gca().get_lines():
+        line.set_linestyle('-')
+
+    # Draw Unit Circle and Critical Point (Thicker) - AFTER processing lines to avoid them becoming solid if we wanted dashed
+    # We want unit circle dashed, so we plot it AFTER the loop or reset it.
+    # Actually, if I plot unit circle NOW, it will be fine.
+    # But wait, I iterate `get_lines()` above. If I plotted unit circle before, it would become solid.
+    # So I must move unit circle plotting to AFTER the modification loop.
+    
+    theta = np.linspace(0, 2*np.pi, 100)
+    plt.plot(np.cos(theta), np.sin(theta), 'r--', linewidth=2.5, alpha=0.8)
+    plt.plot(-1, 0, 'r+', markersize=14, markeredgewidth=3, label='Ponto Crítico (-1)')
+        
+    # ... rest of formatting ...
+    plt.title('Comparativo de Estabilidade (Nyquist)', color=text_color)
+    plt.xlabel('Eixo Real', color=text_color)
+    plt.ylabel('Eixo Imaginário', color=text_color)
+    plt.grid(True, which='both', color=grid_color, alpha=0.3)
+    plt.axhline(0, color=grid_color, linewidth=0.5)
+    plt.axvline(0, color=grid_color, linewidth=0.5)
+    
+    # Zoom for detail around -1
+    plt.xlim([-2.5, 0.5]) # Slightly wider xlim to see entrant curves better
+    plt.ylim([-1.5, 1.5])
+    
+    # Simplified Legend (Unique entries only, moved to left)
+    handles, labels = plt.gca().get_legend_handles_labels()
+    by_label = dict(zip(labels, handles))
+    
+    legend = plt.legend(by_label.values(), by_label.keys(),
+                       facecolor='black' if mode=='dark' else 'white', 
+                       edgecolor=text_color,
+                       fontsize='small',
+                       loc='center left')
+    for text in legend.get_texts():
+        text.set_color(text_color)
+            
+    plt.savefig(os.path.join(assets_dir, '18_comparative_nyquist.png'))
+    plt.close()
+
 def generate_comparative_plots(sys_input, Kp_p, ctrl_lag_input, mode='dark'):
     """
     Generates detailed comparative plots based on Dierson Silva's specifications.
@@ -187,6 +306,11 @@ def design_p_controller(sys, mode='dark'):
              
     plt.savefig(os.path.join(assets_dir, '04_step_response_P.png'))
     plt.close()
+
+    # Nyquist Plot (Open Loop L = Kp * Sys)
+    generate_nyquist_plot(Kp * sys, '04b_nyquist_P.png', 
+                          f'Diagrama de Nyquist (P, Kp={Kp})', mode)
+
     return Kp
 
 def design_lag_controller(sys, mode='dark'):
@@ -270,6 +394,10 @@ def design_lag_controller(sys, mode='dark'):
     plt.grid(True, which='both', color=grid_color, alpha=grid_alpha)
     plt.savefig(os.path.join(assets_dir, '06_rlocus_lag_detail.png'))
     plt.close()
+
+    # Nyquist Plot (DISABLED per request: "tira o nyquist que usa somente lead e somente lag")
+    # generate_nyquist_plot(ctrl * sys, '06c_nyquist_Lag.png', 
+    #                      f'Diagrama de Nyquist (Lag)\nZero={z}, Polo={p}', mode)
 
     return ctrl
 
@@ -362,6 +490,10 @@ def design_lead_controller(sys, mode='dark'):
     plt.savefig(os.path.join(assets_dir, '11_bode_Lead.png'))
     plt.close()
     
+    # Nyquist Plot (DISABLED per request)
+    # generate_nyquist_plot(ctrl * sys, '11b_nyquist_Lead.png', 
+    #                      f'Diagrama de Nyquist (Lead)', mode)
+    
     return ctrl
 
 def design_lead_lag_controller(sys, mode='dark'):
@@ -447,6 +579,10 @@ def design_lead_lag_controller(sys, mode='dark'):
     plt.savefig(os.path.join(assets_dir, '14_bode_LeadLag.png'))
     plt.close()
     
+    # Nyquist Plot
+    generate_nyquist_plot(ctrl * sys, '14b_nyquist_LeadLag.png', 
+                         f'Diagrama de Nyquist (Lead-Lag Integrado)', mode)
+    
     return ctrl
 
 def design_pid_controller(sys, mode='dark'):
@@ -483,6 +619,10 @@ def design_pid_controller(sys, mode='dark'):
              bbox=dict(facecolor='black', alpha=0.5, edgecolor=colors[1]), color='white')
     plt.savefig(os.path.join(assets_dir, '15_step_response_PID.png'))
     plt.close()
+    
+    # Nyquist Plot
+    generate_nyquist_plot(pid_tf * sys, '15b_nyquist_PID.png', 
+                         f'Diagrama de Nyquist (PID)', mode)
     
     return pid_tf
 
@@ -612,8 +752,8 @@ if __name__ == "__main__":
     Kp_p = design_p_controller(sys, mode='light')
     ctrl_lag = design_lag_controller(sys, mode='light')
     design_lead_controller(sys, mode='light')
-    design_lead_lag_controller(sys, mode='dark')
-    design_pid_controller(sys, mode='dark')
+    ctrl_leadlag = design_lead_lag_controller(sys, mode='light')
+    ctrl_pid = design_pid_controller(sys, mode='light')
     
     # Generate comparative plots with Dierson's strict parameters
     generate_comparative_plots(sys, Kp_p, ctrl_lag, mode='dark')
@@ -621,5 +761,9 @@ if __name__ == "__main__":
 
     analyze_robustness(controllers_to_test, mode='dark')
     analyze_robustness(controllers_to_test, mode='light')
+    
+    # Generate New Comparative Nyquist
+    generate_comparative_nyquist(sys, Kp_p, ctrl_leadlag, ctrl_pid, mode='dark')
+    generate_comparative_nyquist(sys, Kp_p, ctrl_leadlag, ctrl_pid, mode='light')
     
     print("\nTodas as simulações e gráficos foram atualizados.")

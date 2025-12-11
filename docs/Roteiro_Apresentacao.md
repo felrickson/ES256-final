@@ -71,7 +71,7 @@
 
 ### Slide 6: Resultados Proporcional
 **Apresentador:** Felipe
-**Tempo:** 3 min
+**Tempo:** 2 min
 
 *   **A "Parede" de Desempenho:**
     *   "Nós exploramos esse *trade-off* exaustivamente."
@@ -82,9 +82,17 @@
     *   "O verdadeiro problema apareceu quando testamos uma entrada de **Rampa** (seguimento de trajetória)."
     *   "O erro estacionário ficou em **13.5%**. Nosso requisito é **1%**. O Proporcional, por ser apenas um ganho constante, não tem 'memória' suficiente para corrigir esse erro acumulado. Precisamos de algo mais inteligente."
 
+### Slide 7: Análise de Estabilidade (Nyquist P)
+**Apresentador:** Felipe
+**Tempo:** 1 min
+
+*   **Validação da Estabilidade:**
+    *   "Antes de prosseguir, precisamos garantir que esse ganho agressivo de 77.000 não instabilizou o sistema."
+    *   "O diagrama de Nyquist mostra que a curva passa longe do ponto crítico (-1+j0). Isso nos dá a segurança matemática de que o sistema é estável, apesar da oscilação transitória."
+
 ---
 
-### Slide 7: Compensador Lag (Atraso) - Teoria
+### Slide 8: Compensador Lag (Atraso) - Teoria
 **Apresentador:** Dierson
 **Tempo:** 3 min
 
@@ -93,26 +101,26 @@
     *   "Para isso, utilizamos o **Compensador Lag (Atraso de Fase)**."
     *   "A ideia é introduzir um polo e um zero muito próximos da origem. Isso cria um ganho alto em DC (frequência zero), mas 'cancela' seu próprio efeito em altas frequências."
 
-### Slide 8: Otimização de Parâmetros
+### Slide 9: Otimização de Parâmetros
 **Apresentador:** Dierson
 **Tempo:** 3 min
 
 *   **Design Rigoroso:**
     *   "Matematicamente, definimos que precisávamos de um ganho extra de aproximadamente **10x** para baixar o erro de 13% para 1%."
     *   "Escolhi a relação $\beta = z/p = 10$."
-    *   "Posicionei o zero em $-0.1$ e o polo em $-0.01$. Por que tão perto de zero? Para garantir que o ângulo de fase não fosse afetado na frequência de corte (cruzamento de ganho), o que preserva a margem de fase e a estabilidade."
+    *   "Posicionei o zero em $-0.1$ e o polo em $-0.01$. Por que tão perto de zero? Para garantir que o ângulo de fase não fosse afetado na frequência de corte, preservando a margem de fase."
     *   "O resultado: Erro de rampa caiu para **1.35%**. Missão quase cumprida."
 
-### Slide 9: Análise Frequencial
+### Slide 10: Análise Frequencial
 **Apresentador:** Dierson
 **Tempo:** 1 min
 
 *   **Validação via Bode:**
-    *   "O diagrama de Bode confirma nossa teoria. Vejam como a magnitude (linha sólida) sobe na esquerda (baixa frequência), mas se sobrepõe perfeitamente à curva original na direita. Isso é engenharia de precisão."
+    *   "O diagrama de Bode confirma nossa teoria. Vejam como a magnitude sobe na esquerda (baixa frequência), mas se sobrepõe perfeitamente à curva original na direita. Isso é engenharia de precisão."
 
 ---
 
-### Slide 10: Compensador Lead (Avanço) - Teoria
+### Slide 11: Compensador Lead (Avanço) - Teoria
 **Apresentador:** Cintia
 **Tempo:** 3 min
 
@@ -121,7 +129,7 @@
     *   "Meu foco foi: **Velocidade Pura**. Para isso, usei o **Compensador Lead**."
     *   "Diferente do Lag, o Lead 'adianta' a informação, injetando fase positiva. É como se o controlador previsse o futuro, reagindo à taxa de variação do erro."
 
-### Slide 11: Estratégia de Cancelamento
+### Slide 12: Estratégia de Cancelamento
 **Apresentador:** Cintia
 **Tempo:** 3 min
 
@@ -129,70 +137,82 @@
     *   "Ao analisar a planta, identifiquei que o 'vilão' da lentidão era o polo mecânico do motor em $-13.2$."
     *   "Decidi usar uma estratégia clássica de controle: **Cancelamento de Polos**."
     *   "Projetei o Zero do meu compensador Lead exatamente em cima desse polo ($-13.2$). Isso anula a dinâmica lenta."
-    *   "Em contrapartida, coloquei o polo do compensador lá longe, em $-150$. Isso nos dá uma largura de banda muito maior."
+    *   "Posicionei o polo do compensador longe, em $-150$, aumentando drasticamente a largura de banda."
 
-### Slide 12: Resultados Lead
+### Slide 13: Resultados Lead
 **Apresentador:** Cintia
 **Tempo:** 2 min
 
 *   **Perfeição no Transiente:**
     *   "O resultado gráfico fala por si. Conseguimos um tempo de acomodação de **0.98s**."
-    *   "Mas o mais impressionante não é a velocidade, é a qualidade. Tivemos **0% de Overshoot**. O braço robótico se move rápido e para *exatamente* no ponto, sem vibrar. É o comportamento ideal."
+    *   "Mas o mais impressionante é a qualidade: **0% de Overshoot**. O braço robótico se move rápido e para *exatamente* no ponto, sem vibrar."
 
-### Slide 13: Solução Integrada (Lead-Lag)
+### Slide 14: Solução Integrada (Lead-Lag)
 **Apresentador:** Cintia
 **Tempo:** 1 min
 
 *   **A "Jóia da Coroa":**
-    *   "Para o projeto final, não escolhemos um ou outro. Somamos forças. O controlador **Lead-Lag** combina o erro quase zero do Dierson com a velocidade perfeita do meu Lead. Essa é a solução que recomendamos para implementação."
+    *   "Para o projeto final, não escolhemos um ou outro. Somamos forças. O controlador **Lead-Lag** combina o erro quase zero do Dierson com a velocidade perfeita do meu Lead."
+
+### Slide 15: Estabilidade Lead-Lag (Nyquist)
+**Apresentador:** Cintia
+**Tempo:** 1 min
+
+*   **Garantia de Robustez:**
+    *   "Analisando o Nyquist do Lead-Lag, vemos o equilíbrio perfeito. A 'cauda' se estende para longe (alto ganho DC), enquanto curve contorna o ponto crítico com uma margem segura, garantida pelo avanço de fase do Lead."
 
 ---
 
-### Slide 14: Controlador PID
+### Slide 16: Controlador PID
 **Apresentadores:** Guilherme & Nicolas
-**Tempo:** 4 min
+**Tempo:** 3 min
 
-*   **Abordagem Alternativa:**
-    *   "Paralelamente ao design em frequência, desenvolvemos um controlador **PID** no domínio do tempo."
-    *   "PIDs são o padrão da indústria, mas sintonizá-los é uma arte."
-    *   "Usamos o método de Ziegler-Nichols como ponto de partida, mas ele resultou em um sistema muito oscilatório ($M_p > 60\%$) devido ao ganho ultra-elevado necessário."
-*   **Refinamento Manual:**
-    *   "Realizamos um ajuste fino manual. Reduzimos o ganho proporcional para $K_p=60.000$ e aumentamos significativamente a ação derivativa ($K_d=1.000$) para atuar como um 'freio' eletrônico."
-    *   "O resultado foi um controlador extremamente robusto, capaz de zerar erros rapidamente graças à ação integral."
+*   **Abordagem no Domínio do Tempo:**
+    *   "Paralelamente, desenvolvemos um controlador **PID**. PIDs são o padrão da indústria, mas sintonizá-los é uma arte."
+    *   "Usamos Ziegler-Nichols seguido de refinamento manual. Reduzimos o ganho proporcional para $60.000$ e aumentamos o derivativo ($K_d=1.000$) para atuar como um 'freio' eletrônico."
+    *   "O Integrador zera o erro, e o Derivativo contém a oscilação."
+
+### Slide 17: Estabilidade PID (Nyquist)
+**Apresentadores:** Guilherme & Nicolas
+**Tempo:** 1 min
+
+*   **Análise Visual:**
+    *   "O Nyquist do PID mostra claramente a ação do integrador (indo para o infinito embaixo) e a ação derivativa curvando o gráfico para longe do ponto crítico -1, garantindo estabilidade robusta."
 
 ---
 
-### Slide 15: Análise de Robustez
+### Slide 18: Análise de Robustez
 **Apresentador:** Nicolas
-**Tempo:** 4 min
+**Tempo:** 3 min
 
 *   **Teste de Estresse:**
-    *   "Na simulação tudo é perfeito. Mas no mundo real, motores esquentam, engrenagens desgastam e cargas mudam."
-    *   "Criamos simuladores de 'Piores Casos':"
-        *   "**Cenário Pesado:** Motor fraco ($K_m=0.8$) e muito atrito. O sistema tende a ficar lento."
-        *   "**Cenário Agressivo:** Motor superpotente ($K_m=1.2$) e sem atrito. O sistema tende a oscilar violentamente."
-*   **Análise Comparativa:**
-    *   "Vejam os gráficos. O **Proporcional** (esquerda) falha catastroficamente no cenário Agressivo, entrando em instabilidade."
-    *   "Já os nossos controladores finais, **Lead-Lag** e **PID**, mantiveram a estabilidade em todos os casos. O overshoot muda um pouco, mas o sistema nunca perde o controle. Isso prova a qualidade do nosso design de margem de fase."
+    *   "Na simulação tudo é perfeito. Mas no mundo real, motores esquentam e cargas mudam."
+    *   "Criamos simuladores de 'Piores Casos' (±20% nos parâmetros)."
+    *   "O **Proporcional** falha no cenário Agressivo, instabilizando."
+    *   "Já o **Lead-Lag** e **PID** mantêm a estabilidade em todos os casos, provando a qualidade do design."
 
----
-
-### Slide 16: Comparativo Final (Tabela)
+### Slide 19: Comparativo de Desempenho (Tabela)
 **Apresentador:** Nicolas
 **Tempo:** 2 min
 
 *   **Resumo Executivo:**
-    *   "Na tabela final, fica claro:"
-    *   "Se você quer simplicidade e baixo custo computacional: **Use o Proporcional** (mas aceite o erro)."
-    *   "Se você quer o movimento mais suave possível: **Use o Lead**."
-    *   "Se você precisa de robustez absoluta e erro zero sob qualquer carga: **Use o PID ou Lead-Lag**."
+    *   "Se você quer simplicidade: **Proporcional** (mas aceite o erro)."
+    *   "Se você quer movimento suave: **Lead**."
+    *   "Se você precisa de robustez absoluta e erro zero: **Use PID ou Lead-Lag**."
 
-### Slide 17: Conclusão
+### Slide 20: Comparativo Final de Estabilidade
+**Apresentador:** Nicolas
+**Tempo:** 2 min
+
+*   **O Veredito Final (Nyquist):**
+    *   "Para encerrar, sobrepomos os diagramas de Nyquist das três principais estratégias."
+    *   "Observem no gráfico como as curvas do **Lead-Lag** (verde) e **PID** (vermelho) passam muito mais longe do ponto crítico do que a curva do Proporcional."
+    *   "Isso visualiza, matematicamente, por que nossas soluções finais são mais confiáveis e seguras para aplicação real."
+
+### Slide 21: Conclusão
 **Apresentador:** Grupo (Todos)
 **Tempo:** 1 min
 
 *   **Fechamento:**
     *   "Concluímos que o objetivo foi atingido. O sistema proposto é estável, preciso ($e_{ss} \approx 0\%$) e rápido ($t_s < 1s$)."
     *   "Agradecemos a atenção. Estamos abertos a perguntas."
-
-
